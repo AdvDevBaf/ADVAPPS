@@ -1,0 +1,15 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <link href="{% static 'css/frontcom.css' %}" rel="stylesheet" type="text/css">
+        <link>
+        <title>{% block title %}{% endblock %}</title>
+    </head>
+    <body>
+    <h1 class="welcome">
+        <em><a href="{% url 'blog_youtube' %}">Поиск каналов или видео на youtube</a></em>
+        <em><a href="#">Еще одна веб история</a></em>
+        <em><a href="#">И еще одна</a></em></h1>
+        <div>{% block content %}{% endblock %}</div>
+    </body>
+</html>

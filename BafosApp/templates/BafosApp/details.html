@@ -1,0 +1,16 @@
+{% extends 'BafosApp/base.html' %}
+ 
+{% block BafosApp_title %}{{ entry.title }}{% endblock %}
+ 
+{% block BafosApp_content %}
+    <h1 class="headline">{{ entry.title }}</h1>
+    <div class="tease">
+        {% autoescape off %}
+        <p>KEK</p>
+        {% endautoescape %}
+    </div>
+    <br/>
+    <div><i>KEK</i></div>
+    <br/>
+    <a href="{% url 'blog_index' %}">Назад к списку статей</a>
+{% endblock %}

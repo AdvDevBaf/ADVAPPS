@@ -1,0 +1,27 @@
+{% extends 'BafosApp/base.html' %}
+{% block BafosApp_title %}ADV APPS{% endblock %}
+
+{% block BafosApp_content %}
+<form action="" method="get">
+<p class="fields"><label>
+    <input type="text" name="text">
+</label>
+    <p class="texts">TEXT</p></p>
+    <label>
+        <select name="data" class="fields">
+            <option>Выберете категорию</option>
+            <option>video</option>
+            <option>channel(пока не готово)</option>
+        </select>
+    </label>
+        <p class="texts">DATA</p></p>
+
+    <div class="post">
+        <p class="btn"><input type="submit" value="Получить"></p>
+        </div>
+</form>
+
+
+    <p class="btn"><button  name="mybtn"><a class="post" href="{% url 'blog_index' %}">Назад к списку статей</a></button>
+{% endblock %}
+
