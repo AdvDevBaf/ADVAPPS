@@ -21,7 +21,8 @@ urlpatterns = [
                url(r'^youtube/$', views.youtube,
                    name='blog_youtube'),
 
-               # youtube
-               url(r'^youtube/$', views.youtube_data_view,
-                   name='blog_youtube'),
+                # organizations
+               url(r'^organizations/$', views.organizations,
+                   name='blog_organizations'),
+
 ]

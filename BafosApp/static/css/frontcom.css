@@ -1,19 +1,18 @@
-body {
-    background: #141E30;
-    background: -webkit-linear-gradient(-45deg, #35577D, #141E30);
-    background: linear-gradient(-45deg,#35577D,#141E30);
-    margin: 0;
-    padding: 0;
-}
+a {
+    color: blue;
+    text-decoration: none;
+   }
 
 em {
     border: 2px solid #466995;
     border-radius: 7px;
     padding: 15px;
 }
+
+
 .welcome {
-    background-color: #DBE9EE;
-    color: #466995;
+    background: #fff; /* запасной цвет для старых браузеров */
+    background: rgba(255, 255, 255, 0.5);
     font-family: 'Oswald';
     opacity: 0.75;
     text-align: center;
@@ -23,16 +22,59 @@ em {
     padding:40px;
 }
 
-.texts {
-        margin: 10px 750px;
+.knopka{
+  font-weight: 700;
+  display: block;
+  margin: auto 690px;
+  padding: 8px;
+  width: 80%;
+  max-width: 200px;
+  background: #fff; /* запасной цвет для старых браузеров */
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: blue;
+  text-align: center;
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: all 0.3s ease-out;
 }
+.knopka:hover { background: #fff; }
+.knopka:active {
+  background: white;
+  box-shadow: 0 3px white inset;
+}
+
+
+#footer {
+    position: fixed; /* Фиксированное положение */
+    left: 0; bottom: 0; /* Левый нижний угол */
+    padding: 10px; /* Поля вокруг текста */
+    background: #fff; /* запасной цвет для старых браузеров */
+    background: rgba(255, 255, 255, 0.5);
+    color: black; /* Цвет текста */
+    width: 100%; /* Ширина слоя */
+}
+
+.texts {
+        margin: 10px 730px;
+}
+
 
 .fields {
     margin: auto 700px;
 }
 
-.btn{
-    margin: auto 730px;
+
+.data {
+    margin: auto 690px;
+}
+
+.organ {
+    margin: 40px 550px;
+}
+
+.checkbox {
+    margin: auto 690px;
 }
 
 .headline {

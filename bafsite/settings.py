@@ -25,7 +25,7 @@ SECRET_KEY = '-)57*mm2t0ke&gpe2_+d$kn_2)6jyayc1dc-b7u#jw960sihd6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['advapps.pythonanywhere.com',]
 
 
 # Application definition

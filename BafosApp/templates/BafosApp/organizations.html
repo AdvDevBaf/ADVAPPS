@@ -1,0 +1,177 @@
+{% extends 'BafosApp/base.html' %}
+{% block BafosApp_title %}ADV APPS{% endblock %}
+{% block BafosApp_content %}
+<main role="main">
+			<div class="jumbotron">
+				<div class="container">
+					<h1 class="display-3"></h1>
+				</div>
+			</div>
+		</main>
+<form action="" method="POST">
+<p class="fields"><label>
+    <input type="text" name="сompany">
+    <input type="text" name="radius">
+</label>
+    <p class="texts">Название компании и Радиус</p>
+    <label>
+        <select name="data" class="fields nav-link">
+            <option>Выберете категорию</option>
+            <option>Выгрузить полные адреса</option>
+            <option>Выгрузить только адреса</option>
+        </select>
+    </label>
+<table border="1" class="organ">
+   <caption>Таблица городов и областей</caption>
+   <tr>
+    <th>Города</th>
+    <th>Области</th>
+   </tr>
+   <tr><td><input type="checkbox" name="checks" id="parent_city"/> Все города<br></td><td><input type="checkbox" name="checks" id="parent_region"/> Все области<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Москва" name="checks[]"/> Москва<br></td><td><input type="checkbox" class="child_region" value="Московская область" name="checks_dist[]"/> Московская область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Санкт-Петербург" name="checks[]"> Санкт-Петербург<br></td><td><input type="checkbox" class="child_region" value="Ленинградская область" name="checks_dist[]"> Ленинградская область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Нижний Новгород" name="checks[]"> Нижний Новгород<br></td><td><input type="checkbox" class="child_region" value="Нижегородская область" name="checks_dist[]"> Нижегородская область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Ростов-на-Дону" name="checks[]"> Ростов-на-Дону<br></td><td><input type="checkbox" class="child_region" value="Ростовская область" name="checks_dist[]"> Ростовская область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Екатеринбург" name="checks[]"> Екатеринбург<br></td><td><input type="checkbox" class="child_region" value="Свердловская область" name="checks_dist[]"> Свердловская область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Владимир" name="checks[]"> Владимир<br></td><td><input type="checkbox" class="child_region" value="Владимирская область" name="checks_dist[]"> Владимирская область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Великий Новгород" name="checks[]"> Великий Новгород<br></td><td><input type="checkbox" class="child_region" value="Новогородская область" name="checks_dist[]"> Новогородская область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Рязань" name="checks[]"> Рязань<br></td><td><input type="checkbox" class="child_region" value="Рязанская область" name="checks_dist[]"> Рязанская область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Тюмень" name="checks[]"> Тюмень<br></td><td><input type="checkbox" class="child_region" value="Тюменская область" name="checks_dist[]"> Тюменская область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Липецк" name="checks[]"> Липецк<br></td><td><input type="checkbox" class="child_region" value="Липецкая область" name="checks_dist[]"> Липецкая область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Тула" name="checks[]"> Тула<br></td><td><input type="checkbox" class="child_region" value="Тульская область" name="checks_dist[]"> Тульская область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Вологода" name="checks[]"> Вологода<br></td><td><input type="checkbox" class="child_region" value="Вологодская область" name="checks_dist[]"> Вологодская область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Орёл" name="checks[]"> Орёл<br></td><td><input type="checkbox" class="child_region" value="Орловская область" name="checks_dist[]"> Орловская область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Калуга" name="checks[]"> Калуга<br></td><td><input type="checkbox" class="child_region" value="Калужская область" name="checks_dist[]"> Калужская область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Смоленск" name="checks[]"> Смоленск<br></td><td><input type="checkbox" class="child_region" value="Смоленская область" name="checks_dist[]"> Смоленская область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Архангельск" name="checks[]"> Архангельск<br></td><td><input type="checkbox" class="child_region" value="Архангельская область" name="checks_dist[]"> Архангельская область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Тверь" name="checks[]"> Тверь<br></td><td><input type="checkbox" class="child_region" value="Тверская область" name="checks_dist[]"> Тверская область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Брянск" name="checks[]"> Брянск<br></td><td><input type="checkbox" class="child_region" value="Брянская область" name="checks_dist[]"> Брянская область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Белгород" name="checks[]"> Белгород<br></td><td><input type="checkbox" class="child_region" value="Белгородская область" name="checks_dist[]"> Белгородская область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Ярославль" name="checks[]"> Ярославль<br></td><td><input type="checkbox" class="child_region" value="Ярославская область" name="checks_dist[]"> Ярославская область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Астрахань" name="checks[]"> Астрахань<br></td><td><input type="checkbox" class="child_region" value="Астраханская область" name="checks_dist[]"> Астраханская область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Тамбов" name="checks[]"> Тамбов<br></td><td><input type="checkbox" class="child_region" value="Тамбовская область" name="checks_dist[]"> Тамбовская область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Калининград" name="checks[]"> Калининград<br></td><td><input type="checkbox" class="child_region" value="Калининградская область" name="checks_dist[]"> Калининградская область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Курск" name="checks[]"> Курск<br></td><td><input type="checkbox" class="child_region" value="Курская область" name="checks_dist[]"> Курская область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Кострома" name="checks[]"> Кострома<br></td><td><input type="checkbox" class="child_region" value="Костромская область" name="checks_dist[]"> Костромская область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Курган" name="checks[]"> Курган<br></td><td><input type="checkbox" class="child_region" value="Курганская область" name="checks_dist[]"> Курганская область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Мурманск" name="checks[]"> Мурманск<br></td><td><input type="checkbox" class="child_region" value="Мурманская область" name="checks_dist[]"> Мурманская область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Иркутск" name="checks[]"> Иркутск<br></td><td><input type="checkbox" class="child_region" value="Иркутская область" name="checks_dist[]"> Иркутская область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Новосибирск" name="checks[]"> Новосибирск<br></td><td><input type="checkbox" class="child_region" value="Новосибирская область" name="checks_dist[]"> Новосибирская область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Магадан" name="checks[]"> Магадан<br></td><td><input type="checkbox" class="child_region" value="Магаданская область" name="checks_dist[]"> Магаданская область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Барнаул" name="checks[]"> Барнаул<br></td><td><input type="checkbox" class="child_region" value="Алтаский край" name="checks_dist[]"> Алтаский край<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Воронеж" name="checks[]"> Воронеж<br></td><td><input type="checkbox" class="child_region" value="Воронежская область" name="checks_dist[]"> Воронежская область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Иваново" name="checks[]"> Иваново<br></td><td><input type="checkbox" class="child_region" value="Ивановская область" name="checks_dist[]"> Ивановская область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Майкоп" name="checks[]"> Майкоп<br></td><td><input type="checkbox" class="child_region" value="Республика Адыгея" name="checks_dist[]"> Республика Адыгея<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Элиста" name="checks[]"> Элиста<br></td><td><input type="checkbox" class="child_region" value="Республика Калмыкия" name="checks_dist[]"> Республика Калмыкия<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Краснодар" name="checks[]"> Краснодар<br></td><td><input type="checkbox" class="child_region" value="Краснодарский край" name="checks_dist[]"> Краснодарский край<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Волгоград" name="checks[]"> Волгоград<br></td><td><input type="checkbox" class="child_region" value="Волгоградская область" name="checks_dist[]"> Волгоградская область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Петрозаводск" name="checks[]"> Петрозаводск<br></td><td><input type="checkbox" class="child_region" value="Республика Карелия" name="checks_dist[]"> Республика Карелия<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Сыктывкар" name="checks[]"> Сыктывкар<br></td><td><input type="checkbox" class="child_region" value="Республика Коми" name="checks_dist[]"> Республика Коми<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Псков" name="checks[]"> Псков<br></td><td><input type="checkbox" class="child_region" value="Псковская область" name="checks_dist[]"> Псковская область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Нарьян-Мар" name="checks[]"> Нарьян-Мар<br></td><td><input type="checkbox" class="child_region" value="Ненецкий автономный округ" name="checks_dist[]"> Ненецкий автономный округ<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Якутск" name="checks[]"> Якутск<br></td><td><input type="checkbox" class="child_region" value="Республика Саха" name="checks_dist[]"> Республика Саха<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Петропавловск-Камчатский" name="checks[]"> Петропавловск-Камчатский<br></td><td><input type="checkbox" class="child_region" value="Камчатский край" name="checks_dist[]"> Камчатский край<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Владивосток" name="checks[]"> Владивосток<br></td><td><input type="checkbox" class="child_region" value="Приморский край" name="checks_dist[]"> Приморский край<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Хабаровск" name="checks[]"> Хабаровск<br></td><td><input type="checkbox" class="child_region" value="Хабаровский край" name="checks_dist[]"> Хабаровский край<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Благовещенск" name="checks[]"> Благовещенск<br></td><td><input type="checkbox" class="child_region" value="Амурская область" name="checks_dist[]"> Амурская область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Южно-Сахалинск" name="checks[]"> Южно-Сахалинск<br></td><td><input type="checkbox" class="child_region" value="Сахалинская область" name="checks_dist[]"> Сахалинская область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Биробиджан" name="checks[]"> Биробиджан<br></td><td><input type="checkbox" class="child_region" value="Еврейская автономная область" name="checks_dist[]"> Еврейская автономная область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Анадырь" name="checks[]"> Анадырь<br></td><td><input type="checkbox" class="child_region" value="Чукотский автономный округ" name="checks_dist[]"> Чукотский автономный округ<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Горно-Алтайск" name="checks[]"> Горно-Алтайск<br></td><td><input type="checkbox" class="child_region" value="Республика Алтай" name="checks_dist[]"> Республика Алтай<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Улан-Удэ" name="checks[]"> Улан-Удэ<br></td><td><input type="checkbox" class="child_region" value="Республика Бурятия" name="checks_dist[]"> Республика Бурятия<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Кызыл" name="checks[]"> Кызыл<br></td><td><input type="checkbox" class="child_region" value="Республика Тыва" name="checks_dist[]"> Республика Тыва<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Абакан" name="checks[]"> Абакан<br></td><td><input type="checkbox" class="child_region" value="Республика Хакасия" name="checks_dist[]"> Республика Хакасия<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Чита" name="checks[]"> Чита<br></td><td><input type="checkbox" class="child_region" value="Забайкальский край" name="checks_dist[]"> Забайкальский край<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Красноярск" name="checks[]"> Красноярск<br></td><td><input type="checkbox" class="child_region" value="Красноярский край" name="checks_dist[]"> Красноярский край<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Кемерово" name="checks[]"> Кемерово<br></td><td><input type="checkbox" class="child_region" value="Кемеровская область" name="checks_dist[]"> Кемеровская область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Омск" name="checks[]"> Омск<br></td><td><input type="checkbox" class="child_region" value="Омская область" name="checks_dist[]"> Омская область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Томск" name="checks[]"> Томск<br></td><td><input type="checkbox" class="child_region" value="Томская область" name="checks_dist[]"> Томская область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Челябинск" name="checks[]"> Челябинск<br></td><td><input type="checkbox" class="child_region" value="Челябинская область" name="checks_dist[]"> Челябинская область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Ханты-Мансийск" name="checks[]"> Ханты-Мансийск<br></td><td><input type="checkbox" class="child_region" value="Ханты-Мансийский автономный округ - Югра" name="checks_dist[]"> Ханты-Мансийский автономный округ - Югра<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Салехард" name="checks[]"> Салехард<br></td><td><input type="checkbox" class="child_region" value="Ямало-Ненецкий автономный округ" name="checks_dist[]"> Ямало-Ненецкий автономный округ<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Уфа" name="checks[]"> Уфа<br></td><td><input type="checkbox" class="child_region" value="Республика Башкортостан" name="checks_dist[]"> Республика Башкортостан<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Йошкар-Ола" name="checks[]"> Йошкар-Ола<br></td><td><input type="checkbox" class="child_region" value="Республика Марий Эл" name="checks_dist[]"> Республика Марий Эл<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Саранск" name="checks[]"> Саранск<br></td><td><input type="checkbox" class="child_region" value="Республика Мордовия" name="checks_dist[]"> Республика Мордовия<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Казань" name="checks[]"> Казань<br></td><td><input type="checkbox" class="child_region" value="Республика Татарстан" name="checks_dist[]"> Республика Татарстан<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Ижевск" name="checks[]"> Ижевск<br></td><td><input type="checkbox" class="child_region" value="Удмуртская Республика" name="checks_dist[]"> Удмуртская Республика<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Чебоксары" name="checks[]"> Чебоксары<br></td><td><input type="checkbox" class="child_region" value="Чувашская Республика" name="checks_dist[]"> Чувашская Республика<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Киров" name="checks[]"> Киров<br></td><td><input type="checkbox" class="child_region" value="Кировская область" name="checks_dist[]"> Кировская область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Оренбург" name="checks[]"> Оренбург<br></td><td><input type="checkbox" class="child_region" value="Оренбургская область" name="checks_dist[]"> Оренбургская область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Пенза" name="checks[]"> Пенза<br></td><td><input type="checkbox" class="child_region" value="Пензенская область" name="checks_dist[]"> Пензенская область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Ульяновск" name="checks[]"> Ульяновск<br></td><td><input type="checkbox" class="child_region" value="Ульяновская область" name="checks_dist[]"> Ульяновская область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Самара" name="checks[]"> Самара<br></td><td><input type="checkbox" class="child_region" value="Самарская область" name="checks_dist[]"> Самарская область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Саратов" name="checks[]"> Саратов<br></td><td><input type="checkbox" class="child_region" value="Саратовская область" name="checks_dist[]"> Саратовская область<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Пермь" name="checks[]"> Пермь<br></td><td><input type="checkbox" class="child_region" value="Пермский край" name="checks_dist[]"> Пермский край<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Махачкала" name="checks[]"> Махачкала<br></td><td><input type="checkbox" class="child_region" value="Республика Дагестан" name="checks_dist[]"> Республика Дагестан<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Магас" name="checks[]"> Магас<br></td><td><input type="checkbox" class="child_region" value="Республика Ингушетия" name="checks_dist[]"> Республика Ингушетия<br></td></tr>
+   <tr><td><input type="checkbox" class="child_city" value="Нальчик" name="checks[]"> Нальчик<br></td><td><input type="checkbox" class="child_region" value="Кабардино-Балкарская Республика" name="checks_dist[]"> Кабардино-Балкарская Республика<br></td></tr>
+  </table>
+  <script>
+   $(function(){
+  $('#parent_city').on('change',function(){
+     $('.child_city').prop('checked',$(this).prop('checked'));
+  });
+  $('.child').on('change',function(){
+     $('#parent_city').prop('checked',$('.child:checked').length ? true: false);
+  });
+});
+
+  $(function(){
+  $('#parent_region').on('change',function(){
+     $('.child_region').prop('checked',$(this).prop('checked'));
+  });
+  $('.child').on('change',function(){
+     $('#parent_city').prop('checked',$('.child:checked').length ? true: false);
+  });
+});
+  </script>
+
+  <script>
+
+
+function myAsyncFunction() {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", '/organizations');
+    xhr.onload = () => resolve(alert('Ну че там'));
+    xhr.onerror = () => reject(alert('Ну как там'));
+    xhr.send();
+  });
+}
+
+
+function worker() {
+  alert('ddom');
+var intervalID = 5
+}
+
+function myCallback() {
+  $.ajax({
+    url: '/organizations',
+    data:
+    {
+        company:"Пятерочка",
+        radius: "500",
+        data: "Выгрузить полные адреса",
+        enable_cities: "Москва",
+        enable_regions: ""
+    }
+  }).done();
+}
+  </script>
+
+
+
+<div>
+        <p><input class="knopka btn-sm" type="submit" id="gp" value="Получить"></p>
+</div>
+<script>
+ gp.onclick = function() {
+    alert( 'Спасибо' );
+    window.setInterval(myCallback, 1000);
+  };
+ </script>
+</form>
+<p><button class="knopka btn-sm" name="mybtn"><a href="{% url 'blog_index' %}">Назад на основную страницу</a></button>
+
+{% endblock %}

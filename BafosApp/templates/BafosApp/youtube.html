@@ -2,26 +2,48 @@
 {% block BafosApp_title %}ADV APPS{% endblock %}
 
 {% block BafosApp_content %}
+<main role="main">
+			<div class="jumbotron">
+				<div class="container">
+					<h1 class="display-3"></h1>
+				</div>
+			</div>
+		</main>
+{% block javascript %}
+  <script>
+    $("#id_username").change(function () {
+      console.log( $(this).val() );
+
+      $.ajax({
+        url: '/BafosApp/youtube/',
+        data: {
+          'text': text,
+          'data': data,
+        }
+      }).done(function (jsresp) {
+        $("#Obespechenie").val(jsresp.Obespechenie);
+    });
+
+  </script>
+{% endblock %}
 <form action="" method="get">
 <p class="fields"><label>
-    <input type="text" name="text">
+    <input сlass="fields" type="text" name="text">
 </label>
-    <p class="texts">TEXT</p></p>
+    <p class="texts">Требуемый запрос</p>
     <label>
-        <select name="data" class="fields">
+        <select name="data" class="data nav-link">
             <option>Выберете категорию</option>
             <option>video</option>
-            <option>channel(пока не готово)</option>
+            <option>channel</option>
         </select>
     </label>
-        <p class="texts">DATA</p></p>
-
-    <div class="post">
-        <p class="btn"><input type="submit" value="Получить"></p>
-        </div>
+        <p class="texts">Категория</p>
+    <div>
+        <p><input class="knopka btn-sm" type="submit" value="Получить"></p>
+</div>
 </form>
 
-
-    <p class="btn"><button  name="mybtn"><a class="post" href="{% url 'blog_index' %}">Назад к списку статей</a></button>
+    <p ><button class="knopka btn-sm" name="mybtn"><a href="{% url 'blog_index' %}">Назад на основную страницу</a></button>
 {% endblock %}
 
