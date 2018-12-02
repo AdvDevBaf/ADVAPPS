@@ -12,6 +12,7 @@ import time
 from django.views.decorators.csrf import csrf_exempt
 from .getaddress import example
 
+# test
 # Create your views here.
 
 def index(request):
