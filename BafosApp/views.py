@@ -3,7 +3,6 @@ from .models import BlogPost,Category
 from django.shortcuts import get_object_or_404, render_to_response, render
 import requests
 import pandas as pd
-from tkinter.filedialog import askdirectory
 import os
 import mimetypes
 from django.http import HttpResponse
@@ -12,7 +11,6 @@ import time
 from django.views.decorators.csrf import csrf_exempt
 from .getaddress import example
 
-# test
 # Create your views here.
 
 def index(request):
@@ -131,9 +129,8 @@ def youtube(request):
 
 
             if text!="":
-                table.to_csv(str(datetime.datetime.now().strftime('%H-%M-%S_%d-%m-%Y'))+str("_video") + '.csv', sep=';', index=False,
-                             encoding='utf-8-sig')
-                excel_file_name= str("/home/ADVApps/ADVAPPS/")+str(datetime.datetime.now().strftime('%H-%M-%S_%d-%m-%Y'))+str("_video.csv")
+                table.to_csv("/home/" + str(datetime.datetime.now().strftime('%H-%M-%S_%d-%m-%Y'))+str("_video") + '.csv', sep=';', index=False,encoding='utf-8-sig')
+                excel_file_name= str("/home/")+str(datetime.datetime.now().strftime('%H-%M-%S_%d-%m-%Y'))+str("_video.csv")
                 print("This is " + os.path.basename(excel_file_name))
                 fp = open(excel_file_name, "rb");
                 response = HttpResponse(fp.read());
@@ -147,9 +144,9 @@ def youtube(request):
                 return response;
 
             else:
-                table.to_csv(str(datetime.datetime.now().strftime('%H-%M-%S_%d-%m-%Y'))+str("_video") + '.csv', sep=';', index=False,
+                table.to_csv("/home/"+str(datetime.datetime.now().strftime('%H-%M-%S_%d-%m-%Y'))+str("_video") + '.csv', sep=';', index=False,
                              encoding='utf-8-sig')
-                excel_file_name= str("/home/ADVApps/ADVAPPS/")+str(datetime.datetime.now().strftime('%H-%M-%S_%d-%m-%Y'))+str("_video.csv")
+                excel_file_name= str("/home/")+str(datetime.datetime.now().strftime('%H-%M-%S_%d-%m-%Y'))+str("_video.csv")
                 print("This is " + os.path.basename(excel_file_name))
                 fp = open(excel_file_name, "rb");
                 response = HttpResponse(fp.read());
@@ -257,9 +254,9 @@ def youtube(request):
             'Дата загрузки последного видеоролика': date_of_upload_latest_video})
 
             if text!="":
-                table.to_csv(str(datetime.datetime.now().strftime('%H-%M-%S_%d-%m-%Y'))+ str("_channel") + '.csv', sep=';', index=False,
+                table.to_csv("/home/"+str(datetime.datetime.now().strftime('%H-%M-%S_%d-%m-%Y'))+ str("_channel") + '.csv', sep=';', index=False,
                              encoding='utf-8-sig')
-                excel_file_name= str("/home/ADVApps/ADVAPPS/")+str(datetime.datetime.now().strftime('%H-%M-%S_%d-%m-%Y'))+str("_channel.csv")
+                excel_file_name= str("/home/")+str(datetime.datetime.now().strftime('%H-%M-%S_%d-%m-%Y'))+str("_channel.csv")
                 fp = open(excel_file_name, "rb");
                 response = HttpResponse(fp.read());
                 fp.close();
@@ -272,9 +269,9 @@ def youtube(request):
                 return response;
 
             else:
-                table.to_csv(str(datetime.datetime.now().strftime('%H-%M-%S_%d-%m-%Y'))+str("_channel") + '.csv', sep=';', index=False,
+                table.to_csv("/home/"+str(datetime.datetime.now().strftime('%H-%M-%S_%d-%m-%Y'))+str("_channel") + '.csv', sep=';', index=False,
                              encoding='utf-8-sig')
-                excel_file_name= str("/home/ADVApps/ADVAPPS/")+str(datetime.datetime.now().strftime('%H-%M-%S_%d-%m-%Y'))+str("_channel.csv")
+                excel_file_name= str("/home/")+str(datetime.datetime.now().strftime('%H-%M-%S_%d-%m-%Y'))+str("_channel.csv")
                 fp = open(excel_file_name, "rb");
                 response = HttpResponse(fp.read());
                 fp.close();
@@ -425,7 +422,7 @@ def create_final_list(dicts, address_list):
 
 def save_file(final_result):
     filetype = [('Text File', '.txt')]
-    rer = str("/home/ADVApps/ADVAPPS/")
+    rer = str("/home/")
     f = open(rer +'file_' + str(datetime.datetime.now().strftime('%H-%M-%S_%d-%m-%Y')) + '.txt', 'w', encoding="utf-8")
     # Save list into file
 
@@ -433,7 +430,7 @@ def save_file(final_result):
     for item in final_result:
         f.write("%s\n" % item)
     f.close()
-    excel_file_name= str("/home/ADVApps/ADVAPPS/") + str("file_")+str(datetime.datetime.now().strftime('%H-%M-%S_%d-%m-%Y'))+str(".txt")
+    excel_file_name= str("/home/") + str("file_")+str(datetime.datetime.now().strftime('%H-%M-%S_%d-%m-%Y'))+str(".txt")
     print("This is " + os.path.basename(excel_file_name))
     fp = open(excel_file_name, "rb");
     response = HttpResponse(fp.read());
@@ -604,7 +601,7 @@ def organizations(request):
             #save_file(final_result)
             if final_result != []:
                 filetype = [('Text File', '.txt')]
-                rer = str("/home/ADVApps/ADVAPPS/")
+                rer = str("/home/")
                 f = open(rer +'file_' + str(datetime.datetime.now().strftime('%H-%M-%S_%d-%m-%Y')) + '.txt', 'w', encoding="utf-8")
                 # Save list into file
 
@@ -612,7 +609,7 @@ def organizations(request):
                 for item in final_result:
                     f.write("%s\r\n" % item)
                 f.close()
-                excel_file_name= str("/home/ADVApps/ADVAPPS/") + str("file_")+str(datetime.datetime.now().strftime('%H-%M-%S_%d-%m-%Y'))+str(".txt")
+                excel_file_name= str("/home/") + str("file_")+str(datetime.datetime.now().strftime('%H-%M-%S_%d-%m-%Y'))+str(".txt")
                 print("This is " + os.path.basename(excel_file_name))
                 fp = open(excel_file_name, "rb");
                 response = HttpResponse(fp.read());
