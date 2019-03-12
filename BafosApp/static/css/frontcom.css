@@ -5,8 +5,8 @@ a {
 
 em {
     border: 2px solid #466995;
-    border-radius: 7px;
-    padding: 15px;
+    border-radius: 7%;
+    padding: 15%;
 }
 
 
@@ -18,20 +18,20 @@ em {
     text-align: center;
     box-sizing: border-box;
     width: 100%;
-    top: 200px;
-    padding:40px;
+    top: 20%;
+    padding:40%;
 }
 
 .knopka{
   font-weight: 700;
   display: block;
-  margin: auto 690px;
-  padding: 8px;
-  width: 80%;
-  max-width: 200px;
+  margin: auto 33%;
+  padding: 0.5%;
+  width: 10%;
+  max-width: 100%;
   background: #fff; /* запасной цвет для старых браузеров */
   background: rgba(255, 255, 255, 0.2);
-  border-radius: 8px;
+  border-radius: 8%;
   color: blue;
   text-align: center;
   text-decoration: none;
@@ -56,25 +56,29 @@ em {
 }
 
 .texts {
-        margin: 10px 730px;
+        margin: 1% 35%;
 }
 
 
 .fields {
-    margin: auto 700px;
+    margin: auto 34%;
+}
+
+.field {
+    margin: auto 284%;
 }
 
 
 .data {
-    margin: auto 690px;
+    margin: auto 299%;
 }
 
 .organ {
-    margin: 40px 550px;
+    margin: 1% 27%;
 }
 
 .checkbox {
-    margin: auto 690px;
+    margin: auto 59%;
 }
 
 .headline {
@@ -82,13 +86,13 @@ em {
     font-family: Georgia;
     width: 100%;
     padding-top: 2px;
-    padding-right: 20px;
+    padding-right: 20%;
 }
 .post{
     background-color: #DBE9EE;
-    margin: auto 100px;
+    margin: auto 100%;
     opacity: 0.65;
-    border-radius: 5px;
+    border-radius: 5%;
 
 }
 .category {
@@ -107,6 +111,6 @@ em {
     text-align: left;
     width: 100%;
     font-family: Helvetica;
-    font-size: 18px;
+    font-size: 18%;
     font-weight: bold;
 }
