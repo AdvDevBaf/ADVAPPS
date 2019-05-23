@@ -10,12 +10,12 @@
 		</main>
 <form action="" method="POST" name="idform">
 <p class="fields"><label>
-    <input type="text" name="сompany" id="input">
+    <input type="text" name="сompany" id="input" onkeypress="copytext()">
 </label>
     <p class="texts">БУКОВКИ КАКИЕ-ТО</p>
     <label>
-        <select id="letter" name="data" class="field nav-link">
-            <option>Выберете Что-то</option>
+        <select id="letter" name="data" class="field nav-link" onchange="copyletter()">
+            <option value="0">Выберете Что-то</option>
             <option value="1">А</option>
             <option value="2">Б</option>
             <option value="3">В</option>
@@ -26,8 +26,8 @@
     </label>
 
     <label>
-        <select id="number" name="data" class="field nav-link">
-            <option>Выберете Что-то</option>
+        <select id="number" name="data" class="field nav-link" onchange="copynumber()">
+            <option value="0">Выберете Что-то</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">4</option>
@@ -38,11 +38,48 @@
     </label>
 
 <script>
+                   function getSelectedText(elementId) {
+    var elt = document.getElementById(elementId);
+
+    if (elt.selectedIndex == -1)
+        return null;
+
+    return elt.options[elt.selectedIndex].text;
+}
+
+            function copyletter() {
+                var text1 = getSelectedText('letter');
+                    var answer = document.getElementById("input").value;
+
+                    document.getElementById("result").value = answer + "_" + text1;
+
+            }
+
+            function copynumber() {
+                var text1 = getSelectedText('letter');
+                var text2 = getSelectedText('number');
+                var val = document.getElementById('letter');
+                if (val.value =="0") {
+                var answer = document.getElementById("input").value + "_" + "";
+
+                    document.getElementById("result").value = answer + "_" + text2;
+                } else {
+                   var answer = document.getElementById("input").value + "_" + text1;
+
+                    document.getElementById("result").value = answer + "_" + text2;
+                }
 
 
+            }
+</script>
+<script>
+        function copytext() {
+var elem_text = document.getElementById("input").value;
+    document.getElementById("result").value = elem_text;
+        }
     </script>
 <p class="fields"><label>
-    <input type="text" name="сompany" id="result">
+    <input type="text" name="сompany" id="result" >
 </label>
     <p class="texts" id="x"></p>
 
@@ -62,11 +99,9 @@
 
   /* Copy the text inside the text field */
   document.execCommand("copy");
-
-  /* Alert the copied text */
-  alert("Скопировано в буфер обмена");
 }
         </script>
+
 <script>
     gp.onclick = function() {
 
