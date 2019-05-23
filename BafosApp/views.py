@@ -300,6 +300,12 @@ def youtube(request):
 
     return render_to_response('BafosApp/youtube.html')
 
+
+def ads_names(request):
+
+    return render_to_response('BafosApp/ads_names.html')
+
+
 regions = {'Москва': 'Московская область', 'Санкт-Петербург': 'Ленинградская область',
            'Нижний Новгород': 'Нижегородская область', 'Ростов-на-Дону':'Ростовская область',
            'Екатеринбург': 'Свердловская область', 'Владимир': 'Владимирская область',

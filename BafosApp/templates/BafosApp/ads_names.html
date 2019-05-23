@@ -1,0 +1,93 @@
+{% extends 'BafosApp/base.html' %}
+{% block BafosApp_title %}ADV APPS{% endblock %}
+{% block BafosApp_content %}
+<main role="main">
+			<div class="jumbotron">
+				<div class="container">
+					<h1 class="display-3"></h1>
+				</div>
+			</div>
+		</main>
+<form action="" method="POST" name="idform">
+<p class="fields"><label>
+    <input type="text" name="сompany" id="input">
+</label>
+    <p class="texts">БУКОВКИ КАКИЕ-ТО</p>
+    <label>
+        <select id="letter" name="data" class="field nav-link">
+            <option>Выберете Что-то</option>
+            <option value="1">А</option>
+            <option value="2">Б</option>
+            <option value="3">В</option>
+            <option value="4">Г</option>
+            <option value="5">Д</option>
+            <option value="6">Е</option>
+        </select>
+    </label>
+
+    <label>
+        <select id="number" name="data" class="field nav-link">
+            <option>Выберете Что-то</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">4</option>
+            <option value="4">5</option>
+            <option value="5">6</option>
+            <option value="6">7</option>
+        </select>
+    </label>
+
+<script>
+
+
+    </script>
+<p class="fields"><label>
+    <input type="text" name="сompany" id="result">
+</label>
+    <p class="texts" id="x"></p>
+
+<div>
+        <p><input type="button" class="knopka btn-sm" id="gp" value="Сгенерировать" onclick="document.getElementById('x').innerHTML=document.forms['idform'].elements['result'].value"><a></a></p>
+</div>
+    <div>
+        <p><input type="button" class="knopka btn-sm" value="Скопировать в буфер" onclick="copy2clipboard()"><a></a></p>
+</div>
+    <script>
+        function copy2clipboard() {
+  /* Get the text field */
+  var copyText = document.getElementById("result");
+
+  /* Select the text field */
+  copyText.select();
+
+  /* Copy the text inside the text field */
+  document.execCommand("copy");
+
+  /* Alert the copied text */
+  alert("Скопировано в буфер обмена");
+}
+        </script>
+<script>
+    gp.onclick = function() {
+
+      function getSelectedText(elementId) {
+    var elt = document.getElementById(elementId);
+
+    if (elt.selectedIndex == -1)
+        return null;
+
+    return elt.options[elt.selectedIndex].text;
+}
+
+var text1 = getSelectedText('letter');
+var text2 = getSelectedText('number');
+    var answer = document.getElementById("input").value + "_" + text1 + "_" + text2;
+    document.getElementById("result").value = answer;
+    alert( text1 );
+    alert( text2 );
+  };
+ </script>
+</form>
+<p><button class="knopka btn-sm" name="mybtn"><a href="{% url 'blog_index' %}">Назад на основную страницу</a></button>
+
+{% endblock %}

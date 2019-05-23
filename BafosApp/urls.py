@@ -25,4 +25,8 @@ urlpatterns = [
                url(r'^organizations/$', views.organizations,
                    name='blog_organizations'),
 
+                # ads_names
+                url(r'^ads_names/$', views.ads_names,
+                    name='blog_ads_names'),
+
 ]

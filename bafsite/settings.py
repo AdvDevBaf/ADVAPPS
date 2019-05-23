@@ -25,8 +25,7 @@ SECRET_KEY = '-)57*mm2t0ke&gpe2_+d$kn_2)6jyayc1dc-b7u#jw960sihd6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['www.advapps.ru','194.67.204.143',
-'advapps.ru']
+ALLOWED_HOSTS = ['www.advapps.ru','194.67.204.143', 'advapps.ru', '127.0.0.1']
 
 
 # Application definition
