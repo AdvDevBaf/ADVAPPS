@@ -21,7 +21,8 @@
             <option>Выгрузить только адреса</option>
         </select>
     </label>
-<table border="1" class="organ">
+   <div class="table-responsive">
+<table border="1" class="table table-striped table-sm">
    <caption>Таблица городов и областей</caption>
    <tr>
     <th>Города</th>
@@ -106,6 +107,7 @@
    <tr><td><input type="checkbox" class="child_city" value="Магас" name="checks[]"> Магас<br></td><td><input type="checkbox" class="child_region" value="Республика Ингушетия" name="checks_dist[]"> Республика Ингушетия<br></td></tr>
    <tr><td><input type="checkbox" class="child_city" value="Нальчик" name="checks[]"> Нальчик<br></td><td><input type="checkbox" class="child_region" value="Кабардино-Балкарская Республика" name="checks_dist[]"> Кабардино-Балкарская Республика<br></td></tr>
   </table>
+      </div>
   <script>
    $(function(){
   $('#parent_city').on('change',function(){

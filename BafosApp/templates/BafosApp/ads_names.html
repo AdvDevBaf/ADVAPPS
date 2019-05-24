@@ -84,11 +84,24 @@ var elem_text = document.getElementById("input").value;
     <p class="texts" id="x"></p>
 
 <div>
-        <p><input type="button" class="knopka btn-sm" id="gp" value="Сгенерировать" onclick="document.getElementById('x').innerHTML=document.forms['idform'].elements['result'].value"><a></a></p>
+            <p><input type="button" class="knopka btn-sm" value="Скопировать в буфер" onclick="copy2clipboard()"><a></a></p>
 </div>
     <div>
-        <p><input type="button" class="knopka btn-sm" value="Скопировать в буфер" onclick="copy2clipboard()"><a></a></p>
+        <p><input type="button" class="knopka btn-sm" value="Внииз" onclick="createTable()"><a></a></p>
 </div>
+    <div>
+        <p><input type="button" class="knopka btn-sm" id="gp" value="Сгенерировать" onclick="CopyTable()"><a></a></p>
+</div>
+
+
+<div class="table-responsive">
+    <table border="1" class="table table-striped table-sm" id="table1">
+          </table>
+</div>
+
+
+
+
     <script>
         function copy2clipboard() {
   /* Get the text field */
@@ -101,26 +114,38 @@ var elem_text = document.getElementById("input").value;
   document.execCommand("copy");
 }
         </script>
-
 <script>
-    gp.onclick = function() {
-
-      function getSelectedText(elementId) {
-    var elt = document.getElementById(elementId);
-
-    if (elt.selectedIndex == -1)
-        return null;
-
-    return elt.options[elt.selectedIndex].text;
-}
-
-var text1 = getSelectedText('letter');
-var text2 = getSelectedText('number');
-    var answer = document.getElementById("input").value + "_" + text1 + "_" + text2;
-    document.getElementById("result").value = answer;
-    alert( text1 );
-    alert( text2 );
-  };
+    function createTable() {
+            var table = document.getElementById('table1');
+            var tr31 = document.createElement('tr'); //создаем еще строку
+            var td31 = document.createElement('td');
+            td31.innerHTML = document.getElementById("result").value; //создаем столбец
+            tr31.appendChild(td31); //кладем в новосозданную строку первый новосозданный столбец
+            table.appendChild(tr31); //кладем в таблицу новосозданную строку (последней)
+    }
+    </script>
+<script>
+    function CopyTable() {
+        var el = document.getElementById('table1');
+   var body = document.body, range, sel;
+    if (document.createRange && window.getSelection) {
+        range = document.createRange();
+        sel = window.getSelection();
+        sel.removeAllRanges();
+        try {
+            range.selectNodeContents(el);
+            sel.addRange(range);
+        } catch (e) {
+            range.selectNode(el);
+            sel.addRange(range);
+        }
+    } else if (body.createTextRange) {
+        range = body.createTextRange();
+        range.moveToElementText(el);
+        range.select();
+    }
+    document.execCommand("Copy");
+    }
  </script>
 </form>
 <p><button class="knopka btn-sm" name="mybtn"><a href="{% url 'blog_index' %}">Назад на основную страницу</a></button>
