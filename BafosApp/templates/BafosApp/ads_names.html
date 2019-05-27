@@ -10,7 +10,7 @@
 		</main>
 <form action="" method="POST" name="idform">
 <p class="fields"><label>
-    <input type="text" name="сompany" id="input" onkeypress="copytext()">
+    <input type="text" name="сompany" id="input" onchange="copytext()">
 </label>
     <p class="texts">БУКОВКИ КАКИЕ-ТО</p>
     <label>
@@ -49,9 +49,16 @@
 
             function copyletter() {
                 var text1 = getSelectedText('letter');
+                var text2 = getSelectedText('number');
+                var val2 = document.getElementById('number');
+                if (val2.value =="0") {
                     var answer = document.getElementById("input").value;
+                    document.getElementById("result").value = answer + "_" + text1 + "";
+                } else {
+                   var answer = document.getElementById("input").value + "_" + text1;
 
-                    document.getElementById("result").value = answer + "_" + text1;
+                    document.getElementById("result").value = answer + "_" + text2;
+                }
 
             }
 
@@ -75,8 +82,15 @@
 <script>
         function copytext() {
 var elem_text = document.getElementById("input").value;
+if(!document.getElementById("result").value.includes("_")){
     document.getElementById("result").value = elem_text;
+    }
+    else{
+    //elem_text.replace(document.getElementById("result").value.substring(0, str.indexOf("_")),document.getElementById("input").value);
+    document.getElementById("result").value = document.getElementById("input").value+document.getElementById("result").value.substr(document.getElementById("result").value.indexOf('_')+length);
+}
         }
+
     </script>
 <p class="fields"><label>
     <input type="text" name="сompany" id="result" >
@@ -87,7 +101,7 @@ var elem_text = document.getElementById("input").value;
             <p><input type="button" class="knopka btn-sm" value="Скопировать в буфер" onclick="copy2clipboard()"><a></a></p>
 </div>
     <div>
-        <p><input type="button" class="knopka btn-sm" value="Внииз" onclick="createTable()"><a></a></p>
+        <p><input type="button" class="knopka btn-sm" value="Добавить в столбец" onclick="createTable()"><a></a></p>
 </div>
     <div>
         <p><input type="button" class="knopka btn-sm" id="gp" value="Скопировать столбец" onclick="CopyTable()"><a></a></p>
