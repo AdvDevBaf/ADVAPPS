@@ -72,6 +72,9 @@ em {
     margin: auto 284%;
 }
 
+.multiple {
+    margin: auto 235% !important;
+}
 
 .data {
     margin: auto 199%;

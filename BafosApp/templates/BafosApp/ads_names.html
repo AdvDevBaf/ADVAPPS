@@ -1,6 +1,7 @@
 {% extends 'BafosApp/base.html' %}
 {% block BafosApp_title %}ADV APPS{% endblock %}
 {% block BafosApp_content %}
+
 <main role="main">
 			<div class="jumbotron">
 				<div class="container">
@@ -10,7 +11,7 @@
 		</main>
 <form action="" method="POST" name="idform">
 <p class="fields"><label>
-    <input type="text" name="сompany" id="input" onchange="copytext()">
+    <input type="text" name="сompany" id="input" onkeyup="copytext()">
 </label>
     <p class="texts">БУКОВКИ КАКИЕ-ТО</p>
     <label>
@@ -36,6 +37,17 @@
             <option value="6">7</option>
         </select>
     </label>
+<label>
+<select id="multiplechoise" class="selectpicker multiple" multiple data-live-search="true" onchange="smth()">
+  <option>Mustard</option>
+  <option>Ketchup</option>
+  <option>Barbecue</option>
+</select>
+</label>
+
+<script>
+  $('select').selectpicker();
+</script>
 
 <script>
                    function getSelectedText(elementId) {
@@ -78,8 +90,36 @@
 
 
             }
+
+
+        function smth() {
+            var values = $('#multiplechoise').val().join("_");
+            var text1 = getSelectedText('letter');
+            var text2 = getSelectedText('number');
+            var val1 = document.getElementById('letter');
+            var val2 = document.getElementById('number');
+            if (val1.value =="0" && val2.value =="0") {
+                var answer = document.getElementById("input").value + "_" + "";
+
+                document.getElementById("result").value = answer + "_" + values;
+            } else if (val1.value =="0" && !val2.value =="0") {
+                var answer = document.getElementById("input").value + "_" + text2;
+
+                document.getElementById("result").value = answer + "_" + values;
+            } else if (val2.value =="0" && !val1.value =="0"){
+                var answer = document.getElementById("input").value + "_" + text1;
+
+                document.getElementById("result").value = answer + "_" + values;
+            } else {
+                var answer = document.getElementById("input").value + "_" + text1 + "_" + text2;
+
+                document.getElementById("result").value = answer + "_" + values;
+            }
+
+        }
 </script>
 <script>
+    
         function copytext() {
 var elem_text = document.getElementById("input").value;
 if(!document.getElementById("result").value.includes("_")){
