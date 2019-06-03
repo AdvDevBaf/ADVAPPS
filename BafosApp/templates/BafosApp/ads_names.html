@@ -63,13 +63,23 @@
                 var text1 = getSelectedText('letter');
                 var text2 = getSelectedText('number');
                 var val2 = document.getElementById('number');
-                if (val2.value =="0") {
+                var values = $('#multiplechoise').val().join("_");
+
+                if (val2.value =="0" && !($('#multiplechoise option').is(':selected'))) {
                     var answer = document.getElementById("input").value;
                     document.getElementById("result").value = answer + "_" + text1 + "";
-                } else {
+                } else if (!val2.value =="0" && !($('#multiplechoise option').is(':selected'))) {
                    var answer = document.getElementById("input").value + "_" + text1;
 
                     document.getElementById("result").value = answer + "_" + text2;
+                } else if (val2.value =="0" && ($('#multiplechoise option').is(':selected'))) {
+                    var answer = document.getElementById("input").value;
+
+                    document.getElementById("result").value = answer + "_" + text1 + "_"+ values;
+                } else {
+                    var answer = document.getElementById("input").value + "_" + text1;
+
+                    document.getElementById("result").value = answer + "_" + text2 + "_" + values;
                 }
 
             }
@@ -78,14 +88,23 @@
                 var text1 = getSelectedText('letter');
                 var text2 = getSelectedText('number');
                 var val = document.getElementById('letter');
-                if (val.value =="0") {
-                var answer = document.getElementById("input").value + "_" + "";
+                var values = $('#multiplechoise').val().join("_");
+                if (val.value =="0" && !($('#multiplechoise option').is(':selected'))) {
+                    var answer = document.getElementById("input").value + "_" + "";
 
                     document.getElementById("result").value = answer + "_" + text2;
-                } else {
+                } else if (!val.value =="0" && !($('#multiplechoise option').is(':selected'))) {
                    var answer = document.getElementById("input").value + "_" + text1;
 
                     document.getElementById("result").value = answer + "_" + text2;
+                } else if (val.value =="0" && ($('#multiplechoise option').is(':selected'))) {
+                    var answer = document.getElementById("input").value + "_" + "";
+
+                    document.getElementById("result").value = answer + "_" + text2 + "_" + values;
+                } else {
+                    var answer = document.getElementById("input").value + "_" + text1;
+
+                    document.getElementById("result").value = answer + "_" + text2 + "_" + values;
                 }
 
 
@@ -119,7 +138,7 @@
         }
 </script>
 <script>
-    
+
         function copytext() {
 var elem_text = document.getElementById("input").value;
 if(!document.getElementById("result").value.includes("_")){
