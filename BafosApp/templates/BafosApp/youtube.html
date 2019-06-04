@@ -9,30 +9,14 @@
 				</div>
 			</div>
 		</main>
-{% block javascript %}
-  <script>
-    $("#id_username").change(function () {
-      console.log( $(this).val() );
-
-      $.ajax({
-        url: '/BafosApp/youtube/',
-        data: {
-          'text': text,
-          'data': data,
-        }
-      }).done(function (jsresp) {
-        $("#Obespechenie").val(jsresp.Obespechenie);
-    });
-
-  </script>
-{% endblock %}
 <form action="" method="get">
 <p class="fields"><label>
-    <input сlass="fields" type="text" name="text">
+    <input type="text" name="text">
 </label>
     <p class="texts">Требуемый запрос</p>
-    <label>
-        <select name="data" class="data nav-link">
+
+    <label class="field">
+        <select name="data" class="nav-link">
             <option>Выберете категорию</option>
             <option>video</option>
             <option>channel</option>

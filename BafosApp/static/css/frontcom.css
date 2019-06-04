@@ -27,7 +27,7 @@ em {
   display: block;
   margin: auto 33%;
   padding: 0.5%;
-  width: 10%;
+  min-width: 20%;
   max-width: 100%;
   background: #fff; /* запасной цвет для старых браузеров */
   background: rgba(255, 255, 255, 0.2);
@@ -44,11 +44,10 @@ em {
   box-shadow: 0 3px white inset;
 }
 
-
 #footer {
     position: fixed; /* Фиксированное положение */
     left: 0; bottom: 0; /* Левый нижний угол */
-    padding: 10px; /* Поля вокруг текста */
+    padding: 2px; /* Поля вокруг текста */
     background: #fff; /* запасной цвет для старых браузеров */
     background: rgba(255, 255, 255, 0.5);
     color: black; /* Цвет текста */
@@ -61,19 +60,29 @@ em {
 
 
 .tables {
-    margin: auto 34%;;
+    margin: auto 34%;
 }
 
 .fields {
     margin: auto 34%;
+
+}
+
+input {
+    width: 300px;
 }
 
 .field {
-    margin: auto 284%;
+    margin: auto 35%;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .multiple {
-    margin: auto 235% !important;
+    margin: auto 35% !important;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
 }
 
 .data {
