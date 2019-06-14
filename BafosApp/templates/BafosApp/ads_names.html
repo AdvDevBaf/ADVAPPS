@@ -10,41 +10,144 @@
 			</div>
 		</main>
 <form action="" method="POST" name="idform">
+    <p class="texts">Имя кампании</p>
 <p class="fields"><label>
     <input type="text" name="сompany" id="input" onkeyup="copytext()">
 </label>
-    <p class="texts">БУКОВКИ КАКИЕ-ТО</p>
-
-        <label class="field">
-        <select id="letter" name="data" class="nav-link" onchange="copyletter()">
-            <option value="0">Выберете Что-то</option>
-            <option value="1">А</option>
-            <option value="2">Б</option>
-            <option value="3">В</option>
-            <option value="4">Г</option>
-            <option value="5">Д</option>
-            <option value="6">Е</option>
+    <p class="texts">Номер строки из плана</p>
+<p class="fields"><label>
+    <input type="text" name="сompany" id="" onkeyup="">
+</label>
+    <p class="texts">Тип закупки</p>
+    <label class="field">
+        <select id="AUCorRF" name="data" class="nav-link" onchange="">
+            <option value="0">Выберете тип закупки</option>
+            <option value="AUC">Аукцион</option>
+            <option value="R-F">Охват и частота</option>
         </select>
     </label>
-
+  <p class="texts">Тип закупки</p>
+    <label class="field">
+        <select id="companytarget" name="data" class="nav-link" onchange="">
+            <option value="0">Выберете цель компании</option>
+            <option value="BRAWA">Узнаваемость бренда</option>
+            <option value="REACH">Охват</option>
+            <option value="TRAFF">Трафик</option>
+            <option value="ENGMN">Вовлеченность</option>
+            <option value="APPIN">Установки приложения</option>
+            <option value="VIDVI">Просмотры видео</option>
+            <option value="LEADG">Генерация лидов</option>
+            <option value="MESSA">Сообщения</option>
+            <option value="CONVS">Конверсии</option>
+            <option value="CATSA">Продажи товаров из каталога</option>
+            <option value="STORE">Посещаемость точек</option>
+        </select>
+    </label>
+     <label class="field">
+        <select id="anothertarget" name="data" class="nav-link" onchange="">
+            <option value="0">Выберете цель компании</option>
+            <option value="BRAWA">Узнаваемость бренда</option>
+            <option value="REACH">Охват</option>
+            <option value="ENGMN">Вовлеченность для публикации</option>
+            <option value="APPIN">Установки приложения</option>
+            <option value="VIDVI">Просмотры видео</option>
+            <option value="CONVS">Конверсии</option>
+        </select>
+    </label>
+  <p class="texts">Тип аудитории</p>
+        <label class="field">
+        <select id="letter" name="data" class="nav-link" onchange="copyletter()">
+            <option value="0">Выберете тип аудитории</option>
+            <option value="123">123</option>
+            <option value="777">777</option>
+        </select>
+    </label>
+  <p class="texts">География</p>
     <label class="field">
         <select id="number" name="data" class="nav-link" onchange="copynumber()">
-            <option value="0">Выберете Что-то</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">4</option>
-            <option value="4">5</option>
-            <option value="5">6</option>
-            <option value="6">7</option>
+            <option value="0">Выберете регион</option>
+            <option value="RF">Россия</option>
+            <option value="Moscow">Москва</option>
+            <option value="Ktulhu">Рльех</option>
         </select>
 </label>
-
+      <p class="texts">Пол</p>
+    <label class="field">
+        <select id="sex" name="data" class="nav-link" onchange="">
+            <option value="0">Выберете пол</option>
+            <option value="ALL">Любой</option>
+            <option value="M">Мужской</option>
+            <option value="W">Женский</option>
+        </select>
+    </label>
+    <p class="texts">Возраст от</p>
+<p class="fields"><label>
+    <input type="text" name="сompany" onkeyup="">
+</label>
+    <p class="texts">Возраст до</p>
+<p class="fields"><label>
+    <input type="text" name="сompany" onkeyup="">
+</label>
+ <p class="texts">Девайсы</p>
+        <label class="field">
+        <select id="device" name="data" class="nav-link" onchange="">
+            <option value="0">Выберете девайсы</option>
+            <option value="MOBI">MOBILE</option>
+            <option value="DESK">DESKTOP</option>
+            <option value="BOTH">BOTH</option>
+        </select>
+    </label>
+     <p class="texts">Плейсменты</p>
     <label class="multiple">
 <select id="multiplechoise" class="selectpicker" multiple data-live-search="true" onchange="smth()">
   <option>Mustard</option>
   <option>Ketchup</option>
   <option>Barbecue</option>
 </select>
+</label>
+     <p class="texts">Ставка</p>
+    <label class="field">
+        <select id="rate" name="data" class="nav-link" onchange="">
+            <option value="0">Выберете ставку</option>
+            <option value="MAN">Ручная</option>
+            <option value="AUT">Автоматическая</option>
+        </select>
+    </label>
+     <p class="texts">Оплата</p>
+    <label class="field">
+        <select id="price" name="data" class="nav-link" onchange="">
+            <option value="0">Выберете ставку</option>
+            <option value="CPM">CPM</option>
+            <option value="CPC">CPC</option>
+            <option value="CPL">CPL</option>
+            <option value="CPVTP">CPVTP</option>
+            <option value="CPV2S">CPV2S</option>
+        </select>
+    </label>
+ <p class="texts">Freq cap</p>
+<p class="fields"><label>
+    <input type="text" name="сompany" onkeyup="">
+</label>
+     <p class="texts">Формат</p>
+    <label class="field">
+        <select id="format" name="data" class="nav-link" onchange="">
+            <option value="0">Выберете формат</option>
+            <option value="Carousel">Carousel</option>
+            <option value="SingleImage">Single image</option>
+            <option value="SingleVideo">Single video</option>
+        </select>
+    </label>
+ <p class="texts">Имя креатива по медиаплану</p>
+<p class="fields"><label>
+    <input type="text" name="сompany" onkeyup="">
+</label>
+     <p class="texts">Длина видео(в секундах)</p>
+<p class="fields"><label>
+    <input type="text" name="сompany" onkeyup="">
+</label>
+        <p class="texts">KPI</p>
+<p class="fields"><label>
+    <input type="text" name="сompany" onkeyup="">
 </label>
 
 <script>
@@ -153,11 +256,23 @@ if(!document.getElementById("result").value.includes("_")){
         }
 
     </script>
+     <p class="texts">Имя кампании:</p>
 <p class="fields"><label>
     <input type="text" name="сompany" id="result" >
 </label>
-    <p class="texts" id="x"></p>
 
+ <p class="texts">Имя группы объявлений:</p>
+<p class="fields"><label>
+    <input type="text" name="сompany" id="group_result" >
+</label>
+     <p class="texts">Имя объявления:</p>
+<p class="fields"><label>
+    <input type="text" name="сompany" id="ads_result" >
+</label>
+<p class="texts" id="x"></p>
+
+
+    
 <div>
             <p><input type="button" class="knopka btn-sm" value="Скопировать в буфер" onclick="copy2clipboard()"><a></a></p>
 </div>
@@ -173,7 +288,6 @@ if(!document.getElementById("result").value.includes("_")){
     <table border="1" class="table table-striped table-sm" id="table1">
           </table>
 </div>
-
 
 
 
