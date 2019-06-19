@@ -12,11 +12,11 @@
 <form action="" method="POST" name="idform">
     <p class="texts">Имя кампании</p>
 <p class="fields"><label>
-    <input type="text" name="сompany" id="input" onkeyup="copytext()">
+    <input type="text" name="сompany" style="width: 480px;" id="input" onkeyup="copytext()">
 </label>
     <p class="texts">Номер строки из плана</p>
 <p class="fields"><label>
-    <input type="text" name="сompany" id="num" onkeyup="addzeros()">
+    <input type="text" name="сompany" style="width: 480px;" id="num" onkeyup="addzeros()">
 </label>
     <p class="texts">Тип закупки</p>
     <label class="field">
@@ -26,7 +26,7 @@
             <option value="R-F">Охват и частота</option>
         </select>
     </label>
-  <p class="texts">Цель кампании</p>
+  <p class="hide AUC R-F texts">Цель кампании</p>
      <style type="text/css">
   .hide{
     display:none;
@@ -42,7 +42,7 @@ window.addEventListener('DOMContentLoaded', function() {
   function change()
   {
     [].forEach.call(hide, function(el) {
-           var add = el.classList.contains(select.value) ? "add" : "remove"
+           var add = el.classList.contains(select.value) ? "add" : "remove";
            el.classList[add]('show');
     });
   }
@@ -51,7 +51,7 @@ window.addEventListener('DOMContentLoaded', function() {
   });
   </script>
     <label class="hide 0 field">
-          <p class="">Выберите цель компании</p>
+          <p class=""></p>
          </label>
 
     <label class="hide AUC field">
@@ -111,11 +111,11 @@ window.addEventListener('DOMContentLoaded', function() {
     </label>
     <p class="texts">Возраст от</p>
 <p class="fields"><label>
-    <input type="text" id="age_above" name="сompany" onkeyup=copyage()>
+    <input type="text" id="age_above" style="width: 480px;" name="сompany" onkeyup=copyage()>
 </label>
     <p class="texts">Возраст до</p>
 <p class="fields"><label>
-    <input type="text" id ="age_below" name="сompany" onkeyup="copyage()">
+    <input type="text" id ="age_below" style="width: 480px;" name="сompany" onkeyup="copyage()">
 </label>
  <p class="texts">Девайсы</p>
         <label class="field">
@@ -126,7 +126,7 @@ window.addEventListener('DOMContentLoaded', function() {
             <option value="BOTH">BOTH</option>
         </select>
     </label>
-     <p class="texts">Плейсменты</p>
+     <p class="texts">Плейсменты(Если авто, то другие невозможны)</p>
     <label class="multiple">
 <select id="multiplechoise" class="selectpicker" multiple data-live-search="true" onchange="placement()">
   <option value="1">AUTO</option>
@@ -167,7 +167,7 @@ window.addEventListener('DOMContentLoaded', function() {
     </label>
  <p class="texts">Freq cap</p>
 <p class="fields"><label>
-    <input type="text" name="сompany" onkeyup="" id="frequency" onchange="frequencys()">
+    <input type="text" name="сompany" onkeyup="" style="width: 480px;" id="frequency" onchange="frequencys()">
 </label>
 
 
@@ -182,15 +182,15 @@ window.addEventListener('DOMContentLoaded', function() {
     </label>
  <p class="texts">Имя креатива по медиаплану</p>
 <p class="fields"><label>
-    <input type="text" name="сompany" id="creative" onkeyup="add_creative()">
+    <input type="text" name="сompany" id="creative" style="width: 480px;" onkeyup="add_creative()">
 </label>
      <p class="texts">Длина видео(в секундах)</p>
 <p class="fields"><label>
-    <input type="text" name="сompany" id="length" onkeyup="add_length()">
+    <input type="text" name="сompany" id="length" style="width: 480px;" onkeyup="add_length()">
 </label>
         <p class="texts">KPI</p>
 <p class="fields"><label>
-    <input type="text" name="сompany" id="kpi" onkeyup="add_kpi()">
+    <input type="text" name="сompany" style="width: 480px;" id="kpi" onkeyup="add_kpi()">
 </label>
 
 <script>
@@ -279,35 +279,6 @@ window.addEventListener('DOMContentLoaded', function() {
 
             }
 
-            function copydopy() {
-                var audience = document.getElementById('audience').value;
-                var geography = document.getElementById('geography').value;
-
-                var text1 = getSelectedText('letter');
-                var text2 = getSelectedText('number');
-                var val = document.getElementById('letter');
-                var values = $('#multiplechoise').val().join("_");
-                if (val.value =="0" && !($('#multiplechoise option').is(':selected'))) {
-                    var answer = document.getElementById("input").value + "";
-
-                    document.getElementById("result").value = answer + "_" + text2;
-                } else if (!val.value =="0" && !($('#multiplechoise option').is(':selected'))) {
-                   var answer = document.getElementById("input").value + "_" + text1;
-
-                    document.getElementById("result").value = answer + "_" + text2;
-                } else if (val.value =="0" && ($('#multiplechoise option').is(':selected'))) {
-                    var answer = document.getElementById("input").value + "_" + "";
-
-                    document.getElementById("result").value = answer + "_" + text2 + "_" + values;
-                } else {
-                    var answer = document.getElementById("input").value + "_" + text1;
-
-                    document.getElementById("result").value = answer + "_" + text2 + "_" + values;
-                }
-
-
-            }
-
             function copysex() {
             var frequency = document.getElementById('frequency').value;
             var price = document.getElementById('price').value;
@@ -329,7 +300,6 @@ window.addEventListener('DOMContentLoaded', function() {
             }
 
             function copyage() {
-            alert("от 14 до 75 лет");
             var frequency = document.getElementById('frequency').value;
             var price = document.getElementById('price').value;
             var rate = document.getElementById('rate').value;
@@ -341,7 +311,13 @@ window.addEventListener('DOMContentLoaded', function() {
             var audience = document.getElementById('audience').value;
             var geography = document.getElementById('geography').value;
             var answer = audience + "|" + geography;
+            if (Number(age_above)<14){
+                alert("Минимальный возраст 14 лет")
+            } else if((Number(age_below)>75)){
+                alert("Максимальный возраст 75 лет")
+            } else {
              document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + price + "|" + frequency;
+             }
             }
 
 
@@ -557,16 +533,16 @@ function addzeros() {
     </script>
      <p class="texts">Имя кампании:</p>
 <p class="fields"><label>
-    <input type="text" name="сompany" id="сompany_result" >
+    <input type="text" name="сompany" style="width: 480px;" id="сompany_result" >
 </label>
 
  <p class="texts">Имя группы объявлений:</p>
 <p class="fields"><label>
-    <input type="text" name="сompany" id="result" >
+    <input type="text" name="сompany" style="width: 480px;" id="result" >
 </label>
      <p class="texts">Имя объявления:</p>
 <p class="fields"><label>
-    <input type="text" name="сompany" id="ads_result" >
+    <input type="text" name="сompany" style="width: 480px;" id="ads_result" >
 </label>
 <p class="texts" id="x"></p>
 
@@ -593,7 +569,7 @@ function addzeros() {
     <script>
         function copy2clipboard() {
   /* Get the text field */
-  var copyText = document.getElementById("result");
+  var copyText = document.getElementById("сompany_result");
 
   /* Select the text field */
   copyText.select();
