@@ -14,6 +14,14 @@
 <p class="fields"><label>
     <input type="text" name="сompany" style="width: 480px;" id="input" onkeyup="copytext()">
 </label>
+        <p class="texts">Период кампании</p>
+
+    <div class="input-daterange input-group fields" style="width: 480px;" id="datepicker">
+    <input type="text" class="input-sm form-control" id="start_date" name="start" />
+    <span class="input-group-addon">по</span>
+    <input type="text" class="input-sm form-control" id="end_date" name="end" />
+</div>
+
     <p class="texts">Номер строки из плана</p>
 <p class="fields"><label>
     <input type="text" name="сompany" style="width: 480px;" id="num" onkeyup="addzeros()">
@@ -196,7 +204,11 @@ window.addEventListener('DOMContentLoaded', function() {
 <script>
   $('select').selectpicker();
 </script>
-
+<script>
+    $('.input-daterange').datepicker({
+    language: "ru"
+});
+</script>
 <script>
                    function getSelectedText(elementId) {
     var elt = document.getElementById(elementId);
