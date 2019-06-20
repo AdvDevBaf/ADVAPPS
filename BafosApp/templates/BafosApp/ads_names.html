@@ -22,6 +22,30 @@
     <input type="text" class="input-sm form-control" id="end_date" name="end" />
 </div>
 
+ <p class="texts">Тест разницы</p>
+<p class="fields"><label>
+    <input type="text" name="сompany" style="width: 480px;" id="put" onchange="test()">
+</label>
+    <script>
+        function test() {
+                        alert('dsd');
+            var d1 = document.getElementById('start_date').value;
+            var d2 = document.getElementById('end_date').value;
+            alert(d1);
+            alert(d2);
+            d1 = d1.toString().replace(/\./g, '/');
+            d2 = d2.toString().replace(/\./g, '/');
+            alert(d1);
+            alert(d2);
+            var date1 = new Date(d1);
+            var date2 = new Date(d2);
+            alert(date1);
+            alert(date2);
+            var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+            var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+            alert(diffDays);
+        }
+    </script>
     <p class="texts">Номер строки из плана</p>
 <p class="fields"><label>
     <input type="text" name="сompany" style="width: 480px;" id="num" onkeyup="addzeros()">
@@ -202,7 +226,7 @@ window.addEventListener('DOMContentLoaded', function() {
 </label>
 
 <script>
-  $('select').selectpicker();
+  $('.multiplechoise').selectpicker();
 </script>
 <script>
     $('.input-daterange').datepicker({
