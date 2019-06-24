@@ -12,7 +12,7 @@
 <form action="" method="POST" name="idform">
     <p class="texts">Имя кампании</p>
 <p class="fields"><label>
-    <input type="text" name="сompany" style="width: 480px;" id="input" onkeyup="copytext()">
+    <input type="text" class="form-control" name="сompany" style="width: 480px;" id="input" onkeyup="copytext()">
 </label>
         <p class="texts">Период кампании</p>
 
@@ -24,35 +24,16 @@
 
  <p class="texts">Тест разницы</p>
 <p class="fields"><label>
-    <input type="text" name="сompany" style="width: 480px;" id="put" onchange="test()">
+    <input type="text" class="form-control" name="сompany" style="width: 480px;" id="put" onchange="test()">
 </label>
-    <script>
-        function test() {
-                        alert('dsd');
-            var d1 = document.getElementById('start_date').value;
-            var d2 = document.getElementById('end_date').value;
-            alert(d1);
-            alert(d2);
-            d1 = d1.toString().replace(/\./g, '/');
-            d2 = d2.toString().replace(/\./g, '/');
-            alert(d1);
-            alert(d2);
-            var date1 = new Date(d1);
-            var date2 = new Date(d2);
-            alert(date1);
-            alert(date2);
-            var timeDiff = Math.abs(date2.getTime() - date1.getTime());
-            var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
-            alert(diffDays);
-        }
-    </script>
+
     <p class="texts">Номер строки из плана</p>
 <p class="fields"><label>
-    <input type="text" name="сompany" style="width: 480px;" id="num" onkeyup="addzeros()">
+    <input type="text" class="form-control" name="сompany" style="width: 480px;" id="num" onkeyup="addzeros()">
 </label>
     <p class="texts">Тип закупки</p>
     <label class="field">
-        <select id="AUCorRF" name="data" class="nav-link" onchange="copytype()">
+        <select id="AUCorRF" name="data" class="form-control" onchange="copytype()">
             <option value="0">Выберете тип закупки</option>
             <option value="AUC">Аукцион</option>
             <option value="R-F">Охват и частота</option>
@@ -87,7 +68,7 @@ window.addEventListener('DOMContentLoaded', function() {
          </label>
 
     <label class="hide AUC field">
-        <select id="companytarget" name="data" class="nav-link" onchange="copytarget()">
+        <select id="companytarget" name="data" class="form-control" onchange="copytarget()">
             <option value="0">Выберете цель компании</option>
             <option value="BRAWA">Узнаваемость бренда</option>
             <option value="REACH">Охват</option>
@@ -103,7 +84,7 @@ window.addEventListener('DOMContentLoaded', function() {
         </select>
     </label>
      <label class="hide R-F field">
-        <select id="anothertarget" name="data" class="nav-link" onchange="copytarget()">
+        <select id="anothertarget" name="data" class="form-control" onchange="copytarget()">
             <option value="0">Выберете цель компании</option>
             <option value="BRAWA">Узнаваемость бренда</option>
             <option value="REACH">Охват</option>
@@ -117,7 +98,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
   <p class="texts">Тип аудитории</p>
         <label class="field">
-        <select id="audience" name="data" class="nav-link" onchange="copyaudience()">
+        <select id="audience" name="data" class="form-control" onchange="copyaudience()">
             <option value="0">Выберете тип аудитории</option>
             <option value="123">123</option>
             <option value="777">777</option>
@@ -125,7 +106,7 @@ window.addEventListener('DOMContentLoaded', function() {
     </label>
   <p class="texts">География</p>
     <label class="field">
-        <select id="geography" name="data" class="nav-link" onchange="copygeorgaphy()">
+        <select id="geography" name="data" class="form-control" onchange="copygeorgaphy()">
             <option value="0">Выберете регион</option>
             <option value="RF">Россия</option>
             <option value="Moscow">Москва</option>
@@ -134,7 +115,7 @@ window.addEventListener('DOMContentLoaded', function() {
 </label>
       <p class="texts">Пол</p>
     <label class="field">
-        <select id="sex" name="data" class="nav-link" onchange="copysex()">
+        <select id="sex" name="data" class="form-control" onchange="copysex()">
             <option value="0">Выберете пол</option>
             <option value="ALL">Любой</option>
             <option value="M">Мужской</option>
@@ -143,15 +124,15 @@ window.addEventListener('DOMContentLoaded', function() {
     </label>
     <p class="texts">Возраст от</p>
 <p class="fields"><label>
-    <input type="text" id="age_above" style="width: 480px;" name="сompany" onkeyup=copyage()>
+    <input type="text" id="age_above" class="form-control" style="width: 480px;" name="сompany" onkeyup=copyage()>
 </label>
     <p class="texts">Возраст до</p>
 <p class="fields"><label>
-    <input type="text" id ="age_below" style="width: 480px;" name="сompany" onkeyup="copyage()">
+    <input type="text" id ="age_below" class="form-control" style="width: 480px;" name="сompany" onkeyup="copyage()">
 </label>
  <p class="texts">Девайсы</p>
         <label class="field">
-        <select id="device" name="data" class="nav-link" onchange="copydevice()">
+        <select id="device" name="data" class="form-control" onchange="copydevice()">
             <option value="0">Выберете девайсы</option>
             <option value="MOBI">MOBILE</option>
             <option value="DESK">DESKTOP</option>
@@ -180,7 +161,7 @@ window.addEventListener('DOMContentLoaded', function() {
 </label>
      <p class="texts">Ставка</p>
     <label class="field">
-        <select id="rate" name="data" class="nav-link" onchange="rates()">
+        <select id="rate" name="data" class="form-control" onchange="rates()">
             <option value="0">Выберете ставку</option>
             <option value="MAN">Ручная</option>
             <option value="AUT">Автоматическая</option>
@@ -188,7 +169,7 @@ window.addEventListener('DOMContentLoaded', function() {
     </label>
      <p class="texts">Оплата</p>
     <label class="field">
-        <select id="price" name="data" class="nav-link" onchange="prices()">
+        <select id="price" name="data" class="form-control" onchange="prices()">
             <option value="0">Выберете ставку</option>
             <option value="CPM">CPM</option>
             <option value="CPC">CPC</option>
@@ -199,13 +180,13 @@ window.addEventListener('DOMContentLoaded', function() {
     </label>
  <p class="texts">Freq cap</p>
 <p class="fields"><label>
-    <input type="text" name="сompany" onkeyup="" style="width: 480px;" id="frequency" onchange="frequencys()">
+    <input type="text" name="сompany" class="form-control" style="width: 480px;" id="frequency" onchange="frequencys()">
 </label>
 
 
      <p class="texts">Формат</p>
     <label class="field">
-        <select id="format" name="data" class="nav-link" onchange="add_format()">
+        <select id="format" name="data" class="form-control" onchange="add_format()">
             <option value="0">Выберете формат</option>
             <option value="Carousel">Carousel</option>
             <option value="SingleImage">Single image</option>
@@ -214,15 +195,15 @@ window.addEventListener('DOMContentLoaded', function() {
     </label>
  <p class="texts">Имя креатива по медиаплану</p>
 <p class="fields"><label>
-    <input type="text" name="сompany" id="creative" style="width: 480px;" onkeyup="add_creative()">
+    <input type="text" name="сompany" class="form-control" id="creative" style="width: 480px;" onkeyup="add_creative()">
 </label>
      <p class="texts">Длина видео(в секундах)</p>
 <p class="fields"><label>
-    <input type="text" name="сompany" id="length" style="width: 480px;" onkeyup="add_length()">
+    <input type="text" name="сompany" class="form-control" id="length" style="width: 480px;" onkeyup="add_length()">
 </label>
         <p class="texts">KPI</p>
 <p class="fields"><label>
-    <input type="text" name="сompany" style="width: 480px;" id="kpi" onkeyup="add_kpi()">
+    <input type="text" class="form-control" name="сompany" style="width: 480px;" id="kpi" onkeyup="add_kpi()">
 </label>
 
 <script>
@@ -568,25 +549,53 @@ function addzeros() {
 }
     </script>
      <p class="texts">Имя кампании:</p>
-<p class="fields"><label>
-    <input type="text" name="сompany" style="width: 480px;" id="сompany_result" >
-</label>
+     <div class="input-bar fields">
+        <div class="input-bar-item">
+          <form>
+             <div class="width100">
+                <input class="form-control" style="width: 480px;" id="сompany_result">
+            </div>
+          </form>
+        </div>
+        <div class="input-bar-item">
+          <input type="button" class="knopka btn-sm space" value="Скопировать в буфер" onclick="copy2clipboard_inc_result()"><a></a>
+        </div>
+      </div>
+
 
  <p class="texts">Имя группы объявлений:</p>
-<p class="fields"><label>
-    <input type="text" name="сompany" style="width: 480px;" id="result" >
-</label>
+ <div class="input-bar fields">
+        <div class="input-bar-item">
+          <form>
+             <div class="width100">
+                <input class="form-control" style="width: 480px;" id="result">
+            </div>
+          </form>
+        </div>
+        <div class="input-bar-item">
+          <input type="button" class="knopka btn-sm space" value="Скопировать в буфер" onclick="copy2clipboard_result()"><a></a>
+        </div>
+      </div>
+
+
      <p class="texts">Имя объявления:</p>
-<p class="fields"><label>
-    <input type="text" name="сompany" style="width: 480px;" id="ads_result" >
-</label>
-<p class="texts" id="x"></p>
+  <div class="input-bar fields">
+        <div class="input-bar-item">
+          <form>
+             <div class="width100">
+                <input class="form-control" style="width: 480px;" id="ads_result">
+            </div>
+          </form>
+        </div>
+        <div class="input-bar-item">
+          <input type="button" class="knopka btn-sm space" value="Скопировать в буфер" onclick="copy2clipboard_ads_result()"><a></a>
+        </div>
+      </div>
 
 
 
-<div>
-            <p><input type="button" class="knopka btn-sm" value="Скопировать в буфер" onclick="copy2clipboard()"><a></a></p>
-</div>
+     <p class="x"></p>
+
     <div>
         <p><input type="button" class="knopka btn-sm" value="Добавить в столбец" onclick="createTable()"><a></a></p>
 </div>
@@ -603,9 +612,31 @@ function addzeros() {
 
 
     <script>
-        function copy2clipboard() {
+        function copy2clipboard_inc_result() {
   /* Get the text field */
   var copyText = document.getElementById("сompany_result");
+
+  /* Select the text field */
+  copyText.select();
+
+  /* Copy the text inside the text field */
+  document.execCommand("copy");
+}
+
+      function copy2clipboard_result() {
+  /* Get the text field */
+  var copyText = document.getElementById("result");
+
+  /* Select the text field */
+  copyText.select();
+
+  /* Copy the text inside the text field */
+  document.execCommand("copy");
+}
+
+      function copy2clipboard_ads_result() {
+  /* Get the text field */
+  var copyText = document.getElementById("ads_result");
 
   /* Select the text field */
   copyText.select();
