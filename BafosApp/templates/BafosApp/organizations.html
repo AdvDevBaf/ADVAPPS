@@ -9,26 +9,38 @@
 			</div>
 		</main>
 <form action="" method="POST">
+       <p class="texts">Название компании и Радиус</p>
 <p class="fields"><label>
-    <input type="text" name="сompany">
-    <input type="text" name="radius">
+    <input class="form-control" style="width: 280px;" type="text" name="сompany">
+    <input class="form-control" style="width: 280px;" type="text" name="radius">
 </label>
-    <p class="texts">Название компании и Радиус</p>
+    <p class="texts">Тип выгрузки</p>
     <label class="field">
-        <select name="data" class="nav-link">
+        <select name="data" class="form-control" style="margin-bottom: 10%; /* Отступ снизу */">
             <option>Выберете категорию</option>
             <option>Выгрузить полные адреса</option>
             <option>Выгрузить только адреса</option>
         </select>
     </label>
+<style>
+     .child_city{
+        width: 25px;
+  }
+  .child_region{
+     width: 25px;
+  }
+   td{
+      text-align: center;
+   }
+</style>
    <div class="table-responsive">
 <table border="1" class="table table-striped table-sm">
    <caption>Таблица городов и областей</caption>
    <tr>
-    <th>Города</th>
-    <th>Области</th>
+    <th style="text-align: center;">Города</th>
+    <th style="text-align: center;">Области</th>
    </tr>
-   <tr><td><input type="checkbox" name="checks" id="parent_city"/> Все города<br></td><td><input type="checkbox" name="checks" id="parent_region"/> Все области<br></td></tr>
+   <tr><td style="text-align: center;"><input type="checkbox" style="width: 25px;" name="checks" id="parent_city"/> Все города<br></td><td style="text-align: center;"><input  style="width: 25px;" type="checkbox" style="width: 25px; padding: auto;" name="checks" id="parent_region"/> Все области<br></td></tr>
    <tr><td><input type="checkbox" class="child_city" value="Москва" name="checks[]"/> Москва<br></td><td><input type="checkbox" class="child_region" value="Московская область" name="checks_dist[]"/> Московская область<br></td></tr>
    <tr><td><input type="checkbox" class="child_city" value="Санкт-Петербург" name="checks[]"> Санкт-Петербург<br></td><td><input type="checkbox" class="child_region" value="Ленинградская область" name="checks_dist[]"> Ленинградская область<br></td></tr>
    <tr><td><input type="checkbox" class="child_city" value="Нижний Новгород" name="checks[]"> Нижний Новгород<br></td><td><input type="checkbox" class="child_region" value="Нижегородская область" name="checks_dist[]"> Нижегородская область<br></td></tr>
@@ -128,52 +140,14 @@
 });
   </script>
 
-  <script>
-
-
-function myAsyncFunction() {
-  return new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest();
-    xhr.open("GET", '/organizations');
-    xhr.onload = () => resolve(alert('Ну че там'));
-    xhr.onerror = () => reject(alert('Ну как там'));
-    xhr.send();
-  });
-}
-
-
-function worker() {
-  alert('ddom');
-var intervalID = 5
-}
-
-function myCallback() {
-  $.ajax({
-    url: '/organizations',
-    data:
-    {
-        company:"Пятерочка",
-        radius: "500",
-        data: "Выгрузить полные адреса",
-        enable_cities: "Москва",
-        enable_regions: ""
-    }
-  }).done();
-}
-  </script>
-
 
 
 <div>
-        <p><input class="knopka btn-sm" type="submit" id="gp" value="Получить"></p>
+        <p><input class="btn btn-info alt_but" type="submit" id="gp" value="Получить"></p>
 </div>
-<script>
- gp.onclick = function() {
-    alert( 'Спасибо' );
-    window.setInterval(myCallback, 1000);
-  };
- </script>
-</form>
-<p><button class="knopka btn-sm" name="mybtn"><a href="{% url 'blog_index' %}">Назад на основную страницу</a></button>
 
+</form>
+<form action="{% url 'blog_index' %}">
+        <p><button type="submit" class="btn btn-info alt_but"  value="столбец">Назад на основную страницу</button>
+    </form>
 {% endblock %}

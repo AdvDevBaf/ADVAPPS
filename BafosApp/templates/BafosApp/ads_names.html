@@ -22,7 +22,30 @@
     <input type="text" class="input-sm form-control" id="end_date" name="end" />
 </div>
 
-
+ <p class="texts">Тест разницы</p>
+<p class="fields"><label>
+    <input type="text" class="form-control" name="сompany" style="width: 480px;" id="put" onchange="test()">
+</label>
+    <script>
+        function test() {
+                        alert('dsd');
+            var d1 = document.getElementById('start_date').value;
+            var d2 = document.getElementById('end_date').value;
+            alert(d1);
+            alert(d2);
+            d1 = d1.toString().replace(/\./g, '/');
+            d2 = d2.toString().replace(/\./g, '/');
+            alert(d1);
+            alert(d2);
+            var date1 = new Date(d1);
+            var date2 = new Date(d2);
+            alert(date1);
+            alert(date2);
+            var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+            var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+            alert(diffDays);
+        }
+    </script>
     <p class="texts">Номер строки из плана</p>
 <p class="fields"><label>
     <input type="text" class="form-control" name="сompany" style="width: 480px;" id="num" onkeyup="addzeros()">
@@ -554,7 +577,7 @@ function addzeros() {
           </form>
         </div>
         <div class="input-bar-item">
-          <input type="button" class="knopka btn-sm space" value="Скопировать в буфер" onclick="copy2clipboard_inc_result()"><a></a>
+          <input type="button" class="btn btn-info space" value="Скопировать в буфер" onclick="copy2clipboard_inc_result()"><a></a>
         </div>
       </div>
 
@@ -569,7 +592,7 @@ function addzeros() {
           </form>
         </div>
         <div class="input-bar-item">
-          <input type="button" class="knopka btn-sm space" value="Скопировать в буфер" onclick="copy2clipboard_result()"><a></a>
+          <input type="button" class="btn btn-info space" value="Скопировать в буфер" onclick="copy2clipboard_result()"><a></a>
         </div>
       </div>
 
@@ -584,7 +607,7 @@ function addzeros() {
           </form>
         </div>
         <div class="input-bar-item">
-          <input type="button" class="knopka btn-sm space" value="Скопировать в буфер" onclick="copy2clipboard_ads_result()"><a></a>
+          <input type="button" class="btn btn-info space" value="Скопировать в буфер" onclick="copy2clipboard_ads_result()"><a></a>
         </div>
       </div>
 
@@ -593,10 +616,10 @@ function addzeros() {
      <p class="x"></p>
 
     <div>
-        <p><input type="button" class="knopka btn-sm" value="Добавить в столбец" onclick="createTable()"><a></a></p>
+        <p><input type="button" class="btn btn-info alt_but" value="Добавить в столбец" onclick="createTable()"><a></a></p>
 </div>
     <div>
-        <p><input type="button" class="knopka btn-sm" id="gp" value="Скопировать столбец" onclick="CopyTable()"><a></a></p>
+        <p><input type="button" class="btn btn-info alt_but" id="gp" value="Скопировать столбец" onclick="CopyTable()"><a></a></p>
 </div>
 
 
@@ -641,13 +664,25 @@ function addzeros() {
   document.execCommand("copy");
 }
         </script>
+    <style>
+           td{
+      text-align: center;
+   }
+    </style>
 <script>
     function createTable() {
             var table = document.getElementById('table1');
             var tr31 = document.createElement('tr'); //создаем еще строку
             var td31 = document.createElement('td');
-            td31.innerHTML = document.getElementById("сompany_result").value + "," + document.getElementById("result").value + "," + document.getElementById("ads_result").value; //создаем столбец
+            var td32 = document.createElement('td');
+            var td33 = document.createElement('td');
+
+            td31.innerHTML = document.getElementById("сompany_result").value; //создаем столбец
+            td32.innerHTML = document.getElementById("result").value; //создаем столбец
+            td33.innerHTML = document.getElementById("ads_result").value; //создаем столбец
             tr31.appendChild(td31); //кладем в новосозданную строку первый новосозданный столбец
+                    tr31.appendChild(td32); //кладем в новосозданную строку первый новосозданный столбец
+                    tr31.appendChild(td33); //кладем в новосозданную строку первый новосозданный столбец
             table.appendChild(tr31); //кладем в таблицу новосозданную строку (последней)
     }
     </script>
@@ -675,6 +710,8 @@ function addzeros() {
     }
  </script>
 </form>
-<p><button class="knopka btn-sm" name="mybtn"><a href="{% url 'blog_index' %}">Назад на основную страницу</a></button>
+<form action="{% url 'blog_index' %}">
+        <p><button type="submit" class="btn btn-info alt_but"  value="столбец">Назад на основную страницу</button>
+    </form>
 
 {% endblock %}

@@ -10,24 +10,30 @@
 			</div>
 		</main>
 <form action="" method="get">
+        <p class="texts">Требуемый запрос</p>
 <p class="fields"><label>
-    <input type="text" name="text">
+    <input class="form-control" style="width: 280px;" type="text" name="text">
 </label>
-    <p class="texts">Требуемый запрос</p>
 
-    <label class="field">
-        <select name="data" class="nav-link">
+        <p class="texts">Категория</p>
+
+    <label class="field" style="margin-bottom: 5%; /* Отступ снизу */">
+        <select name="data" class="form-control">
             <option>Выберете категорию</option>
             <option>video</option>
             <option>channel</option>
         </select>
     </label>
-        <p class="texts">Категория</p>
+
+
     <div>
-        <p><input class="knopka btn-sm" type="submit" value="Получить"></p>
+        <p><input class="btn btn-info alt_but" type="submit" value="Получить"></p>
 </div>
 </form>
 
-    <p ><button class="knopka btn-sm" name="mybtn"><a href="{% url 'blog_index' %}">Назад на основную страницу</a></button>
+    <form action="{% url 'blog_index' %}">
+        <p><button type="submit" class="btn btn-info alt_but"  value="столбец">Назад на основную страницу</button>
+    </form>
+
 {% endblock %}
 
