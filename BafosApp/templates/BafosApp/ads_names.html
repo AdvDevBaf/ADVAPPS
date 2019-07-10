@@ -2,13 +2,7 @@
 {% block BafosApp_title %}ADV APPS{% endblock %}
 {% block BafosApp_content %}
 
-<main role="main">
-			<div class="jumbotron">
-				<div class="container">
-					<h1 class="display-3"></h1>
-				</div>
-			</div>
-		</main>
+
 <form action="" method="POST" name="idform">
     <p class="texts">Имя кампании</p>
 <p class="fields"><label>
@@ -20,15 +14,15 @@
     <input type="text" class="input-sm form-control" id="start_date" name="start" />
     <span class="input-group-addon">по</span>
     <input type="text" class="input-sm form-control" id="end_date" name="end" />
-</div>
+    </div>
 
- <p class="texts">Тест разницы</p>
+<p class="texts">Тест разницы</p>
 <p class="fields"><label>
     <input type="text" class="form-control" name="сompany" style="width: 480px;" id="put" onchange="test()">
 </label>
     <script>
         function test() {
-                        alert('dsd');
+            alert('dsd');
             var d1 = document.getElementById('start_date').value;
             var d2 = document.getElementById('end_date').value;
             alert(d1);
@@ -68,9 +62,10 @@
   }
   </style>
  <script>
-window.addEventListener('DOMContentLoaded', function() {
-  var select = document.querySelector('#AUCorRF'),
-  hide = document.querySelectorAll('.hide');
+     window.addEventListener('DOMContentLoaded', function() {
+         var select = document.querySelector('#AUCorRF'),
+             hide = document.querySelectorAll('.hide');
+
   function change()
   {
     [].forEach.call(hide, function(el) {
@@ -455,6 +450,7 @@ window.addEventListener('DOMContentLoaded', function() {
             var frequency = document.getElementById('frequency').value;
             var price = document.getElementById('price').value;
             var rate = document.getElementById('rate').value;
+            var fraimrate
             var values = $('#multiplechoise').val().join("_");
             var device = document.getElementById('device').value;
             var age_above = document.getElementById('age_above').value;
