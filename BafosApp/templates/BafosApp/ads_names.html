@@ -2,7 +2,6 @@
 {% block BafosApp_title %}ADV APPS{% endblock %}
 {% block BafosApp_content %}
 
-
 <form action="" method="POST" name="idform">
     <p class="texts">Имя кампании</p>
 <p class="fields"><label>
@@ -16,30 +15,8 @@
     <input type="text" class="input-sm form-control" id="end_date" name="end" />
     </div>
 
-<p class="texts">Тест разницы</p>
-<p class="fields"><label>
-    <input type="text" class="form-control" name="сompany" style="width: 480px;" id="put" onchange="test()">
-</label>
-    <script>
-        function test() {
-            alert('dsd');
-            var d1 = document.getElementById('start_date').value;
-            var d2 = document.getElementById('end_date').value;
-            alert(d1);
-            alert(d2);
-            d1 = d1.toString().replace(/\./g, '/');
-            d2 = d2.toString().replace(/\./g, '/');
-            alert(d1);
-            alert(d2);
-            var date1 = new Date(d1);
-            var date2 = new Date(d2);
-            alert(date1);
-            alert(date2);
-            var timeDiff = Math.abs(date2.getTime() - date1.getTime());
-            var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
-            alert(diffDays);
-        }
-    </script>
+
+
     <p class="texts">Номер строки из плана</p>
 <p class="fields"><label>
     <input type="text" class="form-control" name="сompany" style="width: 480px;" id="num" onkeyup="addzeros()">
@@ -61,6 +38,7 @@
     display: block;
   }
   </style>
+
  <script>
      window.addEventListener('DOMContentLoaded', function() {
          var select = document.querySelector('#AUCorRF'),
@@ -77,12 +55,13 @@
   change()
   });
   </script>
+
     <label class="hide 0 field">
           <p class=""></p>
          </label>
 
     <label class="hide AUC field">
-        <select id="companytarget" name="data" class="form-control" onchange="copytarget()">
+        <select id="companytarget" name="data" class="form-control" onchange="copytarget()" style="width: 50%;">
             <option value="0">Выберете цель компании</option>
             <option value="BRAWA">Узнаваемость бренда</option>
             <option value="REACH">Охват</option>
@@ -98,7 +77,7 @@
         </select>
     </label>
      <label class="hide R-F field">
-        <select id="anothertarget" name="data" class="form-control" onchange="copytarget()">
+        <select id="anothertarget" name="data" class="form-control" onchange="copytarget()" style="width: 50%;">
             <option value="0">Выберете цель компании</option>
             <option value="BRAWA">Узнаваемость бренда</option>
             <option value="REACH">Охват</option>
@@ -109,7 +88,6 @@
         </select>
     </label>
 
-
   <p class="texts">Тип аудитории</p>
         <label class="field">
         <select id="audience" name="data" class="form-control" onchange="copyaudience()">
@@ -118,15 +96,103 @@
             <option value="777">777</option>
         </select>
     </label>
-  <p class="texts">География</p>
-    <label class="field">
-        <select id="geography" name="data" class="form-control" onchange="copygeorgaphy()">
-            <option value="0">Выберете регион</option>
-            <option value="RF">Россия</option>
-            <option value="Moscow">Москва</option>
-            <option value="Ktulhu">Рльех</option>
-        </select>
+
+         <p class="texts">География(Если Россия, то другие варианты невозможны)</p>
+    <label class="multiple">
+<select id="multipleregions" class="selectpicker" multiple data-live-search="true" onchange="copygeorgaphy()">
+  <option value="RF">Россия</option>
+  <option value="22">Алтайский край</option>
+  <option value="28">Амурская область</option>
+  <option value="29">Архангельская область</option>
+  <option value="30">Астраханская область</option>
+  <option value="31">Белгородская область</option>
+  <option value="32">Брянская область</option>
+  <option value="33">Владимирская область</option>
+  <option value="34">Волгоградская область</option>
+  <option value="35">Вологодская область</option>
+  <option value="36">Воронежская область</option>
+  <option value="77">г. Москва</option>
+  <option value="79">Еврейская автономная область</option>
+  <option value="75">Забайкальский край</option>
+  <option value="37">Ивановская область</option>
+  <option value="99">Иные территории, включая город и космодром Байконур</option>
+  <option value="38">Иркутская область</option>
+  <option value="7">Кабардино-Балкарская Республика</option>
+  <option value="39">Калининградская область</option>
+  <option value="40">Калужская область</option>
+  <option value="41">Камчатский край</option>
+  <option value="9">Карачаево-Черкесская Республика</option>
+  <option value="42">Кемеровская область</option>
+  <option value="43">Кировская область</option>
+  <option value="44">Костромская область</option>
+  <option value="23">Краснодарский край</option>
+  <option value="24">Красноярский край</option>
+  <option value="45">Курганская область</option>
+  <option value="46">Курская область</option>
+  <option value="47">Ленинградская область</option>
+  <option value="48">Липецкая область</option>
+  <option value="49">Магаданская область</option>
+  <option value="50">Московская область</option>
+  <option value="51">Мурманская область</option>
+  <option value="83">Ненецкий автономный округ</option>
+  <option value="52">Нижегородская область</option>
+  <option value="53">Новгородская область</option>
+  <option value="54">Новосибирская область</option>
+  <option value="55">Омская область</option>
+  <option value="56">Оренбургская область</option>
+  <option value="57">Орловская область</option>
+  <option value="58">Пензенская область</option>
+  <option value="59">Пермский край</option>
+  <option value="25">Приморский край</option>
+  <option value="60">Псковская область</option>
+  <option value="1">Республика Адыгея (Адыгея)</option>
+  <option value="2">Республика Алтай</option>
+  <option value="3">Республика Башкортостан</option>
+  <option value="4">Республика Бурятия</option>
+  <option value="5">Республика Дагестан</option>
+  <option value="6">Республика Ингушетия</option>
+  <option value="8">Республика Калмыкия</option>
+  <option value="10">Республика Карелия</option>
+  <option value="11">Республика Коми</option>
+  <option value="91">Республика Крым</option>
+  <option value="12">Республика Марий Эл</option>
+  <option value="13">Республика Мордовия</option>
+  <option value="14">Республика Саха (Якутия)</option>
+  <option value="15">Республика Северная Осетия - Алания</option>
+  <option value="16">Республика Татарстан (Татарстан)</option>
+  <option value="17">Республика Тыва</option>
+  <option value="19">Республика Хакасия</option>
+  <option value="61">Ростовская область</option>
+  <option value="62">Рязанская область</option>
+  <option value="63">Самарская область</option>
+  <option value="78">Санкт-Петербург</option>
+  <option value="64">Саратовская область</option>
+  <option value="65">Сахалинская область</option>
+  <option value="66">Свердловская область</option>
+  <option value="92">Севастополь</option>
+  <option value="67">Смоленская область</option>
+  <option value="26">Ставропольский край</option>
+  <option value="68">Тамбовская область</option>
+  <option value="69">Тверская область</option>
+  <option value="70">Томская область</option>
+  <option value="71">Тульская область</option>
+  <option value="72">Тюменская область</option>
+  <option value="18">Удмуртская Республика</option>
+  <option value="73">Ульяновская область</option>
+  <option value="27">Хабаровский край</option>
+  <option value="86">Ханты-Мансийский автономный округ - Югра</option>
+  <option value="74">Челябинская область</option>
+  <option value="20">Чеченская Республика</option>
+  <option value="21">Чувашская Республика - Чувашия</option>
+  <option value="87">Чукотский автономный округ</option>
+  <option value="89">Ямало-Ненецкий автономный округ</option>
+  <option value="76">Ярославская область</option>
+</select>
 </label>
+<script>
+  $('.multipleregions').selectpicker();
+</script>
+
       <p class="texts">Пол</p>
     <label class="field">
         <select id="sex" name="data" class="form-control" onchange="copysex()">
@@ -136,13 +202,14 @@
             <option value="W">Женский</option>
         </select>
     </label>
+
     <p class="texts">Возраст от</p>
 <p class="fields"><label>
-    <input type="text" id="age_above" class="form-control" style="width: 480px;" name="сompany" onkeyup=copyage()>
+    <input type="text" id="age_above" class="form-control" style="width: 480px;" name="сompany" onchange=copyage()>
 </label>
     <p class="texts">Возраст до</p>
 <p class="fields"><label>
-    <input type="text" id ="age_below" class="form-control" style="width: 480px;" name="сompany" onkeyup="copyage()">
+    <input type="text" id ="age_below" class="form-control" style="width: 480px;" name="сompany" onchange="copyage()">
 </label>
  <p class="texts">Девайсы</p>
         <label class="field">
@@ -203,8 +270,8 @@
         <select id="format" name="data" class="form-control" onchange="add_format()">
             <option value="0">Выберете формат</option>
             <option value="Carousel">Carousel</option>
-            <option value="SingleImage">Single image</option>
-            <option value="SingleVideo">Single video</option>
+            <option value="Single Image">Single image</option>
+            <option value="Single Video">Single video</option>
         </select>
     </label>
  <p class="texts">Имя креатива по медиаплану</p>
@@ -228,6 +295,7 @@
     language: "ru"
 });
 </script>
+
 <script>
                    function getSelectedText(elementId) {
     var elt = document.getElementById(elementId);
@@ -286,27 +354,41 @@
             }
 
             function copygeorgaphy() {
-                var frequency = document.getElementById('frequency').value;
+                       var frequency = document.getElementById('frequency').value;
             var price = document.getElementById('price').value;
             var rate = document.getElementById('rate').value;
             var values = $('#multiplechoise').val().join("_");
             var device = document.getElementById('device').value;
             var age_above = document.getElementById('age_above').value;
             var age_below = document.getElementById('age_below').value;
-                var sex = document.getElementById('sex').value;
-                var audience = document.getElementById('audience').value;
-                var geography = document.getElementById('geography').value;
-
-                if (geography =="0") {
-                    var answer = audience + "|" + "" + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + price + "|" + frequency;
-
-                    document.getElementById("result").value = answer;
-                } else {
-                   var answer = audience + "|" + geography + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + price + "|" + frequency;
-
-                    document.getElementById("result").value = answer;
+            var sex = document.getElementById('sex').value;
+            var audience = document.getElementById('audience').value;
+            var geography = $('#multipleregions').val().join("_");
+            var answer = audience + "|" + geography;
+            alert($('#multipleregions').val());
+            if ($('#multipleregions').val() != "RF" && $('#multipleregions').val() != ""){
+                var input = $('#multipleregions input[value="RF"]');
+                var option = $('#multipleregions option[value="RF"]');
+                input.prop('disabled', true);
+                option.prop('disabled', true);
+            } else if ($('#multipleregions').val() == "") {
+             for (i = 1; i < 100; i++) {
+                 var j = i.toString();
+                 $('#multipleregions input[value='+j+']').prop('disabled', false);
+                 $('#multipleregions option[value='+j+']').prop('disabled', false);
+                 var input = $('#multipleregions input[value="RF"]');
+                 input.parent('label').parent('a').parent('li').removeAttr('disabled');
                 }
-
+            } else if ($('#multipleregions').val() == "RF"){
+                for (i = 1; i < 100; i++){
+                    var j = i.toString();
+                    var input = $('#multipleregions input[value='+j+']');
+                    var option = $('#multipleregions option[value='+j+']');
+                    input.prop('disabled', true);
+                   option.prop('disabled', true);
+                }
+            }
+            document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" +rate + "|" + price + "|" + frequency;
 
             }
 
@@ -320,7 +402,7 @@
             var age_below = document.getElementById('age_below').value;
                 var sex = document.getElementById('sex').value;
                 var audience = document.getElementById('audience').value;
-                var geography = document.getElementById('geography').value;
+            var geography = $('#multipleregions').val().join("_");
                 if (sex == "0") {
                     var answer = audience + "|" + geography;
                     document.getElementById("result").value = answer + "|" + "" + "|";
@@ -340,12 +422,18 @@
             var age_below = document.getElementById('age_below').value;
             var sex = document.getElementById('sex').value;
             var audience = document.getElementById('audience').value;
-            var geography = document.getElementById('geography').value;
+            var geography = $('#multipleregions').val().join("_");
             var answer = audience + "|" + geography;
-            if (Number(age_above)<14){
-                alert("Минимальный возраст 14 лет")
-            } else if((Number(age_below)>75)){
-                alert("Максимальный возраст 75 лет")
+            if (Number(age_above)<14 && age_above!=''){
+                alert("Минимальный возраст 14 лет");
+               document.getElementById('age_above').value = 14;
+               var age_above = document.getElementById('age_above').value;
+                document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + price + "|" + frequency;
+            } else if((Number(age_below)>75) && age_below !=''){
+                alert("Максимальный возраст 75 лет");
+               document.getElementById('age_below').value = 75;
+               var age_below = document.getElementById('age_above').value;
+                document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + price + "|" + frequency;
             } else {
              document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + price + "|" + frequency;
              }
@@ -362,7 +450,7 @@
             var age_below = document.getElementById('age_below').value;
             var sex = document.getElementById('sex').value;
             var audience = document.getElementById('audience').value;
-            var geography = document.getElementById('geography').value;
+            var geography = $('#multipleregions').val().join("_");
             var answer = audience + "|" + geography;
             if (device=="0"){
                 document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + "" + values + "|" + rate + "|" + price + "|" + frequency;
@@ -380,7 +468,7 @@
             var age_below = document.getElementById('age_below').value;
             var sex = document.getElementById('sex').value;
             var audience = document.getElementById('audience').value;
-            var geography = document.getElementById('geography').value;
+            var geography = $('#multipleregions').val().join("_");
             var answer = audience + "|" + geography;
             var values = $('#multiplechoise').val().join("_");
 
@@ -419,7 +507,7 @@
             var age_above = document.getElementById('age_above').value;
             var age_below = document.getElementById('age_below').value;
             var sex = document.getElementById('sex').value;
-            var answer = document.getElementById('audience').value + "|" + document.getElementById('geography').value;
+            var answer = document.getElementById('audience').value + "|" + $('#multipleregions').val().join("_");
             if (rate == "0") {
                 document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + "" + "|" + price + "|" + frequency;
             }
@@ -437,7 +525,7 @@
             var age_above = document.getElementById('age_above').value;
             var age_below = document.getElementById('age_below').value;
             var sex = document.getElementById('sex').value;
-            var answer = document.getElementById('audience').value + "|" + document.getElementById('geography').value;
+            var answer = document.getElementById('audience').value + "|" + $('#multipleregions').val().join("_");
             if (price == "0") {
                 document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + "" + "|" + frequency;
             }
@@ -456,7 +544,7 @@
             var age_above = document.getElementById('age_above').value;
             var age_below = document.getElementById('age_below').value;
             var sex = document.getElementById('sex').value;
-            var answer = document.getElementById('audience').value + "|" + document.getElementById('geography').value;
+            var answer = document.getElementById('audience').value + "|" + $('#multipleregions').val().join("_");
             if (frequency == "") {
                 document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + price+ "|" + "";
             }
@@ -606,7 +694,6 @@ function addzeros() {
           <input type="button" class="btn btn-info space" value="Скопировать в буфер" onclick="copy2clipboard_ads_result()"><a></a>
         </div>
       </div>
-
 
 
      <p class="x"></p>
