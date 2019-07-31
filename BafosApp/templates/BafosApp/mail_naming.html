@@ -1,0 +1,360 @@
+{% extends 'BafosApp/base.html' %}
+{% block BafosApp_title %}ADV APPS{% endblock %}
+{% block BafosApp_content %}
+
+<form action="" method="POST" name="idform">
+    <p class="texts">Имя кампании</p>
+<p class="fields"><label>
+    <input type="text" class="form-control" name="сompany" style="width: 480px;" id="input" onkeyup="copytext()">
+</label>
+
+    <p class="texts">Номер строки из плана</p>
+<p class="fields"><label>
+    <input type="text" class="form-control" name="сompany" style="width: 480px;" id="num" onkeyup="addzeros()">
+</label>
+
+  <p class="texts">Формат</p>
+        <label class="field">
+        <select id="DifFormat" name="data" class="form-control" onchange="add_format()">
+            <option value="0">Выберете тип аудитории</option>
+            <option value="PREROLL">Прероллы в видео </option>
+            <option value="MOBVIDEOSQ">Мобильная видео реклама: квадратное видео </option>
+            <option value="MOBVIDEO">Мобильная видео реклама </option>
+            <option value="MOBVIDEOVER">Мобильная видео реклама: вертикальное видео </option>
+            <option value="MULTIFOR">Кроссплатформенный мультиформат </option>
+            <option value="YOULA">Мультиформатное размещение на Юле </option>
+            <option value="PAN">Премиальная аудиторная сеть </option>
+            <option value="FSCROSS">Кроссплатформенный Fullscreen </option>
+            <option value="NATMOBVIDEO">Нативный баннер с видео (автоплей, мобайл)</option>
+            <option value="NATMOBBANN">Нативный баннер (мобайл)</option>
+            <option value="90х75">Тизер 90х75 в социальных сетях и сервисах </option>
+            <option value="CAROUSEL">Карусель </option>
+            <option value="VIBER">Нативная реклама в Viber</option>
+            <option value="300x250m">Мобильный баннер 300x250 HTML5 </option>
+            <option value="NRPREMI">Out-stream видеосеть NativeRoll Premium</option>
+            <option value="VQTAD">Out-stream video VQT AD </option>
+            <option value="VIQEO">Премиальная видеосеть Viqeo </option>
+            <option value="MULTIVID">Мультиформатное размещение видео </option>
+            <option value="NRBUMPER">Out-stream видеосеть NativeRoll Bumper Ads</option>
+            <option value="VIQEOBUM">Премиальная видеосеть Viqeo Bumper Ads </option>
+            <option value="VQTBUM">Out-stream видео VQT Bumper Ads </option>
+            <option value="240х400ah">Баннер 240х400 HTML5 в социальных сетях и сервисах </option>
+            <option value="240х400ag">Баннер 240х400 в социальных сетях и сервисах </option>
+            <option value="NRSTAND">Out-stream видеосеть NativeRoll Standard</option>
+            <option value="STRING">Нативная строка в списке писем</option>
+            <option value="240х400vs">Видео-баннер 240х400 в социальных сетях и сервисах</option>
+            <option value="240х400vm">Видео-баннер 240х400 в Почте Mail.Ru</option>
+            <option value="MAINMOB">Перетяжка на главной (мобайл, ТТМ)</option>
+            <option value="FSVIDEO">Полноэкранное видео </option>
+            <option value="1080х607s">Широкоформатный блок 1080х607 в ленте событий для Медийных Агентств</option>
+            <option value="300x300a">Баннер 300х300 (HTML5) на Главной странице</option>
+            <option value="MOBTIER1">Мобильная рекламная сеть (Tier3)</option>
+            <option value="MOBTIER2">Мобильная рекламная сеть (Tier1)</option>
+            <option value="MOBTIER3">Мобильная рекламная сеть (Tier2)</option>
+            <option value="YOUNG">Прероллы в видео (ТТМ, Молодежь)</option>
+            <option value="300x300v">Видео-баннер 300х300 на Главной странице</option>
+            <option value="PRIORITY">Прероллы в видео (Priority)</option>
+            <option value="VIDEODEAL">Прямые сделки партнерская схема: Видео</option>
+            <option value="REWA">Rewarded видео (ТТМ, fixCPM)</option>
+            <option value="OKPOST">Заметки</option>
+            <option value="OKVIDEOP">Видео в Заметках с автозапуском</option>
+            <option value="OKVK">Кроссплатформенные видео посты (OK+VK)</option>
+            <option value="MYWIDGET">Нативная реклама в myWidget</option>
+            <option value="AUDIO">Аудиореклама</option>
+            <option value="">Прероллы в видео (Incremental mobile)</option>
+            <option value="">Реклама приложений</option>
+        </select>
+    </label>
+
+   <style type="text/css">
+  .hide{
+    display:none;
+  }
+  .hide.show{
+    display: block;
+  }
+  </style>
+
+ <script>
+     window.addEventListener('DOMContentLoaded', function() {
+         var select = document.querySelector('#DifFormat'),
+             hide = document.querySelectorAll('.hide');
+
+  function change()
+  {
+    [].forEach.call(hide, function(el) {
+           var add = el.classList.contains(select.value) ? "add" : "remove";
+           el.classList[add]('show');
+    });
+  }
+  select.addEventListener('change', change);
+  change()
+  });
+  </script>
+
+      <p class="texts">Пол</p>
+    <label class="field">
+        <select id="sex" name="data" class="form-control" onchange="copysex()">
+            <option value="0">Выберете пол</option>
+            <option value="ALL">Любой</option>
+            <option value="M">Мужской</option>
+            <option value="W">Женский</option>
+        </select>
+    </label>
+
+    <p class="texts">Возраст от</p>
+<p class="fields"><label>
+    <input type="text" id="age_above" class="form-control" style="width: 480px;" name="сompany" onchange=copyage()>
+</label>
+    <p class="texts">Возраст до</p>
+<p class="fields"><label>
+    <input type="text" id ="age_below" class="form-control" style="width: 480px;" name="сompany" onchange="copyage()">
+</label>
+
+ <p class="texts">Тип таргентинга</p>
+        <label class="field">
+        <select id="targeting" name="data" class="form-control" onchange="typeoftargeting()">
+            <option value="0">Выберете девайсы</option>
+            <option value="BEHAV">Поведенческие и социальные характеристики</option>
+            <option value="INTER">Интересы</option>
+            <option value="INTER">Постоянные интересы</option>
+            <option value="VKID">Список ID - Одноклассники</option>
+            <option value="OKID">Список ВК - Вконтакте</option>
+            <option value="CRMPHONE">Список телефонных номеров</option>
+            <option value="CRMEMAIL">Список емейлов</option>
+            <option value="DEVICEID">Список устройств</option>
+            <option value="MAC">Список MAC-адресов</option>
+            <option value="KEYWORDS">Контекстный таргетинг</option>
+            <option value="CAMPREM">Ремаркетинг с кампании</option>
+            <option value="SITEREM">Ремаркетинг с сайта</option>
+            <option value="VKAPPS">Приложения (VK)</option>
+            <option value="OKAPPS">Приложения (ОК и МойМир)</option>
+            <option value="VKGROUPS">Группы (OK)</option>
+            <option value="OKGROUPS">Группы (ВК)</option>
+            <option value="DMP">Собственная DMP (из стандартной таксономии)</option>
+            <option value="BIGFISH">Собственная DMP (BigFish)</option>
+            <option value="X5DATA">X5 Retail Group</option>
+            <option value="BEELINE">Belline data</option>
+            <option value="3RDPARTY">Внешние сегменты</option>
+            <option value="AIZEK">Сегмент Aizek</option>
+        </select>
+    </label>
+
+    <p class="texts">Название таргентинга</p>
+<p class="fields"><label>
+    <input type="text" name="сompany" class="form-control" style="width: 480px;" id="nametargeting" onkeyup="namesaudience()">
+</label>
+
+     <p class="texts">Тип закупки</p>
+    <label class="hide 0 field">
+        <select id="typeofads" name="data" class="form-control" onchange="">
+            <option value="0">Выберете ставку</option>
+            <option value="CPM">CPM</option>
+            <option value="CPC">CPC</option>
+            <option value="CPV">CPV</option>
+            <option value="CPE">CPE</option>
+            <option value="CPI">CPI</option>
+        </select>
+    </label>
+
+
+     <p class="texts">Гео</p>
+    <label class="field">
+        <select id="geo" name="data" class="form-control" onchange="geo()">
+            <option value="0">Выберете ставку</option>
+            <option value="RF">Россия</option>
+            <option value="SUPERGEO">SUPERGEO</option>
+            <option value="REG">Список регионов</option>
+        </select>
+    </label>
+
+     <p class="texts">Длина видео(в секундах)</p>
+<p class="fields"><label>
+    <input type="text" name="сompany" class="form-control" id="length" style="width: 480px;" onkeyup="add_length()" readonly>
+</label>
+
+
+
+<script>
+
+            function namesaudience() {
+    document.getElementById('length').readOnly = false;
+        }
+
+            function copysex() {
+            var price = document.getElementById('price').value;
+            var rate = document.getElementById('rate').value;
+            var values = $('#multiplechoise').val().join("_");
+            var device = document.getElementById('device').value;
+            var age_above = document.getElementById('age_above').value;
+            var age_below = document.getElementById('age_below').value;
+                var sex = document.getElementById('sex').value;
+                var audience = document.getElementById('audience').value;
+                var name_audience = document.getElementById('nameaudience').value;
+            var geography = $('#multipleregions').val().join("+");
+            if ($('#multipleregions').val().length > 5){
+                geography = "REGS"
+            }
+                if (sex == "0") {
+                    var answer = audience + "|" + name_audience + "|" + geography;
+                    document.getElementById("result").value = answer + "|" + "" + "|";
+                } else {
+                    var answer = audience + "|" + name_audience + "|" + geography;
+                    document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + price;
+                }
+            }
+
+            function copyage() {
+            var price = document.getElementById('price').value;
+            var rate = document.getElementById('rate').value;
+            var values = $('#multiplechoise').val().join("_");
+            var device = document.getElementById('device').value;
+            var age_above = document.getElementById('age_above').value;
+            var age_below = document.getElementById('age_below').value;
+            var sex = document.getElementById('sex').value;
+            var audience = document.getElementById('audience').value;
+            var name_audience = document.getElementById('nameaudience').value;
+             var geography = $('#multipleregions').val().join("+");
+            if ($('#multipleregions').val().length > 5){
+                geography = "REGS"
+            }
+            var answer = audience + "|" + name_audience + "|" + geography;
+            if (Number(age_above)<14 && age_above!=''){
+                alert("Минимальный возраст 14 лет");
+               document.getElementById('age_above').value = 14;
+               var age_above = document.getElementById('age_above').value;
+                document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + price;
+            } else if((Number(age_below)>75) && age_below !=''){
+                alert("Максимальный возраст 75 лет");
+               document.getElementById('age_below').value = 75;
+               var age_below = document.getElementById('age_above').value;
+                document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + price;
+            } else {
+             document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + price;
+             }
+            }
+
+
+        function add_format() {
+         var format = document.getElementById('format').value;
+         var length = document.getElementById('length').value;
+        var creative = document.getElementById('creative').value;
+        var kpi = document.getElementById('kpi').value;
+         if (format == 'Carousel' || format == 'Single Image'){
+             length = 'x';
+             document.getElementById('length').readOnly = true;
+         }else {
+             document.getElementById('length').readOnly = false;
+         }
+               if(!document.getElementById("ads_result").value.includes("|")){
+    document.getElementById("ads_result").value = format;
+    }
+    else{
+    //elem_text.replace(document.getElementById("result").value.substring(0, str.indexOf("_")),document.getElementById("input").value);
+    document.getElementById("ads_result").value = format+"|"+creative+"|"+length +"|"+kpi;
+}
+        }
+
+
+        function add_length() {
+        var format = document.getElementById('format').value;
+        var creative = document.getElementById('creative').value;
+        var length = document.getElementById('length').value;
+        var kpi = document.getElementById('kpi').value;
+        if (length == ""){
+            document.getElementById("сompany_result").value = format+"|"+creative+"|"+"" +"|"+kpi;
+        } else{
+                       document.getElementById("сompany_result").value = format+"|"+creative+"|"+length +"s" +"|"+kpi;
+                   }
+        }
+
+
+</script>
+<script>
+
+        function copytext() {
+var elem_text = document.getElementById("input").value;
+if(!document.getElementById("сompany_result").value.includes("|")){
+    document.getElementById("сompany_result").value = elem_text;
+    }
+    else{
+    //elem_text.replace(document.getElementById("result").value.substring(0, str.indexOf("_")),document.getElementById("input").value);
+    document.getElementById("сompany_result").value = document.getElementById("input").value+document.getElementById("сompany_result").value.substr(document.getElementById("сompany_result").value.indexOf('|')+length);
+}
+        }
+
+function addzeros() {
+    var num_text = Number(document.getElementById("num").value);
+    if (num_text < 10) {
+        var final_var = "00" + num_text.toString()
+    } else if (num_text < 100) {
+        var final_var = "0" + num_text.toString()
+    } else {
+        var final_var = num_text.toString()
+    }
+    var elem_text = document.getElementById("input").value;
+
+    if (document.getElementById("num").value == ""){
+    document.getElementById("сompany_result").value = elem_text + "|" +  "";
+    } else if (!document.getElementById("num").value == ""){
+    document.getElementById("сompany_result").value = elem_text + "|" +  final_var;
+
+    var type = document.getElementById('AUCorRF').value;
+    var target = document.getElementById('companytarget').value;
+    var another_target = document.getElementById('anothertarget').value;
+    var answer = elem_text + "|" +  final_var;
+
+    if(!type=="0" && target=="0") {
+     document.getElementById("сompany_result").value = answer + "|" + type;
+    } else if(!type=="0" && !target=="0"){
+     document.getElementById("сompany_result").value = answer + "|" + type + "|" + target;
+    }
+    else if(!type=="0" && !another_target=="0"){
+     document.getElementById("сompany_result").value = answer + "|" + type + "|" + another_target;
+    } else if (type=="0" && target=="0") {
+             document.getElementById("сompany_result").value = answer;
+    } else if (type=="0" && another_target=="0") {
+             document.getElementById("сompany_result").value = answer;
+    }
+}
+
+}
+    </script>
+     <p class="texts">Итог</p>
+     <div class="input-bar fields">
+        <div class="input-bar-item">
+          <form>
+             <div class="width100">
+                <input class="form-control" style="width: 480px;" id="сompany_result">
+            </div>
+          </form>
+        </div>
+        <div class="input-bar-item">
+          <input type="button" class="btn btn-info space" value="Скопировать в буфер" onclick="copy2clipboard_inc_result()"><a></a>
+        </div>
+      </div>
+
+
+
+     <p class="x"></p>
+
+
+    <script>
+        function copy2clipboard_inc_result() {
+  /* Get the text field */
+  var copyText = document.getElementById("сompany_result");
+
+  /* Select the text field */
+  copyText.select();
+
+  /* Copy the text inside the text field */
+  document.execCommand("copy");
+}
+
+        </script>
+</form>
+<form action="{% url 'blog_index' %}">
+        <p><button type="submit" class="btn btn-info alt_but">Назад на основную страницу</button>
+    </form>
+
+{% endblock %}

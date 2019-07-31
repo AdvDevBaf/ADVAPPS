@@ -29,4 +29,8 @@ urlpatterns = [
                 url(r'^ads_names/$', views.ads_names,
                     name='blog_ads_names'),
 
+                # mail_naming
+                url(r'^mail_naming/$', views.mail_naming,
+                    name='blog_mail_naming'),
+
 ]

@@ -305,6 +305,9 @@ def ads_names(request):
 
     return render_to_response('BafosApp/ads_names.html')
 
+def mail_naming(request):
+
+    return render_to_response('BafosApp/mail_naming.html')
 
 regions = {'Москва': 'Московская область', 'Санкт-Петербург': 'Ленинградская область',
            'Нижний Новгород': 'Нижегородская область', 'Ростов-на-Дону':'Ростовская область',

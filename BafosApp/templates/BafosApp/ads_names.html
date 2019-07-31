@@ -7,14 +7,6 @@
 <p class="fields"><label>
     <input type="text" class="form-control" name="сompany" style="width: 480px;" id="input" onkeyup="copytext()">
 </label>
-        <p class="texts">Период кампании</p>
-
-    <div class="input-daterange input-group fields" style="width: 480px;" id="datepicker">
-    <input type="text" class="input-sm form-control" id="start_date" name="start" />
-    <span class="input-group-addon">по</span>
-    <input type="text" class="input-sm form-control" id="end_date" name="end" />
-    </div>
-
 
 
     <p class="texts">Номер строки из плана</p>
@@ -92,10 +84,17 @@
         <label class="field">
         <select id="audience" name="data" class="form-control" onchange="copyaudience()">
             <option value="0">Выберете тип аудитории</option>
-            <option value="123">123</option>
-            <option value="777">777</option>
+            <option value="CUS">Custom Audience</option>
+            <option value="LAL">Lookalike Audience</option>
+            <option value="DET">Detailed targeting</option>
         </select>
     </label>
+
+ <p class="texts">Название аудитории</p>
+<p class="fields"><label>
+    <input type="text" name="сompany" class="form-control" style="width: 480px;" id="nameaudience" onkeyup="namesaudience()">
+</label>
+
 
          <p class="texts">География(Если Россия, то другие варианты невозможны)</p>
     <label class="multiple">
@@ -117,11 +116,11 @@
   <option value="37">Ивановская область</option>
   <option value="99">Иные территории, включая город и космодром Байконур</option>
   <option value="38">Иркутская область</option>
-  <option value="7">Кабардино-Балкарская Республика</option>
+  <option value="07">Кабардино-Балкарская Республика</option>
   <option value="39">Калининградская область</option>
   <option value="40">Калужская область</option>
   <option value="41">Камчатский край</option>
-  <option value="9">Карачаево-Черкесская Республика</option>
+  <option value="09">Карачаево-Черкесская Республика</option>
   <option value="42">Кемеровская область</option>
   <option value="43">Кировская область</option>
   <option value="44">Костромская область</option>
@@ -145,13 +144,13 @@
   <option value="59">Пермский край</option>
   <option value="25">Приморский край</option>
   <option value="60">Псковская область</option>
-  <option value="1">Республика Адыгея (Адыгея)</option>
-  <option value="2">Республика Алтай</option>
-  <option value="3">Республика Башкортостан</option>
-  <option value="4">Республика Бурятия</option>
-  <option value="5">Республика Дагестан</option>
-  <option value="6">Республика Ингушетия</option>
-  <option value="8">Республика Калмыкия</option>
+  <option value="01">Республика Адыгея (Адыгея)</option>
+  <option value="02">Республика Алтай</option>
+  <option value="03">Республика Башкортостан</option>
+  <option value="04">Республика Бурятия</option>
+  <option value="05">Республика Дагестан</option>
+  <option value="06">Республика Ингушетия</option>
+  <option value="08">Республика Калмыкия</option>
   <option value="10">Республика Карелия</option>
   <option value="11">Республика Коми</option>
   <option value="91">Республика Крым</option>
@@ -223,21 +222,21 @@
      <p class="texts">Плейсменты(Если авто, то другие невозможны)</p>
     <label class="multiple">
 <select id="multiplechoise" class="selectpicker" multiple data-live-search="true" onchange="placement()">
-  <option value="1">AUTO</option>
-  <option value="2">Facebook News Feed</option>
-  <option value="3">Instagram feed</option>
-  <option value="4">Facebook Marketplace</option>
-  <option value="5">Facebook suggested videos</option>
-  <option value="6">Facebook right column</option>
-  <option value="7">Messenger inbox</option>
-  <option value="8">Facebook Stories</option>
-  <option value="9">Instagram Stories</option>
-  <option value="10">Messenger Stories</option>
-  <option value="11">Facebook in-stream videos</option>
-  <option value="12">Facebook Instant Articles</option>
-  <option value="13">Audience Network native, banner and interstitial</option>
-  <option value="14">Audience Network rewarded videos</option>
-  <option value="15">Audience Network in-stream videos</option>
+  <option value="AUTO">AUTO</option>
+  <option value="FBFEED">Facebook News Feed</option>
+  <option value="IGFEED">Instagram feed</option>
+  <option value="FBMRPL">Facebook Marketplace</option>
+  <option value="FBSUVI">Facebook suggested videos</option>
+  <option value="FBRCOL">Facebook right column</option>
+  <option value="MSINBX">Messenger inbox</option>
+  <option value="FBSTOR">Facebook Stories</option>
+  <option value="IGSTOR">Instagram Stories</option>
+  <option value="MSSTOR">Messenger Stories</option>
+  <option value="FBAPPV">Facebook in-stream videos</option>
+  <option value="FBINSA">Facebook Instant Articles</option>
+  <option value="ANNATI">Audience Network native, banner and interstitial</option>
+  <option value="ANREVI">Audience Network rewarded videos</option>
+  <option value="ANINST">Audience Network in-stream videos</option>
 </select>
 </label>
      <p class="texts">Ставка</p>
@@ -259,11 +258,6 @@
             <option value="CPV2S">CPV2S</option>
         </select>
     </label>
- <p class="texts">Freq cap</p>
-<p class="fields"><label>
-    <input type="text" name="сompany" class="form-control" style="width: 480px;" id="frequency" onchange="frequencys()">
-</label>
-
 
      <p class="texts">Формат</p>
     <label class="field">
@@ -282,10 +276,30 @@
 <p class="fields"><label>
     <input type="text" name="сompany" class="form-control" id="length" style="width: 480px;" onkeyup="add_length()">
 </label>
-        <p class="texts">KPI</p>
-<p class="fields"><label>
-    <input type="text" class="form-control" name="сompany" style="width: 480px;" id="kpi" onkeyup="add_kpi()">
-</label>
+
+ <p class="texts">KPI</p>
+ <div class="input-bar fields">
+        <div class="input-bar-item">
+          <form>
+             <div class="width100">
+                 <input type="text" class="form-control" name="сompany" style="width: 480px;" id="kpi" onkeyup="add_kpi()">
+            </div>
+          </form>
+        </div>
+        <div class="input-bar-item">
+    <label style="padding-left: 20px;">
+        <select id="pricetype" name="data" class="form-control" onchange="add_price_type()">
+            <option value="0">Выберете тип</option>
+            <option value="CPM">CPM</option>
+            <option value="CPC">CPC</option>
+            <option value="CPL">CPL</option>
+        </select>
+    </label>        </div>
+      </div>
+
+
+
+
 
 <script>
   $('.multiplechoise').selectpicker();
@@ -353,8 +367,7 @@
 }
             }
 
-            function copygeorgaphy() {
-                       var frequency = document.getElementById('frequency').value;
+            function namesaudience() {
             var price = document.getElementById('price').value;
             var rate = document.getElementById('rate').value;
             var values = $('#multiplechoise').val().join("_");
@@ -363,37 +376,77 @@
             var age_below = document.getElementById('age_below').value;
             var sex = document.getElementById('sex').value;
             var audience = document.getElementById('audience').value;
-            var geography = $('#multipleregions').val().join("_");
-            var answer = audience + "|" + geography;
-            alert($('#multipleregions').val());
+            var name_audience = document.getElementById('nameaudience').value;
+             var geography = $('#multipleregions').val().join("+");
+            if ($('#multipleregions').val().length > 5){
+                geography = "REGS"
+            }
+            var answer = audience;
+            if (name_audience == "") {
+                document.getElementById("result").value = answer + "|" + geography + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + price;
+            }
+            else {
+                document.getElementById("result").value = answer + "|" + name_audience + "|" + geography + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + price;
+            }
+        }
+
+            function copygeorgaphy() {
+            var price = document.getElementById('price').value;
+            var rate = document.getElementById('rate').value;
+            var values = $('#multiplechoise').val().join("_");
+            var device = document.getElementById('device').value;
+            var age_above = document.getElementById('age_above').value;
+            var age_below = document.getElementById('age_below').value;
+            var sex = document.getElementById('sex').value;
+            var audience = document.getElementById('audience').value;
+            var geography = $('#multipleregions').val().join("+");
+            var name_audience = document.getElementById('nameaudience').value;
+            var answer = audience  + "|" + name_audience + "|" + geography;
             if ($('#multipleregions').val() != "RF" && $('#multipleregions').val() != ""){
                 var input = $('#multipleregions input[value="RF"]');
                 var option = $('#multipleregions option[value="RF"]');
                 input.prop('disabled', true);
                 option.prop('disabled', true);
             } else if ($('#multipleregions').val() == "") {
-             for (i = 1; i < 100; i++) {
+             for (var i = 1; i < 100; i++) {
                  var j = i.toString();
+                 if (i>=2 && i<10){
+                     $('#multipleregions input[value=0'+j+']').prop('disabled', false);
+                     $('#multipleregions option[value=0'+j+']').prop('disabled', false);
+                 }else{
                  $('#multipleregions input[value='+j+']').prop('disabled', false);
                  $('#multipleregions option[value='+j+']').prop('disabled', false);
                  var input = $('#multipleregions input[value="RF"]');
+                 $('#multipleregions input[value="RF"]').prop('disabled', false);
+                 $('#multipleregions option[value="RF"]').prop('disabled', false);
                  input.parent('label').parent('a').parent('li').removeAttr('disabled');
+                 }
                 }
             } else if ($('#multipleregions').val() == "RF"){
                 for (i = 1; i < 100; i++){
                     var j = i.toString();
+                    if (i<10){
+                    var input = $('#multipleregions input[value=0'+j+']');
+                    var option = $('#multipleregions option[value=0'+j+']');
+                    input.prop('disabled', true);
+                   option.prop('disabled', true);
+                    } else{
                     var input = $('#multipleregions input[value='+j+']');
                     var option = $('#multipleregions option[value='+j+']');
                     input.prop('disabled', true);
                    option.prop('disabled', true);
+                   }
                 }
             }
-            document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" +rate + "|" + price + "|" + frequency;
-
+            if ($('#multipleregions').val().length > 5){
+                answer = audience + "|" + name_audience + "|" + "REGS";
+            document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" +rate + "|" + price;
+            } else {
+            document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" +rate + "|" + price;
+            }
             }
 
             function copysex() {
-            var frequency = document.getElementById('frequency').value;
             var price = document.getElementById('price').value;
             var rate = document.getElementById('rate').value;
             var values = $('#multiplechoise').val().join("_");
@@ -402,18 +455,21 @@
             var age_below = document.getElementById('age_below').value;
                 var sex = document.getElementById('sex').value;
                 var audience = document.getElementById('audience').value;
-            var geography = $('#multipleregions').val().join("_");
+                var name_audience = document.getElementById('nameaudience').value;
+            var geography = $('#multipleregions').val().join("+");
+            if ($('#multipleregions').val().length > 5){
+                geography = "REGS"
+            }
                 if (sex == "0") {
-                    var answer = audience + "|" + geography;
+                    var answer = audience + "|" + name_audience + "|" + geography;
                     document.getElementById("result").value = answer + "|" + "" + "|";
                 } else {
-                    var answer = audience + "|" + geography;
-                    document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + price + "|" + frequency;
+                    var answer = audience + "|" + name_audience + "|" + geography;
+                    document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + price;
                 }
             }
 
             function copyage() {
-            var frequency = document.getElementById('frequency').value;
             var price = document.getElementById('price').value;
             var rate = document.getElementById('rate').value;
             var values = $('#multiplechoise').val().join("_");
@@ -422,26 +478,29 @@
             var age_below = document.getElementById('age_below').value;
             var sex = document.getElementById('sex').value;
             var audience = document.getElementById('audience').value;
-            var geography = $('#multipleregions').val().join("_");
-            var answer = audience + "|" + geography;
+            var name_audience = document.getElementById('nameaudience').value;
+             var geography = $('#multipleregions').val().join("+");
+            if ($('#multipleregions').val().length > 5){
+                geography = "REGS"
+            }
+            var answer = audience + "|" + name_audience + "|" + geography;
             if (Number(age_above)<14 && age_above!=''){
                 alert("Минимальный возраст 14 лет");
                document.getElementById('age_above').value = 14;
                var age_above = document.getElementById('age_above').value;
-                document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + price + "|" + frequency;
+                document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + price;
             } else if((Number(age_below)>75) && age_below !=''){
                 alert("Максимальный возраст 75 лет");
                document.getElementById('age_below').value = 75;
                var age_below = document.getElementById('age_above').value;
-                document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + price + "|" + frequency;
+                document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + price;
             } else {
-             document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + price + "|" + frequency;
+             document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + price;
              }
             }
 
 
             function copydevice() {
-            var frequency = document.getElementById('frequency').value;
             var price = document.getElementById('price').value;
             var rate = document.getElementById('rate').value;
             var values = $('#multiplechoise').val().join("_");
@@ -450,17 +509,25 @@
             var age_below = document.getElementById('age_below').value;
             var sex = document.getElementById('sex').value;
             var audience = document.getElementById('audience').value;
-            var geography = $('#multipleregions').val().join("_");
-            var answer = audience + "|" + geography;
-            if (device=="0"){
-                document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + "" + values + "|" + rate + "|" + price + "|" + frequency;
-            } else {
-                document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + price + "|" + frequency;
+            var name_audience = document.getElementById('nameaudience').value;
+             var geography = $('#multipleregions').val().join("+");
+            if ($('#multipleregions').val().length > 5){
+                geography = "REGS"
             }
+            var answer = audience + "|" + name_audience + "|" + geography;
+            if (device=="0"){
+                document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + "" + values + "|" + rate + "|" + price;
+            } else {
+                document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + price;
+            }
+            if ($('#multiplechoise').val().includes("IGFEED") || $('#multiplechoise').val().includes("IGSTOR")){
+                if(device=="DESK" || device=="BOTH"){
+                 alert("Проверьте поле девайсов!")
+                }
+                   }
             }
 
         function placement() {
-            var frequency = document.getElementById('frequency').value;
             var price = document.getElementById('price').value;
             var rate = document.getElementById('rate').value;
             var device = document.getElementById('device').value;
@@ -468,56 +535,70 @@
             var age_below = document.getElementById('age_below').value;
             var sex = document.getElementById('sex').value;
             var audience = document.getElementById('audience').value;
-            var geography = $('#multipleregions').val().join("_");
-            var answer = audience + "|" + geography;
+            var name_audience = document.getElementById('nameaudience').value;
+             var geography = $('#multipleregions').val().join("+");
+            if ($('#multipleregions').val().length > 5){
+                geography = "REGS"
+            }
+            var answer = audience + "|" + name_audience + "|" + geography;
             var values = $('#multiplechoise').val().join("_");
-
-            if (Number($('#multiplechoise').val()) > 1){
-                var input = $('#multiplechoise input[value="1"]');
-                var option = $('#multiplechoise option[value="1"]');
+            var arr = ['AUTO', 'FBFEED', 'IGFEED', 'FBMRPL', 'FBSUVI', 'FBRCOL', 'MSINBX', 'FBSTOR', 'IGSTOR', 'MSSTOR',
+                'FBAPPV', 'FBINSA', 'ANNATI', 'ANREVI', 'ANINST'];
+            if ($('#multiplechoise').val() != "AUTO" && $('#multiplechoise').val() != ""){
+                var input = $('#multiplechoise input[value="AUTO"]');
+                var option = $('#multiplechoise option[value="AUTO"]');
                 input.prop('disabled', true);
                 option.prop('disabled', true);
             } else if ($('#multiplechoise').val() == "") {
-             for (i = 1; i < 16; i++) {
-                 var j = i.toString();
+             for (i = 0; i < 15; i++) {
+                 var j = arr[i];
+                 add_length(arr[i]);
                  $('#multiplechoise input[value='+j+']').prop('disabled', false);
                  $('#multiplechoise option[value='+j+']').prop('disabled', false);
-                 var input = $('#multiplechoise input[value="1"]');
+                 var input = $('#multiplechoise input[value="AUTO"]');
                  input.parent('label').parent('a').parent('li').removeAttr('disabled');
                 }
-            } else if (Number($('#multiplechoise').val()) == 1){
-                for (i = 2; i < 16; i++){
-                    var j = i.toString();
+            } else if ($('#multiplechoise').val() == "AUTO"){
+                for (i = 1; i < 15; i++){
+                    var j = arr[i].toString();
                     var input = $('#multiplechoise input[value='+j+']');
                     var option = $('#multiplechoise option[value='+j+']');
                     input.prop('disabled', true);
                    option.prop('disabled', true);
                 }
             }
-            document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" +rate + "|" + price + "|" + frequency;
+            if ($('#multiplechoise').val().includes("IGFEED") || $('#multiplechoise').val().includes("IGSTOR")){
+                if(device=="DESK" || device=="BOTH"){
+                 alert("Проверьте поле девайсов!")
+                }
+                   }
+            document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" +rate + "|" + price;
 
         }
 
         function rates() {
-            var frequency = document.getElementById('frequency').value;
             var price = document.getElementById('price').value;
             var rate = document.getElementById('rate').value;
             var values = $('#multiplechoise').val().join("_");
             var device = document.getElementById('device').value;
             var age_above = document.getElementById('age_above').value;
             var age_below = document.getElementById('age_below').value;
+            var name_audience = document.getElementById('nameaudience').value;
             var sex = document.getElementById('sex').value;
-            var answer = document.getElementById('audience').value + "|" + $('#multipleregions').val().join("_");
+             var geography = $('#multipleregions').val().join("+");
+            if ($('#multipleregions').val().length > 5){
+                geography = "REGS";
+            }
+            var answer = document.getElementById('audience').value + "|" + name_audience + "|" + geography;
             if (rate == "0") {
-                document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + "" + "|" + price + "|" + frequency;
+                document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + "" + "|" + price;
             }
             else {
-                document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + price + "|" + frequency;
+                document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + price;
             }
         }
 
         function prices() {
-            var frequency = document.getElementById('frequency').value;
             var price = document.getElementById('price').value;
             var rate = document.getElementById('rate').value;
             var values = $('#multiplechoise').val().join("_");
@@ -525,43 +606,39 @@
             var age_above = document.getElementById('age_above').value;
             var age_below = document.getElementById('age_below').value;
             var sex = document.getElementById('sex').value;
-            var answer = document.getElementById('audience').value + "|" + $('#multipleregions').val().join("_");
+            var name_audience = document.getElementById('nameaudience').value;
+             var geography = $('#multipleregions').val().join("+");
+            if ($('#multipleregions').val().length > 5){
+                geography = "REGS";
+            }
+            var answer = document.getElementById('audience').value + "|" + name_audience + "|" + geography;
             if (price == "0") {
-                document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + "" + "|" + frequency;
+                document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + "";
             }
             else {
-                document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + price + "|" + frequency;
+                document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + price;
             }
         }
 
-        function frequencys() {
-            var frequency = document.getElementById('frequency').value;
-            var price = document.getElementById('price').value;
-            var rate = document.getElementById('rate').value;
-            var fraimrate
-            var values = $('#multiplechoise').val().join("_");
-            var device = document.getElementById('device').value;
-            var age_above = document.getElementById('age_above').value;
-            var age_below = document.getElementById('age_below').value;
-            var sex = document.getElementById('sex').value;
-            var answer = document.getElementById('audience').value + "|" + $('#multipleregions').val().join("_");
-            if (frequency == "") {
-                document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + price+ "|" + "";
-            }
-            else {
-                document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + price + "|" + frequency;
-            }
-        }
 
 
         function add_format() {
          var format = document.getElementById('format').value;
+         var length = document.getElementById('length').value;
+        var creative = document.getElementById('creative').value;
+        var kpi = document.getElementById('kpi').value;
+         if (format == 'Carousel' || format == 'Single Image'){
+             length = 'x';
+             document.getElementById('length').readOnly = true;
+         }else {
+             document.getElementById('length').readOnly = false;
+         }
                if(!document.getElementById("ads_result").value.includes("|")){
     document.getElementById("ads_result").value = format;
     }
     else{
     //elem_text.replace(document.getElementById("result").value.substring(0, str.indexOf("_")),document.getElementById("input").value);
-    document.getElementById("ads_result").value = format+document.getElementById("ads_result").value.substr(document.getElementById("ads_result").value.indexOf('|')+length);
+    document.getElementById("ads_result").value = format+"|"+creative+"|"+length +"|"+kpi;
 }
         }
 
@@ -570,6 +647,9 @@
         var creative = document.getElementById('creative').value;
         var length = document.getElementById('length').value;
         var kpi = document.getElementById('kpi').value;
+        if (format == 'Carousel' || format == 'Single Image'){
+             length = 'x';
+         }
         if (creative == ""){
             document.getElementById("ads_result").value = format+"|"+""+"|"+length +"|"+kpi;
         } else{
@@ -592,13 +672,33 @@
         function add_kpi() {
         var format = document.getElementById('format').value;
         var creative = document.getElementById('creative').value;
-        var length = document.getElementById('length').value;
+        var length = document.getElementById('length').value +"s";
         var kpi = document.getElementById('kpi').value;
+        if (format == 'Carousel' || format == 'Single Image'){
+             length = 'x';
+         }
         if (kpi == ""){
             document.getElementById("ads_result").value = format+"|"+creative+"|"+length +"|"+"";
         } else{
                        document.getElementById("ads_result").value = format+"|"+creative+"|"+length +"|"+kpi;
                    }
+        }
+
+                function add_price_type() {
+            var price = document.getElementById('pricetype').value;
+            var format = document.getElementById('format').value;
+            var creative = document.getElementById('creative').value;
+            var length = document.getElementById('length').value +"s";
+            var kpi = document.getElementById('kpi').value;
+             if (format == 'Carousel' || format == 'Single Image'){
+             length = 'x';
+         }
+            if (price == "0") {
+                document.getElementById("ads_result").value = format+"|"+creative+"|"+length +"|"+kpi;
+            }
+            else {
+                document.getElementById("ads_result").value = format+"|"+creative+"|"+length +"|"+kpi+price;
+            }
         }
 </script>
 <script>
