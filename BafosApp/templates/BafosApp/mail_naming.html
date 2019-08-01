@@ -333,11 +333,6 @@
                 }
                 var elem_text = document.getElementById("input").value;
                 document.getElementById("num").value = final_var;
-                if (document.getElementById("num").value == ""){
-                    document.getElementById("сompany_result").value = elem_text + "|" +  "";
-                } else if (!document.getElementById("num").value == ""){
-                    document.getElementById("сompany_result").value = elem_text + "|" +  final_var;
-                }
 
                 var arr1 = ["MOBVIDEOSQ", "MOBVIDEO", "MOBVIDEOVER", "MULTIFOR", "90х75", "CAROUSEL", "240х400ah",
                     "240х400ag", "MOBTIER3", "MOBTIER2", "MOBTIER1"];
@@ -350,29 +345,43 @@
                 var arr6 = ["APPADS"];
 
                 var format = document.getElementById('DifFormat').value;
+                var sex = document.getElementById('sex').value;
+                var age_above = document.getElementById('age_above').value;
+                var age_below = document.getElementById('age_below').value;
+                var type = document.getElementById('targeting').value;
                 var ads1 = document.getElementById('typeofads1').value;
                 var ads2 = document.getElementById('typeofads2').value;
                 var ads3 = document.getElementById('typeofads3').value;
                 var ads4 = document.getElementById('typeofads4').value;
                 var ads5 = document.getElementById('typeofads5').value;
                 var ads6 = document.getElementById('typeofads6').value;
+                var name = document.getElementById('nametargeting').value;
+                var geo =  $('#multipleregs').val().join("+");
+                var length = document.getElementById('length').value;
 
                 var answer = elem_text + "|" +  final_var;
 
                 if (arr1.includes(format)) {
-                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + ads1;
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+ ads1 +"|" + name + "|" + geo + "|" + length + "|";
                 } else if(arr2.includes(format)){
-                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + ads2;
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+ ads2 +"|" + name + "|" + geo + "|" + length + "|";
                 }else if(arr3.includes(format)){
-                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + ads3;
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+ ads3 +"|" + name + "|" + geo + "|" + length + "|";
                 }else if(arr4.includes(format)){
-                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + ads4;
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+ ads4 +"|" + name + "|" + geo + "|" + length + "|";
                 }else if(arr5.includes(format)){
-                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + ads5;
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+ ads5 +"|" + name + "|" + geo + "|" + length + "|";
                 }else if(arr6.includes(format)){
-                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + ads6;
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+ ads6 +"|" + name + "|" + geo + "|" + length + "|";
                 }else{
-                    document.getElementById("сompany_result").value = answer + "|" + format;
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+""+"|" + name + "|" + geo + "|" + length + "|";
                 }
 
             }
