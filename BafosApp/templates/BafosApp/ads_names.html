@@ -98,7 +98,7 @@
 
          <p class="texts">География(Если Россия, то другие варианты невозможны)</p>
     <label class="multiple">
-<select id="multipleregions" class="selectpicker" multiple data-live-search="true" onchange="copygeorgaphy()">
+        <select id="multipleregions" class="selectpicker" multiple data-live-search="true" onchange="copygeorgaphy()">
   <option value="RF">Россия</option>
   <option value="22">Алтайский край</option>
   <option value="28">Амурская область</option>
@@ -289,15 +289,13 @@
         <div class="input-bar-item">
     <label style="padding-left: 20px;">
         <select id="pricetype" name="data" class="form-control" onchange="add_price_type()">
-            <option value="0">Выберете тип</option>
+            <option value="">Выберете тип</option>
             <option value="CPM">CPM</option>
             <option value="CPC">CPC</option>
             <option value="CPL">CPL</option>
         </select>
     </label>        </div>
       </div>
-
-
 
 
 
@@ -621,7 +619,6 @@
         }
 
 
-
         function add_format() {
          var format = document.getElementById('format').value;
          var length = document.getElementById('length').value;
@@ -674,13 +671,15 @@
         var creative = document.getElementById('creative').value;
         var length = document.getElementById('length').value +"s";
         var kpi = document.getElementById('kpi').value;
+        var price = document.getElementById('pricetype').value;
+
         if (format == 'Carousel' || format == 'Single Image'){
              length = 'x';
          }
         if (kpi == ""){
-            document.getElementById("ads_result").value = format+"|"+creative+"|"+length +"|"+"";
+            document.getElementById("ads_result").value = format+"|"+creative+"|"+length +"|"+""+price;
         } else{
-                       document.getElementById("ads_result").value = format+"|"+creative+"|"+length +"|"+kpi;
+                       document.getElementById("ads_result").value = format+"|"+creative+"|"+length +"|"+kpi+price;
                    }
         }
 

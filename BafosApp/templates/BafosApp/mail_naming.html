@@ -16,7 +16,7 @@
   <p class="texts">Формат</p>
         <label class="field">
         <select id="DifFormat" name="data" class="form-control" onchange="add_format()">
-            <option value="0">Выберете тип аудитории</option>
+            <option value="''">Выберете тип аудитории</option>
             <option value="PREROLL">Прероллы в видео </option>
             <option value="MOBVIDEOSQ">Мобильная видео реклама: квадратное видео </option>
             <option value="MOBVIDEO">Мобильная видео реклама </option>
@@ -48,9 +48,9 @@
             <option value="FSVIDEO">Полноэкранное видео </option>
             <option value="1080х607s">Широкоформатный блок 1080х607 в ленте событий для Медийных Агентств</option>
             <option value="300x300a">Баннер 300х300 (HTML5) на Главной странице</option>
-            <option value="MOBTIER1">Мобильная рекламная сеть (Tier3)</option>
+            <option value="MOBTIER3">Мобильная рекламная сеть (Tier3)</option>
             <option value="MOBTIER2">Мобильная рекламная сеть (Tier1)</option>
-            <option value="MOBTIER3">Мобильная рекламная сеть (Tier2)</option>
+            <option value="MOBTIER1">Мобильная рекламная сеть (Tier2)</option>
             <option value="YOUNG">Прероллы в видео (ТТМ, Молодежь)</option>
             <option value="300x300v">Видео-баннер 300х300 на Главной странице</option>
             <option value="PRIORITY">Прероллы в видео (Priority)</option>
@@ -61,8 +61,8 @@
             <option value="OKVK">Кроссплатформенные видео посты (OK+VK)</option>
             <option value="MYWIDGET">Нативная реклама в myWidget</option>
             <option value="AUDIO">Аудиореклама</option>
-            <option value="">Прероллы в видео (Incremental mobile)</option>
-            <option value="">Реклама приложений</option>
+            <option value="INCMOBILE">Прероллы в видео (Incremental mobile)</option>
+            <option value="APPADS">Реклама приложений</option>
         </select>
     </label>
 
@@ -95,7 +95,7 @@
       <p class="texts">Пол</p>
     <label class="field">
         <select id="sex" name="data" class="form-control" onchange="copysex()">
-            <option value="0">Выберете пол</option>
+            <option value="">Выберете пол</option>
             <option value="ALL">Любой</option>
             <option value="M">Мужской</option>
             <option value="W">Женский</option>
@@ -114,10 +114,9 @@
  <p class="texts">Тип таргентинга</p>
         <label class="field">
         <select id="targeting" name="data" class="form-control" onchange="typeoftargeting()">
-            <option value="0">Выберете девайсы</option>
+            <option value="">Выберете девайсы</option>
             <option value="BEHAV">Поведенческие и социальные характеристики</option>
             <option value="INTER">Интересы</option>
-            <option value="INTER">Постоянные интересы</option>
             <option value="VKID">Список ID - Одноклассники</option>
             <option value="OKID">Список ВК - Вконтакте</option>
             <option value="CRMPHONE">Список телефонных номеров</option>
@@ -142,13 +141,13 @@
 
     <p class="texts">Название таргентинга</p>
 <p class="fields"><label>
-    <input type="text" name="сompany" class="form-control" style="width: 480px;" id="nametargeting" onkeyup="namesaudience()">
+    <input type="text" name="сompany" class="form-control" style="width: 480px;" id="nametargeting" onkeyup="typeoftargeting()">
 </label>
 
      <p class="texts">Тип закупки</p>
-    <label class="hide 0 field">
-        <select id="typeofads" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
+    <label class="hide '' field">
+        <select id="typeofads" name="data" class="form-control" disabled>
+            <option value="">Выберете ставку</option>
             <option value="CPM">CPM</option>
             <option value="CPC">CPC</option>
             <option value="CPV">CPV</option>
@@ -157,685 +156,649 @@
         </select>
     </label>
 
-<label class="hide 1 field">
-        <select id="typeofads1" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
+<label class="hide MOBVIDEOSQ MOBVIDEO MOBVIDEOVER MULTIFOR 90х75 CAROUSEL 240х400ah 240х400ag
+ MOBTIER3 MOBTIER2 MOBTIER1 field">
+        <select id="typeofads1" name="data" class="form-control" onchange="typeoftargeting()">
+            <option value="">Выберете ставку</option>
             <option value="CPM">CPM</option>
             <option value="CPC">CPC</option>
+        </select>
+    </label>
+
+    <label class="hide PREROLL field">
+        <select id="typeofads2" name="data" class="form-control" onchange="typeoftargeting()">
+            <option value="">Выберете ставку</option>
+            <option value="CPM">CPM</option>
             <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
+        </select>
+    </label>
+
+    <label class="hide PAN FSCROSS NATMOBVIDEO NATMOBBANN VIBER 300x250m MULTIVID STRING 240х400vs 240х400vm
+    MAINMOB FSVIDEO 1080х607s 300x300a YOUNG 300x300v PRIORITY VIDEODEAL REWA OKVIDEOP OKVK AUDIO INCMOBILE field">
+        <select id="typeofads3" name="data" class="form-control" onchange="typeoftargeting()">
+            <option value="">Выберете ставку</option>
+            <option value="CPM">CPM</option>
+        </select>
+    </label>
+
+    <label class="hide NRPREMI VQTAD VIQEO NRBUMPER VIQEOBUM VQTBUM NRSTAND field">
+        <select id="typeofads4" name="data" class="form-control" onchange="typeoftargeting()">
+            <option value="">Выберете ставку</option>
+            <option value="CPV">CPV</option>
+        </select>
+    </label>
+
+    <label class="hide MYWIDGET field">
+        <select id="typeofads5" name="data" class="form-control" onchange="typeoftargeting()">
+            <option value="">Выберете ставку</option>
+            <option value="CPC">CPC</option>
+        </select>
+    </label>
+
+    <label class="hide APPADS field">
+        <select id="typeofads6" name="data" class="form-control" onchange="typeoftargeting()">
+            <option value="">Выберете ставку</option>
+            <option value="CPM">CPM</option>
+            <option value="CPC">CPC</option>
             <option value="CPI">CPI</option>
         </select>
     </label>
 
-    <label class="hide 2 field">
-        <select id="typeofads2" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
-
-    <label class="hide 3 field">
-        <select id="typeofads3" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
-
-    <label class="hide 4 field">
-        <select id="typeofads4" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
-
-    <label class="hide 5 field">
-        <select id="typeofads5" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
-
-    <label class="hide 6 field">
-        <select id="typeofads6" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
-
-    <label class="hide 7 field">
-        <select id="typeofads7" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
-
-    <label class="hide 8 field">
-        <select id="typeofads8" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
-
-    <label class="hide 9 field">
-        <select id="typeofads9" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
-
-    <label class="hide 10 field">
-        <select id="typeofads10" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
-
-    <label class="hide 11 field">
-        <select id="typeofads11" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
-
-<label class="hide 12 field">
-        <select id="typeofads12" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
-
-    <label class="hide 13 field">
-        <select id="typeofads13" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
-
-    <label class="hide 14 field">
-        <select id="typeofads14" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
-
-    <label class="hide 15 field">
-        <select id="typeofads15" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
-
-    <label class="hide 16 field">
-        <select id="typeofads16" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
-
-    <label class="hide 17 field">
-        <select id="typeofads17" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
-
-    <label class="hide 18 field">
-        <select id="typeofads18" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
-
-    <label class="hide 19 field">
-        <select id="typeofads19" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
-
-    <label class="hide 20 field">
-        <select id="typeofads20" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
-
-    <label class="hide 21 field">
-        <select id="typeofads21" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
-
-    <label class="hide 22 field">
-        <select id="typeofads22" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
-
-<label class="hide 23 field">
-        <select id="typeofads23" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
-
-    <label class="hide 24 field">
-        <select id="typeofads24" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
-
-    <label class="hide 25 field">
-        <select id="typeofads25" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
-
-    <label class="hide 26 field">
-        <select id="typeofads26" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
-
-    <label class="hide 27 field">
-        <select id="typeofads27" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
-
-    <label class="hide 28 field">
-        <select id="typeofads28" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
-
-    <label class="hide 29 field">
-        <select id="typeofads29" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
-
-    <label class="hide 30 field">
-        <select id="typeofads30" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
-
-    <label class="hide 31 field">
-        <select id="typeofads31" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
-
-    <label class="hide 32 field">
-        <select id="typeofads32" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
-
-    <label class="hide 33 field">
-        <select id="typeofads33" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
-
-<label class="hide 34 field">
-        <select id="typeofads34" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
-
-    <label class="hide 35 field">
-        <select id="typeofads35" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
-
-    <label class="hide 36 field">
-        <select id="typeofads36" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
-
-    <label class="hide 37 field">
-        <select id="typeofads37" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
-
-    <label class="hide 38 field">
-        <select id="typeofads38" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
-
-    <label class="hide 39 field">
-        <select id="typeofads39" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
-
-    <label class="hide 40 field">
-        <select id="typeofads40" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
-
-    <label class="hide 41 field">
-        <select id="typeofads41" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
-
-    <label class="hide 42 field">
-        <select id="typeofads42" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
-
-    <label class="hide 43 field">
-        <select id="typeofads43" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
-
-    <label class="hide 44 field">
-        <select id="typeofads44" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
-
-<label class="hide 45 field">
-        <select id="typeofads45" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
-
-    <label class="hide 46 field">
-        <select id="typeofads46" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
-
-    <label class="hide 47 field">
-        <select id="typeofads47" name="data" class="form-control" onchange="">
-            <option value="0">Выберете ставку</option>
-            <option value="CPM">CPM</option>
-            <option value="CPC">CPC</option>
-            <option value="CPV">CPV</option>
-            <option value="CPE">CPE</option>
-            <option value="CPI">CPI</option>
-        </select>
-    </label>
 
      <p class="texts">Гео</p>
-    <label class="field">
-        <select id="geo" name="data" class="form-control" onchange="geo()">
-            <option value="0">Выберете ставку</option>
+    <label class="multiple">
+        <select id="multipleregs" class="selectpicker" multiple data-live-search="true" onchange="geog()">
             <option value="RF">Россия</option>
             <option value="SUPERGEO">SUPERGEO</option>
-            <option value="REG">Список регионов</option>
+            <option value="22">Алтайский край</option>
+            <option value="28">Амурская область</option>
+            <option value="29">Архангельская область</option>
+            <option value="30">Астраханская область</option>
+            <option value="31">Белгородская область</option>
+            <option value="32">Брянская область</option>
+            <option value="33">Владимирская область</option>
+            <option value="34">Волгоградская область</option>
+            <option value="35">Вологодская область</option>
+            <option value="36">Воронежская область</option>
+            <option value="77">г. Москва</option>
+            <option value="79">Еврейская автономная область</option>
+            <option value="75">Забайкальский край</option>
+            <option value="37">Ивановская область</option>
+            <option value="99">Иные территории, включая город и космодром Байконур</option>
+            <option value="38">Иркутская область</option>
+            <option value="07">Кабардино-Балкарская Республика</option>
+            <option value="39">Калининградская область</option>
+            <option value="40">Калужская область</option>
+            <option value="41">Камчатский край</option>
+            <option value="09">Карачаево-Черкесская Республика</option>
+            <option value="42">Кемеровская область</option>
+            <option value="43">Кировская область</option>
+            <option value="44">Костромская область</option>
+            <option value="23">Краснодарский край</option>
+            <option value="24">Красноярский край</option>
+            <option value="45">Курганская область</option>
+            <option value="46">Курская область</option>
+            <option value="47">Ленинградская область</option>
+            <option value="48">Липецкая область</option>
+            <option value="49">Магаданская область</option>
+            <option value="50">Московская область</option>
+            <option value="51">Мурманская область</option>
+            <option value="83">Ненецкий автономный округ</option>
+            <option value="52">Нижегородская область</option>
+            <option value="53">Новгородская область</option>
+            <option value="54">Новосибирская область</option>
+            <option value="55">Омская область</option>
+            <option value="56">Оренбургская область</option>
+            <option value="57">Орловская область</option>
+            <option value="58">Пензенская область</option>
+            <option value="59">Пермский край</option>
+            <option value="25">Приморский край</option>
+            <option value="60">Псковская область</option>
+            <option value="01">Республика Адыгея (Адыгея)</option>
+            <option value="02">Республика Алтай</option>
+            <option value="03">Республика Башкортостан</option>
+            <option value="04">Республика Бурятия</option>
+            <option value="05">Республика Дагестан</option>
+            <option value="06">Республика Ингушетия</option>
+            <option value="08">Республика Калмыкия</option>
+            <option value="10">Республика Карелия</option>
+            <option value="11">Республика Коми</option>
+            <option value="91">Республика Крым</option>
+            <option value="12">Республика Марий Эл</option>
+            <option value="13">Республика Мордовия</option>
+            <option value="14">Республика Саха (Якутия)</option>
+            <option value="15">Республика Северная Осетия - Алания</option>
+            <option value="16">Республика Татарстан (Татарстан)</option>
+            <option value="17">Республика Тыва</option>
+            <option value="19">Республика Хакасия</option>
+            <option value="61">Ростовская область</option>
+            <option value="62">Рязанская область</option>
+            <option value="63">Самарская область</option>
+            <option value="78">Санкт-Петербург</option>
+            <option value="64">Саратовская область</option>
+            <option value="65">Сахалинская область</option>
+            <option value="66">Свердловская область</option>
+            <option value="92">Севастополь</option>
+            <option value="67">Смоленская область</option>
+            <option value="26">Ставропольский край</option>
+            <option value="68">Тамбовская область</option>
+            <option value="69">Тверская область</option>
+            <option value="70">Томская область</option>
+            <option value="71">Тульская область</option>
+            <option value="72">Тюменская область</option>
+            <option value="18">Удмуртская Республика</option>
+            <option value="73">Ульяновская область</option>
+            <option value="27">Хабаровский край</option>
+            <option value="86">Ханты-Мансийский автономный округ - Югра</option>
+            <option value="74">Челябинская область</option>
+            <option value="20">Чеченская Республика</option>
+            <option value="21">Чувашская Республика - Чувашия</option>
+            <option value="87">Чукотский автономный округ</option>
+            <option value="89">Ямало-Ненецкий автономный округ</option>
+            <option value="76">Ярославская область</option>
         </select>
     </label>
 
+<script>
+  $('.multipleregs').selectpicker();
+</script>
+
      <p class="texts">Длина видео(в секундах)</p>
-<p class="fields"><label>
+    <p class="fields"><label>
     <input type="text" name="сompany" class="form-control" id="length" style="width: 480px;" onkeyup="add_length()" readonly>
 </label>
 
 
-
 <script>
 
-            function namesaudience() {
-    document.getElementById('length').readOnly = false;
-        }
-
-            function copysex() {
-            var price = document.getElementById('price').value;
-            var rate = document.getElementById('rate').value;
-            var values = $('#multiplechoise').val().join("_");
-            var device = document.getElementById('device').value;
-            var age_above = document.getElementById('age_above').value;
-            var age_below = document.getElementById('age_below').value;
-                var sex = document.getElementById('sex').value;
-                var audience = document.getElementById('audience').value;
-                var name_audience = document.getElementById('nameaudience').value;
-            var geography = $('#multipleregions').val().join("+");
-            if ($('#multipleregions').val().length > 5){
-                geography = "REGS"
-            }
-                if (sex == "0") {
-                    var answer = audience + "|" + name_audience + "|" + geography;
-                    document.getElementById("result").value = answer + "|" + "" + "|";
-                } else {
-                    var answer = audience + "|" + name_audience + "|" + geography;
-                    document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + price;
+            function copytext() {
+                var elem_text = document.getElementById("input").value;
+                if(!document.getElementById("сompany_result").value.includes("|")){
+                    document.getElementById("сompany_result").value = elem_text;
+                }
+                else{
+                    document.getElementById("сompany_result").value = document.getElementById("input").value+document.getElementById("сompany_result").value.substr(document.getElementById("сompany_result").value.indexOf('|')+length);
                 }
             }
 
+
+            function addzeros() {
+                var num_text = Number(document.getElementById("num").value);
+                if (num_text < 10) {
+                    var final_var = "00" + num_text.toString()
+                } else if (num_text < 100) {
+                    var final_var = "0" + num_text.toString()
+                } else {
+                    var final_var = num_text.toString()
+                }
+                var elem_text = document.getElementById("input").value;
+                document.getElementById("num").value = final_var;
+                if (document.getElementById("num").value == ""){
+                    document.getElementById("сompany_result").value = elem_text + "|" +  "";
+                } else if (!document.getElementById("num").value == ""){
+                    document.getElementById("сompany_result").value = elem_text + "|" +  final_var;
+                }
+
+                var arr1 = ["MOBVIDEOSQ", "MOBVIDEO", "MOBVIDEOVER", "MULTIFOR", "90х75", "CAROUSEL", "240х400ah",
+                    "240х400ag", "MOBTIER3", "MOBTIER2", "MOBTIER1"];
+                var arr2 = ["PREROLL"];
+                var arr3 = ["PAN","FSCROSS", "NATMOBVIDEO", "NATMOBBANN", "VIBER", "300x250m", "MULTIVID", "STRING",
+                    "240х400vs", "240х400vm", "MAINMOB", "FSVIDEO", "1080х607s", "300x300a", "YOUNG", "300x300v",
+                    "PRIORITY", "VIDEODEAL", "REWA", "OKVIDEOP", "OKVK", "AUDIO", "INCMOBILE"];
+                var arr4 = ["NRPREMI","VQTAD","VIQEO","NRBUMPER","VIQEOBUM","VQTBUM","NRSTAND"];
+                var arr5 = ["MYWIDGET"];
+                var arr6 = ["APPADS"];
+
+                var format = document.getElementById('DifFormat').value;
+                var ads1 = document.getElementById('typeofads1').value;
+                var ads2 = document.getElementById('typeofads2').value;
+                var ads3 = document.getElementById('typeofads3').value;
+                var ads4 = document.getElementById('typeofads4').value;
+                var ads5 = document.getElementById('typeofads5').value;
+                var ads6 = document.getElementById('typeofads6').value;
+
+                var answer = elem_text + "|" +  final_var;
+
+                if (arr1.includes(format)) {
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + ads1;
+                } else if(arr2.includes(format)){
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + ads2;
+                }else if(arr3.includes(format)){
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + ads3;
+                }else if(arr4.includes(format)){
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + ads4;
+                }else if(arr5.includes(format)){
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + ads5;
+                }else if(arr6.includes(format)){
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + ads6;
+                }else{
+                    document.getElementById("сompany_result").value = answer + "|" + format;
+                }
+
+            }
+
+
+
+            function add_format() {
+                var elem_text = document.getElementById("input").value;
+                var num_text = document.getElementById("num").value;
+                var names = ["MOBVIDEOSQ","MOBVIDEO","MOBVIDEOVER","NATMOBVIDEO", "NRPREMI","PREROLL","VQTAD","VIQEO","MULTIVID"
+                    ,"NRBUMPER","VIQEOBUM","VQTBUM","NRSTAND","240х400vs","240х400vm","FSVIDEO","YOUNG","300x300v","PRIORITY"
+                    ,"VIDEODEAL","REWA","OKVIDEOP","OKVK","AUDIO","INCMOBILE"];
+                var format = document.getElementById('DifFormat').value;
+                var sex = document.getElementById('sex').value;
+                var age_above = document.getElementById('age_above').value;
+                var age_below = document.getElementById('age_below').value;
+                var type = document.getElementById('targeting').value;
+                var ads1 = document.getElementById('typeofads1').value;
+                var ads2 = document.getElementById('typeofads2').value;
+                var ads3 = document.getElementById('typeofads3').value;
+                var ads4 = document.getElementById('typeofads4').value;
+                var ads5 = document.getElementById('typeofads5').value;
+                var ads6 = document.getElementById('typeofads6').value;
+                var name = document.getElementById('nametargeting').value;
+                var geo =  $('#multipleregs').val().join("+");
+                var length = document.getElementById('length').value;
+
+
+                document.getElementById('length').readOnly = !names.includes(format);
+
+                var arr1 = ["MOBVIDEOSQ", "MOBVIDEO", "MOBVIDEOVER", "MULTIFOR", "90х75", "CAROUSEL", "240х400ah",
+                    "240х400ag", "MOBTIER3", "MOBTIER2", "MOBTIER1"];
+                var arr2 = ["PREROLL"];
+                var arr3 = ["PAN","FSCROSS", "NATMOBVIDEO", "NATMOBBANN", "VIBER", "300x250m", "MULTIVID", "STRING",
+                    "240х400vs", "240х400vm", "MAINMOB", "FSVIDEO", "1080х607s", "300x300a", "YOUNG", "300x300v",
+                    "PRIORITY", "VIDEODEAL", "REWA", "OKVIDEOP", "OKVK", "AUDIO", "INCMOBILE"];
+                var arr4 = ["NRPREMI","VQTAD","VIQEO","NRBUMPER","VIQEOBUM","VQTBUM","NRSTAND"];
+                var arr5 = ["MYWIDGET"];
+                var arr6 = ["APPADS"];
+
+                var answer = elem_text + "|" +  num_text;
+
+                if (arr1.includes(format)) {
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+ ads1 +"|" + name + "|" + geo + "|" + length + "|";
+                } else if(arr2.includes(format)){
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+ ads2 +"|" + name + "|" + geo + "|" + length + "|";
+                }else if(arr3.includes(format)){
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+ ads3 +"|" + name + "|" + geo + "|" + length + "|";
+                }else if(arr4.includes(format)){
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+ ads4 +"|" + name + "|" + geo + "|" + length + "|";
+                }else if(arr5.includes(format)){
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+ ads5 +"|" + name + "|" + geo + "|" + length + "|";
+                }else if(arr6.includes(format)){
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+ ads6 +"|" + name + "|" + geo + "|" + length + "|";
+                }else{
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+""+"|" + name + "|" + geo + "|" + length + "|";
+                }
+            }
+
+
+            function copysex() {
+                var elem_text = document.getElementById("input").value;
+                var num_text = document.getElementById("num").value;
+                var format = document.getElementById('DifFormat').value;
+                var sex = document.getElementById('sex').value;
+                var age_above = document.getElementById('age_above').value;
+                var age_below = document.getElementById('age_below').value;
+                var type = document.getElementById('targeting').value;
+                var ads1 = document.getElementById('typeofads1').value;
+                var ads2 = document.getElementById('typeofads2').value;
+                var ads3 = document.getElementById('typeofads3').value;
+                var ads4 = document.getElementById('typeofads4').value;
+                var ads5 = document.getElementById('typeofads5').value;
+                var ads6 = document.getElementById('typeofads6').value;
+                var name = document.getElementById('nametargeting').value;
+                var geo =  $('#multipleregs').val().join("+");
+                var length = document.getElementById('length').value;
+
+                var arr1 = ["MOBVIDEOSQ", "MOBVIDEO", "MOBVIDEOVER", "MULTIFOR", "90х75", "CAROUSEL", "240х400ah",
+                    "240х400ag", "MOBTIER3", "MOBTIER2", "MOBTIER1"];
+                var arr2 = ["PREROLL"];
+                var arr3 = ["PAN","FSCROSS", "NATMOBVIDEO", "NATMOBBANN", "VIBER", "300x250m", "MULTIVID", "STRING",
+                    "240х400vs", "240х400vm", "MAINMOB", "FSVIDEO", "1080х607s", "300x300a", "YOUNG", "300x300v",
+                    "PRIORITY", "VIDEODEAL", "REWA", "OKVIDEOP", "OKVK", "AUDIO", "INCMOBILE"];
+                var arr4 = ["NRPREMI","VQTAD","VIQEO","NRBUMPER","VIQEOBUM","VQTBUM","NRSTAND"];
+                var arr5 = ["MYWIDGET"];
+                var arr6 = ["APPADS"];
+
+                var answer = elem_text + "|" +  num_text;
+
+                if (arr1.includes(format)) {
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+ ads1 +"|" + name + "|" + geo + "|" + length + "|";
+                } else if(arr2.includes(format)){
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+ ads2 +"|" + name + "|" + geo + "|" + length + "|";
+                }else if(arr3.includes(format)){
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+ ads3 +"|" + name + "|" + geo + "|" + length + "|";
+                }else if(arr4.includes(format)){
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+ ads4 +"|" + name + "|" + geo + "|" + length + "|";
+                }else if(arr5.includes(format)){
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+ ads5 +"|" + name + "|" + geo + "|" + length + "|";
+                }else if(arr6.includes(format)){
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+ ads6 +"|" + name + "|" + geo + "|" + length + "|";
+                }else{
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+""+"|" + name + "|" + geo + "|" + length + "|";
+                }
+
+            }
+
             function copyage() {
-            var price = document.getElementById('price').value;
-            var rate = document.getElementById('rate').value;
-            var values = $('#multiplechoise').val().join("_");
-            var device = document.getElementById('device').value;
-            var age_above = document.getElementById('age_above').value;
-            var age_below = document.getElementById('age_below').value;
-            var sex = document.getElementById('sex').value;
-            var audience = document.getElementById('audience').value;
-            var name_audience = document.getElementById('nameaudience').value;
-             var geography = $('#multipleregions').val().join("+");
-            if ($('#multipleregions').val().length > 5){
-                geography = "REGS"
+                var elem_text = document.getElementById("input").value;
+                var num_text = document.getElementById("num").value;
+                var format = document.getElementById('DifFormat').value;
+                var sex = document.getElementById('sex').value;
+                var age_above = document.getElementById('age_above').value;
+                var age_below = document.getElementById('age_below').value;
+                var type = document.getElementById('targeting').value;
+                var ads1 = document.getElementById('typeofads1').value;
+                var ads2 = document.getElementById('typeofads2').value;
+                var ads3 = document.getElementById('typeofads3').value;
+                var ads4 = document.getElementById('typeofads4').value;
+                var ads5 = document.getElementById('typeofads5').value;
+                var ads6 = document.getElementById('typeofads6').value;
+                var name = document.getElementById('nametargeting').value;
+                var geo =  $('#multipleregs').val().join("+");
+                var length = document.getElementById('length').value;
+
+                if (Number(age_above)<12 && age_above!=''){
+                    alert("Минимальный возраст 12 лет");
+                    document.getElementById('age_above').value = 14;
+                    age_above = document.getElementById('age_above').value;
+                } else if((Number(age_below)>75) && age_below !=''){
+                    alert("Максимальный возраст 75 лет");
+                    document.getElementById('age_below').value = 75;
+                    age_below = document.getElementById('age_below').value;
+                }
+
+                var arr1 = ["MOBVIDEOSQ", "MOBVIDEO", "MOBVIDEOVER", "MULTIFOR", "90х75", "CAROUSEL", "240х400ah",
+                    "240х400ag", "MOBTIER3", "MOBTIER2", "MOBTIER1"];
+                var arr2 = ["PREROLL"];
+                var arr3 = ["PAN","FSCROSS", "NATMOBVIDEO", "NATMOBBANN", "VIBER", "300x250m", "MULTIVID", "STRING",
+                    "240х400vs", "240х400vm", "MAINMOB", "FSVIDEO", "1080х607s", "300x300a", "YOUNG", "300x300v",
+                    "PRIORITY", "VIDEODEAL", "REWA", "OKVIDEOP", "OKVK", "AUDIO", "INCMOBILE"];
+                var arr4 = ["NRPREMI","VQTAD","VIQEO","NRBUMPER","VIQEOBUM","VQTBUM","NRSTAND"];
+                var arr5 = ["MYWIDGET"];
+                var arr6 = ["APPADS"];
+
+                var answer = elem_text + "|" +  num_text;
+
+                if (arr1.includes(format)) {
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+ ads1 +"|" + name + "|" + geo + "|" + length + "|";
+                } else if(arr2.includes(format)){
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+ ads2 +"|" + name + "|" + geo + "|" + length + "|";
+                }else if(arr3.includes(format)){
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+ ads3 +"|" + name + "|" + geo + "|" + length + "|";
+                }else if(arr4.includes(format)){
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+ ads4 +"|" + name + "|" + geo + "|" + length + "|";
+                }else if(arr5.includes(format)){
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+ ads5 +"|" + name + "|" + geo + "|" + length + "|";
+                }else if(arr6.includes(format)){
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+ ads6 +"|" + name + "|" + geo + "|" + length + "|";
+                }else{
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+""+"|" + name + "|" + geo + "|" + length + "|";
+                }
+
             }
-            var answer = audience + "|" + name_audience + "|" + geography;
-            if (Number(age_above)<14 && age_above!=''){
-                alert("Минимальный возраст 14 лет");
-               document.getElementById('age_above').value = 14;
-               var age_above = document.getElementById('age_above').value;
-                document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + price;
-            } else if((Number(age_below)>75) && age_below !=''){
-                alert("Максимальный возраст 75 лет");
-               document.getElementById('age_below').value = 75;
-               var age_below = document.getElementById('age_above').value;
-                document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + price;
-            } else {
-             document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + price;
-             }
+
+             function typeoftargeting() {
+                var elem_text = document.getElementById("input").value;
+                var num_text = document.getElementById("num").value;
+                var format = document.getElementById('DifFormat').value;
+                var sex = document.getElementById('sex').value;
+                var age_above = document.getElementById('age_above').value;
+                var age_below = document.getElementById('age_below').value;
+                var type = document.getElementById('targeting').value;
+                var ads1 = document.getElementById('typeofads1').value;
+                var ads2 = document.getElementById('typeofads2').value;
+                var ads3 = document.getElementById('typeofads3').value;
+                var ads4 = document.getElementById('typeofads4').value;
+                var ads5 = document.getElementById('typeofads5').value;
+                var ads6 = document.getElementById('typeofads6').value;
+                var name = document.getElementById('nametargeting').value;
+                var geo =  $('#multipleregs').val().join("+");
+                var length = document.getElementById('length').value;
+
+                var arr1 = ["MOBVIDEOSQ", "MOBVIDEO", "MOBVIDEOVER", "MULTIFOR", "90х75", "CAROUSEL", "240х400ah",
+                    "240х400ag", "MOBTIER3", "MOBTIER2", "MOBTIER1"];
+                var arr2 = ["PREROLL"];
+                var arr3 = ["PAN","FSCROSS", "NATMOBVIDEO", "NATMOBBANN", "VIBER", "300x250m", "MULTIVID", "STRING",
+                    "240х400vs", "240х400vm", "MAINMOB", "FSVIDEO", "1080х607s", "300x300a", "YOUNG", "300x300v",
+                    "PRIORITY", "VIDEODEAL", "REWA", "OKVIDEOP", "OKVK", "AUDIO", "INCMOBILE"];
+                var arr4 = ["NRPREMI","VQTAD","VIQEO","NRBUMPER","VIQEOBUM","VQTBUM","NRSTAND"];
+                var arr5 = ["MYWIDGET"];
+                var arr6 = ["APPADS"];
+
+                var answer = elem_text + "|" +  num_text;
+
+                if (arr1.includes(format)) {
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+ ads1 +"|" + name + "|" + geo + "|" + length + "|";
+                } else if(arr2.includes(format)){
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+ ads2 +"|" + name + "|" + geo + "|" + length + "|";
+                }else if(arr3.includes(format)){
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+ ads3 +"|" + name + "|" + geo + "|" + length + "|";
+                }else if(arr4.includes(format)){
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+ ads4 +"|" + name + "|" + geo + "|" + length + "|";
+                }else if(arr5.includes(format)){
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+ ads5 +"|" + name + "|" + geo + "|" + length + "|";
+                }else if(arr6.includes(format)){
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+ ads6 +"|" + name + "|" + geo + "|" + length + "|";
+                }else{
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+""+"|" + name + "|" + geo + "|" + length + "|";
+                }
+
             }
 
+            function geog() {
+                var elem_text = document.getElementById("input").value;
+                var num_text = document.getElementById("num").value;
+                var format = document.getElementById('DifFormat').value;
+                var sex = document.getElementById('sex').value;
+                var age_above = document.getElementById('age_above').value;
+                var age_below = document.getElementById('age_below').value;
+                var type = document.getElementById('targeting').value;
+                var ads1 = document.getElementById('typeofads1').value;
+                var ads2 = document.getElementById('typeofads2').value;
+                var ads3 = document.getElementById('typeofads3').value;
+                var ads4 = document.getElementById('typeofads4').value;
+                var ads5 = document.getElementById('typeofads5').value;
+                var ads6 = document.getElementById('typeofads6').value;
+                var name = document.getElementById('nametargeting').value;
+                var geo =  $('#multipleregs').val().join("+");
+                var length = document.getElementById('length').value;
 
-        function add_format() {
-         var format = document.getElementById('format').value;
-         var length = document.getElementById('length').value;
-        var creative = document.getElementById('creative').value;
-        var kpi = document.getElementById('kpi').value;
-         if (format == 'Carousel' || format == 'Single Image'){
-             length = 'x';
-             document.getElementById('length').readOnly = true;
-         }else {
-             document.getElementById('length').readOnly = false;
-         }
-               if(!document.getElementById("ads_result").value.includes("|")){
-    document.getElementById("ads_result").value = format;
-    }
-    else{
-    //elem_text.replace(document.getElementById("result").value.substring(0, str.indexOf("_")),document.getElementById("input").value);
-    document.getElementById("ads_result").value = format+"|"+creative+"|"+length +"|"+kpi;
-}
-        }
+            if ($('#multipleregs').val() != "RF" && $('#multipleregs').val() != "" && $('#multipleregs').val() != "SUPERGEO"){
+                var input = $('#multipleregs input[value="RF"]');
+                var option = $('#multipleregs option[value="RF"]');
+                input.prop('disabled', true);
+                option.prop('disabled', true);
 
+                var input1 = $('#multipleregs input[value="SUPERGEO"]');
+                var option1 = $('#multipleregs option[value="SUPERGEO"]');
+                input1.prop('disabled', true);
+                option1.prop('disabled', true);
 
-        function add_length() {
-        var format = document.getElementById('format').value;
-        var creative = document.getElementById('creative').value;
-        var length = document.getElementById('length').value;
-        var kpi = document.getElementById('kpi').value;
-        if (length == ""){
-            document.getElementById("сompany_result").value = format+"|"+creative+"|"+"" +"|"+kpi;
-        } else{
-                       document.getElementById("сompany_result").value = format+"|"+creative+"|"+length +"s" +"|"+kpi;
+            } else if ($('#multipleregs').val() == "") {
+             for (var i = 1; i < 100; i++) {
+                 var j = i.toString();
+                 if (i>=1 && i<10){
+                     $('#multipleregs input[value=0'+j+']').prop('disabled', false);
+                     $('#multipleregs option[value=0'+j+']').prop('disabled', false);
+                 }else{
+                     $('#multipleregs input[value='+j+']').prop('disabled', false);
+                     $('#multipleregs option[value='+j+']').prop('disabled', false);
+                 var input = $('#multipleregs input[value="RF"]');
+                 $('#multipleregs input[value="RF"]').prop('disabled', false);
+                 $('#multipleregs option[value="RF"]').prop('disabled', false);
+                 input.parent('label').parent('a').parent('li').removeAttr('disabled');
+
+                 input = $('#multipleregs input[value="SUPERGEO"]');
+                 $('#multipleregs input[value="SUPERGEO"]').prop('disabled', false);
+                 $('#multipleregs option[value="SUPERGEO"]').prop('disabled', false);
+                 input.parent('label').parent('a').parent('li').removeAttr('disabled');
+                 }
+                }
+            } else if ($('#multipleregs').val() == "RF"){
+                for (i = 1; i < 100; i++){
+                    var j = i.toString();
+                    if (i<10){
+                    var input = $('#multipleregs input[value=0'+j+']');
+                    var option = $('#multipleregs option[value=0'+j+']');
+                    input.prop('disabled', true);
+                   option.prop('disabled', true);
+                    } else{
+                    var input = $('#multipleregs input[value='+j+']');
+                    var option = $('#multipleregs option[value='+j+']');
+                    input.prop('disabled', true);
+                    option.prop('disabled', true);
+                    $('#multipleregs input[value="SUPERGEO"]').prop('disabled', true);
+                    $('#multipleregs option[value="SUPERGEO"]').prop('disabled', true);;
                    }
-        }
+                }
+            } else if ($('#multipleregs').val() == "SUPERGEO") {
+                for (i = 1; i < 100; i++){
+                    var j = i.toString();
+                    if (i<10){
+                    var input = $('#multipleregs input[value=0'+j+']');
+                    var option = $('#multipleregs option[value=0'+j+']');
+                    input.prop('disabled', true);
+                   option.prop('disabled', true);
+                    } else{
+                    var input = $('#multipleregs input[value='+j+']');
+                    var option = $('#multipleregs option[value='+j+']');
+                    input.prop('disabled', true);
+                   option.prop('disabled', true);
+                   $('#multipleregs input[value="RF"]').prop('disabled', true);
+                   $('#multipleregs option[value="RF"]').prop('disabled', true);
+                    }
+                }
+            }
 
+            if ($('#multipleregs').val().length > 5){geo = "REGS";}
+
+                var arr1 = ["MOBVIDEOSQ", "MOBVIDEO", "MOBVIDEOVER", "MULTIFOR", "90х75", "CAROUSEL", "240х400ah",
+                    "240х400ag", "MOBTIER3", "MOBTIER2", "MOBTIER1"];
+                var arr2 = ["PREROLL"];
+                var arr3 = ["PAN","FSCROSS", "NATMOBVIDEO", "NATMOBBANN", "VIBER", "300x250m", "MULTIVID", "STRING",
+                    "240х400vs", "240х400vm", "MAINMOB", "FSVIDEO", "1080х607s", "300x300a", "YOUNG", "300x300v",
+                    "PRIORITY", "VIDEODEAL", "REWA", "OKVIDEOP", "OKVK", "AUDIO", "INCMOBILE"];
+                var arr4 = ["NRPREMI","VQTAD","VIQEO","NRBUMPER","VIQEOBUM","VQTBUM","NRSTAND"];
+                var arr5 = ["MYWIDGET"];
+                var arr6 = ["APPADS"];
+
+                var answer = elem_text + "|" +  num_text;
+
+                if (arr1.includes(format)) {
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+ ads1 +"|" + name + "|" + geo + "|" + length + "|";
+                } else if(arr2.includes(format)){
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+ ads2 +"|" + name + "|" + geo + "|" + length + "|";
+                }else if(arr3.includes(format)){
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+ ads3 +"|" + name + "|" + geo + "|" + length + "|";
+                }else if(arr4.includes(format)){
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+ ads4 +"|" + name + "|" + geo + "|" + length + "|";
+                }else if(arr5.includes(format)){
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+ ads5 +"|" + name + "|" + geo + "|" + length + "|";
+                }else if(arr6.includes(format)){
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+ ads6 +"|" + name + "|" + geo + "|" + length + "|";
+                }else{
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+""+"|" + name + "|" + geo + "|" + length + "|";
+                }
+
+
+
+            }
+
+
+            function add_length() {
+                var elem_text = document.getElementById("input").value;
+                var num_text = document.getElementById("num").value;
+                var format = document.getElementById('DifFormat').value;
+                var sex = document.getElementById('sex').value;
+                var age_above = document.getElementById('age_above').value;
+                var age_below = document.getElementById('age_below').value;
+                var type = document.getElementById('targeting').value;
+                var ads1 = document.getElementById('typeofads1').value;
+                var ads2 = document.getElementById('typeofads2').value;
+                var ads3 = document.getElementById('typeofads3').value;
+                var ads4 = document.getElementById('typeofads4').value;
+                var ads5 = document.getElementById('typeofads5').value;
+                var ads6 = document.getElementById('typeofads6').value;
+                var name = document.getElementById('nametargeting').value;
+                var geo =  $('#multipleregs').val().join("+");
+                var length = document.getElementById('length').value;
+
+                var arr1 = ["MOBVIDEOSQ", "MOBVIDEO", "MOBVIDEOVER", "MULTIFOR", "90х75", "CAROUSEL", "240х400ah",
+                    "240х400ag", "MOBTIER3", "MOBTIER2", "MOBTIER1"];
+                var arr2 = ["PREROLL"];
+                var arr3 = ["PAN","FSCROSS", "NATMOBVIDEO", "NATMOBBANN", "VIBER", "300x250m", "MULTIVID", "STRING",
+                    "240х400vs", "240х400vm", "MAINMOB", "FSVIDEO", "1080х607s", "300x300a", "YOUNG", "300x300v",
+                    "PRIORITY", "VIDEODEAL", "REWA", "OKVIDEOP", "OKVK", "AUDIO", "INCMOBILE"];
+                var arr4 = ["NRPREMI","VQTAD","VIQEO","NRBUMPER","VIQEOBUM","VQTBUM","NRSTAND"];
+                var arr5 = ["MYWIDGET"];
+                var arr6 = ["APPADS"];
+
+                var answer = elem_text + "|" +  num_text;
+
+                if (arr1.includes(format)) {
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+ ads1 +"|" + name + "|" + geo + "|" + length + "|";
+                } else if(arr2.includes(format)){
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+ ads2 +"|" + name + "|" + geo + "|" + length + "|";
+                }else if(arr3.includes(format)){
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+ ads3 +"|" + name + "|" + geo + "|" + length + "|";
+                }else if(arr4.includes(format)){
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+ ads4 +"|" + name + "|" + geo + "|" + length + "|";
+                }else if(arr5.includes(format)){
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+ ads5 +"|" + name + "|" + geo + "|" + length + "|";
+                }else if(arr6.includes(format)){
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+ ads6 +"|" + name + "|" + geo + "|" + length + "|";
+                }else{
+                    document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
+                        + age_above+ "-" + age_below + "|"+ type +"|"+""+"|" + name + "|" + geo + "|" + length + "|";
+                }
+
+            }
 
 </script>
-<script>
 
-        function copytext() {
-var elem_text = document.getElementById("input").value;
-if(!document.getElementById("сompany_result").value.includes("|")){
-    document.getElementById("сompany_result").value = elem_text;
-    }
-    else{
-    //elem_text.replace(document.getElementById("result").value.substring(0, str.indexOf("_")),document.getElementById("input").value);
-    document.getElementById("сompany_result").value = document.getElementById("input").value+document.getElementById("сompany_result").value.substr(document.getElementById("сompany_result").value.indexOf('|')+length);
-}
-        }
-
-function addzeros() {
-    var num_text = Number(document.getElementById("num").value);
-    if (num_text < 10) {
-        var final_var = "00" + num_text.toString()
-    } else if (num_text < 100) {
-        var final_var = "0" + num_text.toString()
-    } else {
-        var final_var = num_text.toString()
-    }
-    var elem_text = document.getElementById("input").value;
-
-    if (document.getElementById("num").value == ""){
-    document.getElementById("сompany_result").value = elem_text + "|" +  "";
-    } else if (!document.getElementById("num").value == ""){
-    document.getElementById("сompany_result").value = elem_text + "|" +  final_var;
-
-    var type = document.getElementById('AUCorRF').value;
-    var target = document.getElementById('companytarget').value;
-    var another_target = document.getElementById('anothertarget').value;
-    var answer = elem_text + "|" +  final_var;
-
-    if(!type=="0" && target=="0") {
-     document.getElementById("сompany_result").value = answer + "|" + type;
-    } else if(!type=="0" && !target=="0"){
-     document.getElementById("сompany_result").value = answer + "|" + type + "|" + target;
-    }
-    else if(!type=="0" && !another_target=="0"){
-     document.getElementById("сompany_result").value = answer + "|" + type + "|" + another_target;
-    } else if (type=="0" && target=="0") {
-             document.getElementById("сompany_result").value = answer;
-    } else if (type=="0" && another_target=="0") {
-             document.getElementById("сompany_result").value = answer;
-    }
-}
-
-}
-    </script>
      <p class="texts">Итог</p>
      <div class="input-bar fields">
         <div class="input-bar-item">
@@ -850,22 +813,20 @@ function addzeros() {
         </div>
       </div>
 
-
-
      <p class="x"></p>
 
-
     <script>
+
         function copy2clipboard_inc_result() {
-  /* Get the text field */
-  var copyText = document.getElementById("сompany_result");
+            /* Get the text field */
+            var copyText = document.getElementById("сompany_result");
 
-  /* Select the text field */
-  copyText.select();
+            /* Select the text field */
+            copyText.select();
 
-  /* Copy the text inside the text field */
-  document.execCommand("copy");
-}
+            /* Copy the text inside the text field */
+            document.execCommand("copy");
+        }
 
         </script>
 </form>
