@@ -239,14 +239,7 @@
   <option value="ANINST">Audience Network in-stream videos</option>
 </select>
 </label>
-     <p class="texts">Ставка</p>
-    <label class="field">
-        <select id="rate" name="data" class="form-control" onchange="rates()">
-            <option value="0">Выберете ставку</option>
-            <option value="MAN">Ручная</option>
-            <option value="AUT">Автоматическая</option>
-        </select>
-    </label>
+
      <p class="texts">Оплата</p>
     <label class="field">
         <select id="price" name="data" class="form-control" onchange="prices()">
@@ -367,7 +360,6 @@
 
             function namesaudience() {
             var price = document.getElementById('price').value;
-            var rate = document.getElementById('rate').value;
             var values = $('#multiplechoise').val().join("_");
             var device = document.getElementById('device').value;
             var age_above = document.getElementById('age_above').value;
@@ -381,16 +373,15 @@
             }
             var answer = audience;
             if (name_audience == "") {
-                document.getElementById("result").value = answer + "|" + geography + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + price;
+                document.getElementById("result").value = answer + "|" + geography + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + price;
             }
             else {
-                document.getElementById("result").value = answer + "|" + name_audience + "|" + geography + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + price;
+                document.getElementById("result").value = answer + "|" + name_audience + "|" + geography + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + price;
             }
         }
 
             function copygeorgaphy() {
             var price = document.getElementById('price').value;
-            var rate = document.getElementById('rate').value;
             var values = $('#multiplechoise').val().join("_");
             var device = document.getElementById('device').value;
             var age_above = document.getElementById('age_above').value;
@@ -438,15 +429,14 @@
             }
             if ($('#multipleregions').val().length > 5){
                 answer = audience + "|" + name_audience + "|" + "REGS";
-            document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" +rate + "|" + price;
+            document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + price;
             } else {
-            document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" +rate + "|" + price;
+            document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + price;
             }
             }
 
             function copysex() {
             var price = document.getElementById('price').value;
-            var rate = document.getElementById('rate').value;
             var values = $('#multiplechoise').val().join("_");
             var device = document.getElementById('device').value;
             var age_above = document.getElementById('age_above').value;
@@ -463,13 +453,12 @@
                     document.getElementById("result").value = answer + "|" + "" + "|";
                 } else {
                     var answer = audience + "|" + name_audience + "|" + geography;
-                    document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + price;
+                    document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + price;
                 }
             }
 
             function copyage() {
             var price = document.getElementById('price').value;
-            var rate = document.getElementById('rate').value;
             var values = $('#multiplechoise').val().join("_");
             var device = document.getElementById('device').value;
             var age_above = document.getElementById('age_above').value;
@@ -486,21 +475,20 @@
                 alert("Минимальный возраст 14 лет");
                document.getElementById('age_above').value = 14;
                var age_above = document.getElementById('age_above').value;
-                document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + price;
+                document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + price;
             } else if((Number(age_below)>75) && age_below !=''){
                 alert("Максимальный возраст 75 лет");
                document.getElementById('age_below').value = 75;
                var age_below = document.getElementById('age_above').value;
-                document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + price;
+                document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + price;
             } else {
-             document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + price;
+             document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + price;
              }
             }
 
 
             function copydevice() {
             var price = document.getElementById('price').value;
-            var rate = document.getElementById('rate').value;
             var values = $('#multiplechoise').val().join("_");
             var device = document.getElementById('device').value;
             var age_above = document.getElementById('age_above').value;
@@ -514,9 +502,9 @@
             }
             var answer = audience + "|" + name_audience + "|" + geography;
             if (device=="0"){
-                document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + "" + values + "|" + rate + "|" + price;
+                document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + "" + values + "|" + "|" + price;
             } else {
-                document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + price;
+                document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + price;
             }
             if ($('#multiplechoise').val().includes("IGFEED") || $('#multiplechoise').val().includes("IGSTOR")){
                 if(device=="DESK" || device=="BOTH"){
@@ -527,7 +515,6 @@
 
         function placement() {
             var price = document.getElementById('price').value;
-            var rate = document.getElementById('rate').value;
             var device = document.getElementById('device').value;
             var age_above = document.getElementById('age_above').value;
             var age_below = document.getElementById('age_below').value;
@@ -570,35 +557,13 @@
                  alert("Проверьте поле девайсов!")
                 }
                    }
-            document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" +rate + "|" + price;
+            document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + price;
 
         }
 
-        function rates() {
-            var price = document.getElementById('price').value;
-            var rate = document.getElementById('rate').value;
-            var values = $('#multiplechoise').val().join("_");
-            var device = document.getElementById('device').value;
-            var age_above = document.getElementById('age_above').value;
-            var age_below = document.getElementById('age_below').value;
-            var name_audience = document.getElementById('nameaudience').value;
-            var sex = document.getElementById('sex').value;
-             var geography = $('#multipleregions').val().join("+");
-            if ($('#multipleregions').val().length > 5){
-                geography = "REGS";
-            }
-            var answer = document.getElementById('audience').value + "|" + name_audience + "|" + geography;
-            if (rate == "0") {
-                document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + "" + "|" + price;
-            }
-            else {
-                document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + price;
-            }
-        }
 
         function prices() {
             var price = document.getElementById('price').value;
-            var rate = document.getElementById('rate').value;
             var values = $('#multiplechoise').val().join("_");
             var device = document.getElementById('device').value;
             var age_above = document.getElementById('age_above').value;
@@ -611,17 +576,17 @@
             }
             var answer = document.getElementById('audience').value + "|" + name_audience + "|" + geography;
             if (price == "0") {
-                document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + "";
+                document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + "";
             }
             else {
-                document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + rate + "|" + price;
+                document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + price;
             }
         }
 
 
         function add_format() {
          var format = document.getElementById('format').value;
-         var length = document.getElementById('length').value;
+         var length = document.getElementById('length').value + "s";
         var creative = document.getElementById('creative').value;
         var kpi = document.getElementById('kpi').value;
          if (format == 'Carousel' || format == 'Single Image'){
@@ -642,7 +607,7 @@
         function add_creative() {
         var format = document.getElementById('format').value;
         var creative = document.getElementById('creative').value;
-        var length = document.getElementById('length').value;
+        var length = document.getElementById('length').value +"s";
         var kpi = document.getElementById('kpi').value;
         if (format == 'Carousel' || format == 'Single Image'){
              length = 'x';

@@ -1,7 +1,6 @@
 {% extends 'BafosApp/base.html' %}
 {% block BafosApp_title %}ADV APPS{% endblock %}
 {% block BafosApp_content %}
-
 <form action="" method="POST" name="idform">
     <p class="texts">Имя кампании</p>
 <p class="fields"><label>
@@ -359,6 +358,11 @@
                 var geo =  $('#multipleregs').val().join("+");
                 var length = document.getElementById('length').value;
 
+
+                if (document.getElementById('length').readOnly = false){
+                    length = document.getElementById('length').value + "s";
+                }
+
                 var answer = elem_text + "|" +  final_var;
                 if ($('#multipleregs').val().length > 5){geo = "REGS";}
                 if (arr1.includes(format)) {
@@ -411,6 +415,9 @@
 
 
                 document.getElementById('length').readOnly = !names.includes(format);
+                if (document.getElementById('length').readOnly = false){
+                    length = document.getElementById('length').value + "s";
+                }
 
                 var arr1 = ["MOBVIDEOSQ", "MOBVIDEO", "MOBVIDEOVER", "MULTIFOR", "90х75", "CAROUSEL", "240х400ah",
                     "240х400ag", "MOBTIER3", "MOBTIER2", "MOBTIER1"];
@@ -467,6 +474,10 @@
                 var geo =  $('#multipleregs').val().join("+");
                 var length = document.getElementById('length').value;
 
+                if (document.getElementById('length').readOnly = false){
+                    length = document.getElementById('length').value + "s";
+                }
+
                 var arr1 = ["MOBVIDEOSQ", "MOBVIDEO", "MOBVIDEOVER", "MULTIFOR", "90х75", "CAROUSEL", "240х400ah",
                     "240х400ag", "MOBTIER3", "MOBTIER2", "MOBTIER1"];
                 var arr2 = ["PREROLL"];
@@ -521,6 +532,10 @@
                 var name = document.getElementById('nametargeting').value;
                 var geo =  $('#multipleregs').val().join("+");
                 var length = document.getElementById('length').value;
+
+                if (document.getElementById('length').readOnly = false){
+                    length = document.getElementById('length').value + "s";
+                }
 
                 if (Number(age_above)<12 && age_above!=''){
                     alert("Минимальный возраст 12 лет");
@@ -587,6 +602,10 @@
                 var geo =  $('#multipleregs').val().join("+");
                 var length = document.getElementById('length').value;
 
+                 if (document.getElementById('length').readOnly = false){
+                    length = document.getElementById('length').value + "s";
+                }
+
                 var arr1 = ["MOBVIDEOSQ", "MOBVIDEO", "MOBVIDEOVER", "MULTIFOR", "90х75", "CAROUSEL", "240х400ah",
                     "240х400ag", "MOBTIER3", "MOBTIER2", "MOBTIER1"];
                 var arr2 = ["PREROLL"];
@@ -641,6 +660,10 @@
                 var name = document.getElementById('nametargeting').value;
                 var geo =  $('#multipleregs').val().join("+");
                 var length = document.getElementById('length').value;
+
+                if (document.getElementById('length').readOnly = false){
+                    length = document.getElementById('length').value + "s";
+                }
 
             if ($('#multipleregs').val() != "RF" && $('#multipleregs').val() != "" && $('#multipleregs').val() != "SUPERGEO"){
                 var input = $('#multipleregs input[value="RF"]');
@@ -767,7 +790,7 @@
                 var ads6 = document.getElementById('typeofads6').value;
                 var name = document.getElementById('nametargeting').value;
                 var geo =  $('#multipleregs').val().join("+");
-                var length = document.getElementById('length').value;
+                var length = document.getElementById('length').value +"s";
 
                 var arr1 = ["MOBVIDEOSQ", "MOBVIDEO", "MOBVIDEOVER", "MULTIFOR", "90х75", "CAROUSEL", "240х400ah",
                     "240х400ag", "MOBTIER3", "MOBTIER2", "MOBTIER1"];
