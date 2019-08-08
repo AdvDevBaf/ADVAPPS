@@ -486,7 +486,6 @@
              }
             }
 
-
             function copydevice() {
             var price = document.getElementById('price').value;
             var values = $('#multiplechoise').val().join("_");
@@ -561,7 +560,6 @@
 
         }
 
-
         function prices() {
             var price = document.getElementById('price').value;
             var values = $('#multiplechoise').val().join("_");
@@ -582,7 +580,6 @@
                 document.getElementById("result").value = answer + "|" + sex + "|" + age_above+ "-" + age_below + "|" + device + "|" + values + "|" + price;
             }
         }
-
 
         function add_format() {
          var format = document.getElementById('format').value;
@@ -714,6 +711,7 @@ function addzeros() {
 }
 
 }
+
     </script>
      <p class="texts">Имя кампании:</p>
      <div class="input-bar fields">
@@ -809,6 +807,7 @@ function addzeros() {
   /* Copy the text inside the text field */
   document.execCommand("copy");
 }
+
         </script>
     <style>
            td{
@@ -816,6 +815,7 @@ function addzeros() {
    }
     </style>
 <script>
+
     function createTable() {
             var table = document.getElementById('table1');
             var tr31 = document.createElement('tr'); //создаем еще строку
@@ -833,6 +833,7 @@ function addzeros() {
     }
     </script>
 <script>
+
     function CopyTable() {
         var el = document.getElementById('table1');
    var body = document.body, range, sel;
@@ -855,6 +856,7 @@ function addzeros() {
     document.execCommand("Copy");
     }
  </script>
+
 </form>
 <form action="{% url 'blog_index' %}">
         <p><button type="submit" class="btn btn-info alt_but">Назад на основную страницу</button>
