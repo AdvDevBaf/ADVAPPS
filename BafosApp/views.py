@@ -640,5 +640,3 @@ def organizations(request):
             message = 'Обнаруженые пустые поля/Неверный тип переменной'
 
     return render_to_response('BafosApp/organizations.html')
-
-

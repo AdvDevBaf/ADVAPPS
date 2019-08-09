@@ -55,7 +55,8 @@ em {
 
 .input-bar {
     display: table;
-    width: 100%;
+    width: 50%;
+    margin: auto 34%;
 }
 
 .input-bar-item {
@@ -110,6 +111,7 @@ em {
     margin: auto 34%;
 
 }
+
 
 input {
     width: 300px;
