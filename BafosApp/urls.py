@@ -21,16 +21,15 @@ urlpatterns = [
                url(r'^youtube/$', views.youtube,
                    name='blog_youtube'),
 
-                # organizations
+               # organizations
                url(r'^organizations/$', views.organizations,
                    name='blog_organizations'),
 
-                # ads_names
-                url(r'^ads_names/$', views.ads_names,
-                    name='blog_ads_names'),
+               # ads_names
+               url(r'^ads_names/$', views.ads_names,
+                   name='blog_ads_names'),
 
-                # mail_naming
-                url(r'^mail_naming/$', views.mail_naming,
-                    name='blog_mail_naming'),
-
+               # mail_naming
+               url(r'^mail_naming/$', views.mail_naming,
+                   name='blog_mail_naming'),
 ]

@@ -9,7 +9,6 @@ em {
     padding: 15%;
 }
 
-
 .welcome {
     background: #fff; /* запасной цвет для старых браузеров */
     background: rgba(255, 255, 255, 0.5);
@@ -44,14 +43,12 @@ em {
   box-shadow: 0 3px white inset;
 }
 
-
 .alt_but {
     margin: auto 33%;
     padding: 0.5%;
     min-width: 20%;
     max-width: 100%;
 }
-
 
 .input-bar {
     display: table;
@@ -82,7 +79,7 @@ em {
 }
 
 .texts {
-        margin: auto 35%;
+    margin: auto 35%;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
@@ -91,17 +88,18 @@ em {
   flex-direction: row;
   width: 100%;
 }
+
 #cont a {
   margin: .5em;
 }
+
 #cont a:first-of-type {
   margin-left: 1em;
 }
+
 #cont a:last-of-type {
   margin-right: 1em;
 }
-
-
 
 .tables {
     margin: auto 34%;
@@ -109,9 +107,7 @@ em {
 
 .fields {
     margin: auto 34%;
-
 }
-
 
 input {
     width: 300px;
@@ -149,13 +145,14 @@ input {
     padding-top: 2px;
     padding-right: 20%;
 }
+
 .post{
     background-color: #DBE9EE;
     margin: auto 100%;
     opacity: 0.65;
     border-radius: 5%;
-
 }
+
 .category {
     color:#466995;
     "color: rgba(165, 50, 255, 0.5);"
@@ -164,7 +161,6 @@ input {
 .datepublish {
        color:#466995;
       "color: rgba(165, 50, 255, 0.5);"
-
 }
 
 .tease {

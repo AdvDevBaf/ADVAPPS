@@ -11,6 +11,7 @@
 <p class="fields"><label>
     <input type="text" class="form-control" name="сompany" style="width: 480px;" id="num" onkeyup="addzeros()">
 </label>
+<img src="../../static/images/Calve_537x240.jpg" alt="Smiley face" height="240" width="537">
 
   <p class="texts">Формат</p>
         <label class="field">
@@ -826,7 +827,6 @@
                     document.getElementById("сompany_result").value = answer + "|" + format + "|" + sex + "|"
                         + age_above+ "-" + age_below + "|"+ type +"|"+""+"|" + name + "|" + geo + "|" + length;
                 }
-
             }
 
 </script>
@@ -845,7 +845,6 @@
         </div>
       </div>
 
-
     <script>
 
         function copy2clipboard_inc_result() {
@@ -860,6 +859,7 @@
         }
 
         </script>
+
 </form>
 <form action="{% url 'blog_index' %}">
         <p><button type="submit" class="btn btn-info alt_but">Назад на основную страницу</button>
