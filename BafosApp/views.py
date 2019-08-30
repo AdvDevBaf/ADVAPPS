@@ -541,7 +541,7 @@ def organizations(request):
                             name_of_organization = name_of_organization + regions_name_of_organization
 
                     else:
-                        cities_address_list, cities_coordinate, cities_name_of_organization = get_address(request,key_value+',' + business,result=1000)
+                        cities_address_list, cities_coordinate, cities_name_of_organization = get_address(request, key_value +',' + business, result=1000)
                         if cities_address_list not in address_list:
                             address_list = address_list + cities_address_list
                         if cities_coordinate not in coordinate:
@@ -550,7 +550,7 @@ def organizations(request):
                             name_of_organization = name_of_organization + cities_name_of_organization
 
                         print(regions[key_value])
-                        regions_address_list, regions_coordinate, regions_name_of_organization = get_address(request,regions[key_value] + ',' + business, result=1000)
+                        regions_address_list, regions_coordinate, regions_name_of_organization = get_address(request, regions[key_value] + ',' + business, result=1000)
                         if regions_address_list not in address_list:
                             address_list = address_list + regions_address_list
                         if regions_coordinate not in coordinate:

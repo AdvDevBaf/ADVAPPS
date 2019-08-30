@@ -19,4 +19,6 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('BafosApp.urls')),
+    url(r'notifications/', include('django_nyt.urls')),
+    url(r'^wiki/', include('wiki.urls'))
 ]
