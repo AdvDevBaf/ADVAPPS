@@ -1,2 +1,2 @@
-# BafosBlog
-I decide to create my first site. I dont know why, just for fun, i suppose 
+# ADVAPPS
+Site for different stuff. I mean create labels for ads, downloads data for research, etc

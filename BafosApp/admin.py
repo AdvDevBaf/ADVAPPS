@@ -4,6 +4,9 @@ from datetime import datetime
 # Register your models here.
 
 
+
+
+
 class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {
         'slug': ('name',),
@@ -11,15 +14,23 @@ class CategoryAdmin(admin.ModelAdmin):
 
     list_display = ('name', 'slug')
 
+
 def make_published(modeladmin,request,queryset):
-    queryset.update(status='p',draft=False)
+    queryset.update(status='p', draft=False)
     queryset.update(published_date=datetime.now())
+
+
 make_published.short_description='Make selected posts as published'
 
+
 def make_draft(modeladmin,request,queryset):
-    queryset.update(status='d',draft=True)
+    queryset.update(status='d', draft=True)
     queryset.update(published_date=datetime.now())
+
+
 make_draft.short_description='Make selected posts as draft'
+
+
 
 class BlogEntryAdmin(admin.ModelAdmin):
     prepopulated_fields = {

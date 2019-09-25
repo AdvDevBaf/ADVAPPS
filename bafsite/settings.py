@@ -29,9 +29,7 @@ SECRET_KEY = '-)57*mm2t0ke&gpe2_+d$kn_2)6jyayc1dc-b7u#jw960sihd6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['www.advapps.ru','194.67.204.143', 'advapps.ru', '127.0.0.1']
-
-
+ALLOWED_HOSTS = ['www.advapps.ru', '194.67.204.143', 'advapps.ru', '127.0.0.1']
 
 # Application definition
 
@@ -55,6 +53,7 @@ INSTALLED_APPS = [
     'wiki.plugins.notifications.apps.NotificationsConfig',
     'wiki.plugins.images.apps.ImagesConfig',
     'wiki.plugins.macros.apps.MacrosConfig',
+    'dbmail',
 ]
 
 MIDDLEWARE = [
@@ -93,7 +92,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'bafsite.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
@@ -103,7 +101,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -123,11 +120,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'RU-ru'
 
 TIME_ZONE = 'Europe/Moscow'
 
