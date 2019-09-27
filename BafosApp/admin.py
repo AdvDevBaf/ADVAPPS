@@ -1,10 +1,9 @@
 from django.contrib import admin
-from .models import BlogPost,Category
+from .models import BlogPost,Category, MTemplate
 from datetime import datetime
+from dbmail import send_db_mail
+
 # Register your models here.
-
-
-
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -31,7 +30,6 @@ def make_draft(modeladmin,request,queryset):
 make_draft.short_description='Make selected posts as draft'
 
 
-
 class BlogEntryAdmin(admin.ModelAdmin):
     prepopulated_fields = {
         'slug': ('title',),
@@ -42,7 +40,7 @@ class BlogEntryAdmin(admin.ModelAdmin):
     list_filter = ('created_date', 'published_date', 'draft')
     date_hierarchy = 'created_date'
     search_fields = ('title', 'tease', 'body')
-    actions=[make_published, make_draft]
+    actions = [make_published, make_draft]
 
     exclude = ('created_date',)
     fieldsets = (
@@ -51,5 +49,19 @@ class BlogEntryAdmin(admin.ModelAdmin):
     )
 
 
+def make_sended(modeladmin, request, queryset):
+    send_db_mail('welcome', 'specialforsitess@gmail.com')
+    queryset.update(status='s', draft=True, use_celery=True)
+
+
+make_sended.short_description='Make selected posts as sended'
+
+
+class SendMailAdmin(admin.ModelAdmin):
+    list_display = ['draft', 'status']
+    actions = [make_sended]
+
+
+admin.site.register(MTemplate, SendMailAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(BlogPost, BlogEntryAdmin)

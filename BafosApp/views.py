@@ -13,6 +13,7 @@ from .getaddress import example
 
 # Create your views here.
 
+
 def index(request):
     entries = BlogPost.objects.published()
     return render_to_response('BafosApp/index.html', {'entries': entries})
@@ -286,14 +287,12 @@ def youtube(request):
         else:
             print('')
 
-
-    text='tratata'
-    data='kek'
+    text = 'tratata'
+    data = 'kek'
     context = {
         'text': "CCHORT",
         'data': "DIRT",
     }
-
 
     if text and data:
         print('Text: {}\nData: {}'.format("CCHORT", "DIRT"))
@@ -308,6 +307,7 @@ def ads_names(request):
 def mail_naming(request):
 
     return render_to_response('BafosApp/mail_naming.html')
+
 
 regions = {'Москва': 'Московская область', 'Санкт-Петербург': 'Ленинградская область',
            'Нижний Новгород': 'Нижегородская область', 'Ростов-на-Дону':'Ростовская область',
@@ -338,6 +338,7 @@ regions = {'Москва': 'Московская область', 'Санкт-П
            'Самара': 'Самарская область', 'Саратов': 'Саратовская область', 'Пермь': 'Пермский край',
            'Махачкала': 'Республика Дагестан', 'Магас': 'Республика Ингушетия',
            'Нальчик': 'Кабардино-Балкарская Республика'}
+
 
 def get_full_adress(organization, result):
     offset = 0
@@ -370,6 +371,7 @@ def get_full_adress(organization, result):
 
     print(len(address))
     return address, coordinates_list, organization_list
+
 
 def get_address(request, organization, result):
     offset = 0
@@ -408,7 +410,8 @@ def get_address(request, organization, result):
 
     return address, coordinates_list, organization_list
 
-def create_only_address_list(dicts,address_list):
+
+def create_only_address_list(dicts, address_list):
     final_result = []
     try:
         for i in range(0, len(address_list)):
@@ -417,6 +420,7 @@ def create_only_address_list(dicts,address_list):
     except:
         pass
     return final_result
+
 
 def create_final_list(dicts, address_list):
     final_result = []
@@ -459,6 +463,7 @@ def list_to_dict(name_of_organization, address_list, radius_list, latitude, long
     new_dicts = [dict(zip(keys, values)) for values in zipped]
     return new_dicts
 
+
 def rename_objects(address_list,var):
     for i in range(0, len(address_list)):
         address_list[i] = address_list[i].replace("улица", "ул.")
@@ -471,6 +476,7 @@ def rename_objects(address_list,var):
         if not var == 1:
             address_list[i] = address_list[i][1:]
     return address_list
+
 
 def sort_coordinate(name_of_organization, address_list, coordinate, radius):
     # Break coordinate into two lists, latitude and longitude
@@ -487,6 +493,7 @@ def sort_coordinate(name_of_organization, address_list, coordinate, radius):
         latitude.append(sort_coordinate[1])
         longitude.append(sort_coordinate[0])
     return radius_list, latitude, longitude
+
 
 @csrf_exempt
 def organizations(request):
