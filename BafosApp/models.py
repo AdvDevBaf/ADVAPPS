@@ -4,8 +4,13 @@ from dbmail import send_db_mail
 from dbmail.models import MailTemplate
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from simple_history.models import HistoricalRecords
+from wiki.models import Article, ArticleRevision
+from simple_history import register
 
 # Create your models here.
+
+register(ArticleRevision)
 
 STATUS_CHOISES = (
     ('d','Draft'),
@@ -67,21 +72,17 @@ OPTION_CHOISE = (
 
 
 class MTemplate(models.Model):
+    name = models.CharField('Name', max_length=50, default='default_template')
     draft = models.BooleanField('Is send', default=True)
     status = models.CharField(max_length=1, choices=OPTION_CHOISE,
                               default='n')
 
-    @receiver(post_save, sender=MailTemplate)
-    def create_user_profile(self, instance, created, **kwargs):
-        if created:
-            Profile.objects.create(user=instance)
 
-    @receiver(post_save, sender=MailTemplate)
-    def save_user_profile(self, instance, **kwargs):
-        instance.profile.save()
+class Polls(models.Model):
+    name = models.CharField('Name', max_length=50, default='default_poll')
+    question = models.CharField(max_length=200)
+    pub_date = models.DateTimeField('date published')
+    history = HistoricalRecords()
 
 
-
-class Data(models.Model):
-    pass
 

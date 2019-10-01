@@ -1,8 +1,9 @@
 from django.contrib import admin
-from .models import BlogPost,Category, MTemplate
+from .models import BlogPost,Category, MTemplate, Polls
 from datetime import datetime
 from dbmail import send_db_mail
-
+from simple_history.admin import SimpleHistoryAdmin
+from wiki.admin import ArticleAdmin
 # Register your models here.
 
 
@@ -58,10 +59,15 @@ make_sended.short_description='Make selected posts as sended'
 
 
 class SendMailAdmin(admin.ModelAdmin):
-    list_display = ['draft', 'status']
+    list_display = ['name', 'draft', 'status']
     actions = [make_sended]
 
 
+class PollsAdmin(SimpleHistoryAdmin):
+    list_display = ['name', 'question', 'pub_date']
+
+
+admin.site.register(Polls, PollsAdmin)
 admin.site.register(MTemplate, SendMailAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(BlogPost, BlogEntryAdmin)
