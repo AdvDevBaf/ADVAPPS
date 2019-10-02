@@ -88,7 +88,7 @@ class Polls(models.Model):
 
 def check_model(sender, instance, created, **kwargs):
     user = User.objects.get(pk=1)
-    field_value_time = ArticleRevision.history.all()[0]
+    field_value_time = str(datetime.now().date().strftime("%d/%m/%y")) + " " + str(datetime.now().time().strftime("%H:%M"))
     obj = ArticleRevision.objects.all()[len(ArticleRevision.objects.all())-1]
     field_name = 'title'
     field_value_name = getattr(obj, field_name)
