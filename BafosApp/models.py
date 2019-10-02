@@ -105,6 +105,10 @@ def check_model(sender, instance, created, **kwargs):
         is_html=False,
     )
 
+    usermails =  User.objects.all()
+    for users in usermails:
+        send_db_mail("Articlewaschangedin" + str(datetime.now().date().strftime("%d%m%y")) + "" +
+                     str(datetime.now().time().strftime("%H%M")), users.email, use_celery=False)
     send_db_mail("Articlewaschangedin" + str(datetime.now().date().strftime("%d%m%y")) + "" +
                  str(datetime.now().time().strftime("%H%M")), user.email, use_celery=False)
 
