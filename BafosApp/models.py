@@ -98,7 +98,7 @@ def check_model(sender, instance, created, **kwargs):
     field_value_user = getattr(obj, field_name)
     MailTemplate.objects.create(
         name="Article was changed",
-        subject="Article changed шт",
+        subject="Article changed in " + str(datetime.now().time().strftime("%H:%M")),
         message="Article '" + str(field_value_name) + "' was changed by " + str(field_value_user) + " in " +
                 str(field_value_time) + ". Now content of the '" + str(field_value_name) + "' is " + str(field_value_content),
         slug="Article was changed in " + str(datetime.now().date().strftime("%d/%m/%y")) + " " + str(datetime.now().time().strftime("%H:%M")),
