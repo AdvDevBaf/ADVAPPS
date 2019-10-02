@@ -89,7 +89,7 @@ class Polls(models.Model):
 def check_model(sender, instance, created, **kwargs):
     user = User.objects.get(pk=1)
     field_value_time = ArticleRevision.history.all()[0]
-    obj = ArticleRevision.objects.all()[0]
+    obj = ArticleRevision.objects.all()[len(ArticleRevision.objects.all())-1]
     field_name = 'title'
     field_value_name = getattr(obj, field_name)
     field_name = 'content'
@@ -98,21 +98,20 @@ def check_model(sender, instance, created, **kwargs):
     field_value_user = getattr(obj, field_name)
     MailTemplate.objects.create(
         name="Article was changed",
-        subject="Article changed",
-        message="Article '" + str(field_value_name) + "' was changed by" + str(field_value_user) + " in " +
+        subject="Article changed шт",
+        message="Article '" + str(field_value_name) + "' was changed by " + str(field_value_user) + " in " +
                 str(field_value_time) + ". Now content of the '" + str(field_value_name) + "' is " + str(field_value_content),
         slug="Article was changed in " + str(datetime.now().date().strftime("%d/%m/%y")) + " " + str(datetime.now().time().strftime("%H:%M")),
         is_html=False,
     )
 
-    usermails =  User.objects.all()
+    usermails = User.objects.all()
     for users in usermails:
         send_db_mail("Articlewaschangedin" + str(datetime.now().date().strftime("%d%m%y")) + "" +
                      str(datetime.now().time().strftime("%H%M")), users.email, use_celery=False)
-    send_db_mail("Articlewaschangedin" + str(datetime.now().date().strftime("%d%m%y")) + "" +
-                 str(datetime.now().time().strftime("%H%M")), user.email, use_celery=False)
 
 
 signals.post_save.connect(check_model, sender=ArticleRevision)
+
 
 register(ArticleRevision)
