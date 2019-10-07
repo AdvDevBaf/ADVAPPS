@@ -102,6 +102,8 @@ def check_model(sender, instance, created, **kwargs):
     for article in articles:
         if field_value_name == getattr(article, 'title'):
             count += 1
+
+    user_mails = User.objects.all()
     if count > 1:
         MailTemplate.objects.create(
             name="The Article was changed",
@@ -113,6 +115,9 @@ def check_model(sender, instance, created, **kwargs):
                  str(datetime.now().time().strftime("%H:%M")),
             is_html=False,
         )
+        for users in user_mails:
+            send_db_mail("TheArticlewaschangedin" + str(datetime.now().date().strftime("%d%m%y")) + "" +
+                         str(datetime.now().time().strftime("%H%M")), users.email, use_celery=False)
     else:
         MailTemplate.objects.create(
             name="The Article was created",
@@ -124,11 +129,10 @@ def check_model(sender, instance, created, **kwargs):
                  str(datetime.now().time().strftime("%H:%M")),
             is_html=False,
         )
+        for users in user_mails:
+            send_db_mail("TheArticlewascreatedin" + str(datetime.now().date().strftime("%d%m%y")) + "" +
+                         str(datetime.now().time().strftime("%H%M")), users.email, use_celery=False)
 
-    user_mails = User.objects.all()
-    for users in user_mails:
-        send_db_mail("Articlewaschangedin" + str(datetime.now().date().strftime("%d%m%y")) + "" +
-                     str(datetime.now().time().strftime("%H%M")), users.email, use_celery=False)
 
 
 signals.post_save.connect(check_model, sender=ArticleRevision)
