@@ -79,12 +79,20 @@ class MTemplate(models.Model):
                               default='n')
     slug = models.CharField('Slug', max_length=50, default='default_slug')
 
+    class Meta:
+        verbose_name = 'Template'
+        verbose_name_plural = 'Templates'
+
 
 class Polls(models.Model):
     name = models.CharField('Name', max_length=50, default='default_poll')
     question = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')
     history = HistoricalRecords()
+
+    class Meta:
+        verbose_name = 'Poll'
+        verbose_name_plural = 'Polls'
 
 
 def check_model(sender, instance, created, **kwargs):
@@ -132,7 +140,6 @@ def check_model(sender, instance, created, **kwargs):
         for users in user_mails:
             send_db_mail("TheArticlewascreatedin" + str(datetime.now().date().strftime("%d%m%y")) + "" +
                          str(datetime.now().time().strftime("%H%M")), users.email, use_celery=False)
-
 
 
 signals.post_save.connect(check_model, sender=ArticleRevision)
