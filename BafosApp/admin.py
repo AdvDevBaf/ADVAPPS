@@ -51,15 +51,18 @@ class BlogEntryAdmin(admin.ModelAdmin):
 
 
 def make_sended(modeladmin, request, queryset):
-    send_db_mail('welcome', 'specialforsitess@gmail.com')
-    queryset.update(status='s', draft=True, use_celery=True)
+    obj = MTemplate.objects.all()[len(MTemplate.objects.all())-1]
+    field = 'slug'
+    slug = getattr(obj, field)
+    send_db_mail(str(slug), 'specialforsitess@gmail.com',  use_celery=False)
+    queryset.update(status='s', draft=True)
 
 
-make_sended.short_description='Make selected posts as sended'
+make_sended.short_description = 'Make selected mails as sent'
 
 
 class SendMailAdmin(admin.ModelAdmin):
-    list_display = ['name', 'draft', 'status']
+    list_display = ['name', 'slug', 'draft', 'status']
     actions = [make_sended]
 
 

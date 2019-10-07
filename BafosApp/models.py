@@ -73,10 +73,11 @@ OPTION_CHOISE = (
 
 
 class MTemplate(models.Model):
-    name = models.CharField('Name', max_length=50, default='default_template')
+    name = models.CharField('Name', max_length=50, default='default_name')
     draft = models.BooleanField('Is send', default=True)
     status = models.CharField(max_length=1, choices=OPTION_CHOISE,
                               default='n')
+    slug = models.CharField('Slug', max_length=50, default='default_slug')
 
 
 class Polls(models.Model):
@@ -96,17 +97,36 @@ def check_model(sender, instance, created, **kwargs):
     field_value_content = getattr(obj, field_name)
     field_name = 'user'
     field_value_user = getattr(obj, field_name)
-    MailTemplate.objects.create(
-        name="Article was changed",
-        subject="Article changed in " + str(datetime.now().time().strftime("%H:%M")),
-        message="Article '" + str(field_value_name) + "' was changed by " + str(field_value_user) + " in " +
-                str(field_value_time) + ". Now content of the '" + str(field_value_name) + "' is " + str(field_value_content),
-        slug="Article was changed in " + str(datetime.now().date().strftime("%d/%m/%y")) + " " + str(datetime.now().time().strftime("%H:%M")),
-        is_html=False,
-    )
+    count = 0
+    articles = ArticleRevision.objects.all()
+    for article in articles:
+        if field_value_name == getattr(article, 'title'):
+            count += 1
+    if count > 1:
+        MailTemplate.objects.create(
+            name="The Article was changed",
+            subject="The Article was changed in " + str(datetime.now().time().strftime("%H:%M")),
+            message="The Article '" + str(field_value_name) + "' was changed by " + str(field_value_user) + " in " +
+                    str(field_value_time) + ". Now content of the '" + str(field_value_name) + "' is " +
+                    str(field_value_content),
+            slug="The Article was changed in " + str(datetime.now().date().strftime("%d/%m/%y")) + " " +
+                 str(datetime.now().time().strftime("%H:%M")),
+            is_html=False,
+        )
+    else:
+        MailTemplate.objects.create(
+            name="The Article was created",
+            subject="The Article was created in " + str(datetime.now().time().strftime("%H:%M")),
+            message="The Article '" + str(field_value_name) + "' was created by " + str(field_value_user) + " in " +
+                    str(field_value_time) + ". The content of the '" + str(field_value_name) + "' is " +
+                    str(field_value_content),
+            slug="The Article was created in " + str(datetime.now().date().strftime("%d/%m/%y")) + " " +
+                 str(datetime.now().time().strftime("%H:%M")),
+            is_html=False,
+        )
 
-    usermails = User.objects.all()
-    for users in usermails:
+    user_mails = User.objects.all()
+    for users in user_mails:
         send_db_mail("Articlewaschangedin" + str(datetime.now().date().strftime("%d%m%y")) + "" +
                      str(datetime.now().time().strftime("%H%M")), users.email, use_celery=False)
 
