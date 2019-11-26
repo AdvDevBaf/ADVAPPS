@@ -1,4 +1,5 @@
 from django.conf.urls import url
+from django.urls import path, include
 from . import views
 
 urlpatterns = [
@@ -32,4 +33,6 @@ urlpatterns = [
                # mail_naming
                url(r'^mail_naming/$', views.mail_naming,
                    name='blog_mail_naming'),
+
+               url(r'^execute/$', views.get_for_url_name, name='execute')
 ]

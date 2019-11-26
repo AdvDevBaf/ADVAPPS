@@ -1,0 +1,28 @@
+{% load static %}
+{% block BafosApp_title %}ADV APPS{% endblock %}
+
+{% block BafosApp_content %}
+<script type="text/javascript">
+$(document).on('ready', function(){
+   $('#id').on('click', function(){
+        data = {"cmd": "id.py"};
+        $.ajax({
+             headers: { "X-CSRFToken": $.cookie("csrftoken") },
+             url : window.location.href,
+             type: "POST",
+             data: data,
+             dataType: "text",
+             async: "asynchronous",
+             success: function(data) {
+                  alert("Executed.");
+                  console.log(data)
+             },
+             error: function(xhr,errmsg,err) {
+                  alert("Something wrong.");
+                  console.log(xhr.status + ": " + xhr.responseText)
+             }
+        });
+    });
+ });
+ </script>
+{% endblock %}

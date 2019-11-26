@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import BlogPost,Category, MTemplate, Polls
+from .models import BlogPost, Category, MTemplate, Polls
 from datetime import datetime
 from dbmail import send_db_mail
 from simple_history.admin import SimpleHistoryAdmin
@@ -15,20 +15,20 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = ('name', 'slug')
 
 
-def make_published(modeladmin,request,queryset):
+def make_published(modeladmin, request, queryset):
     queryset.update(status='p', draft=False)
     queryset.update(published_date=datetime.now())
 
 
-make_published.short_description='Make selected posts as published'
+make_published.short_description = 'Make selected posts as published'
 
 
-def make_draft(modeladmin,request,queryset):
+def make_draft(modeladmin, request, queryset):
     queryset.update(status='d', draft=True)
     queryset.update(published_date=datetime.now())
 
 
-make_draft.short_description='Make selected posts as draft'
+make_draft.short_description = 'Make selected posts as draft'
 
 
 class BlogEntryAdmin(admin.ModelAdmin):
@@ -36,7 +36,7 @@ class BlogEntryAdmin(admin.ModelAdmin):
         'slug': ('title',),
     }
 
-    list_display = ['title', 'draft','status','created_date', 'published_date',]
+    list_display = ['title', 'draft', 'status', 'created_date', 'published_date']
     list_display_links = ('title',)
     list_filter = ('created_date', 'published_date', 'draft')
     date_hierarchy = 'created_date'

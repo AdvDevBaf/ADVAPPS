@@ -10,9 +10,11 @@ import datetime
 import time
 from django.views.decorators.csrf import csrf_exempt
 from .getaddress import example
+from django.http import JsonResponse, HttpResponse
+from tkinter.filedialog import askopenfilename
+import openpyxl
 
 # Create your views here.
-
 
 def index(request):
     entries = BlogPost.objects.published()
@@ -49,6 +51,184 @@ def details(request):
     entry = get_object_or_404(BlogPost)
 
     return render_to_response('BafosApp/details.html', {'entry': entry})
+
+
+def get_adress(address):
+    yandex_address = []
+    street = []
+    latitude = []
+    longitude = []
+    coordinate = []
+    print(address)
+    for i in range(len(address)):
+        response = requests.get(
+            "https://geocode-maps.yandex.ru/1.x/?apikey=55080292-108d-4b98-b077-fb1c2af3affd&format=json&geocode=" + str(
+                address[i])).json()
+        print(response)
+        print(response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject']['metaDataProperty'][
+                  'GeocoderMetaData']['AddressDetails']['Country']['AddressLine'])
+        if 'Москва' in str(
+                response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject']['metaDataProperty'][
+                    'GeocoderMetaData']['AddressDetails']['Country']['AddressLine']):
+            print(str(response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject']['metaDataProperty'][
+                          'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea']['Locality'][
+                          'Thoroughfare']['ThoroughfareName']) + ', ' + str(
+                response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject']['metaDataProperty'][
+                    'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea']['Locality']['Thoroughfare'][
+                    'Premise']['PremiseNumber']))
+        else:
+            if 'Thoroughfare' in str(
+                    response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject']['metaDataProperty'][
+                        'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea']['SubAdministrativeArea'][
+                        'Locality']):
+                if 'Premise' in str(response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
+                                        'metaDataProperty'][
+                                        'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea'][
+                                        'SubAdministrativeArea']['Locality']['Thoroughfare']):
+                    print(str(response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
+                                  'metaDataProperty'][
+                                  'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea'][
+                                  'SubAdministrativeArea']['Locality'][
+                                  'Thoroughfare']['ThoroughfareName']) + ', ' + str(
+                        response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
+                            'metaDataProperty'][
+                            'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea'][
+                            'SubAdministrativeArea']['Locality'][
+                            'Thoroughfare']['Premise']['PremiseNumber']))
+                else:
+                    print(str(response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
+                                  'metaDataProperty'][
+                                  'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea'][
+                                  'SubAdministrativeArea']['Locality'][
+                                  'Thoroughfare']['ThoroughfareName']) + ', ' + str(
+                        response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
+                            'metaDataProperty'][
+                            'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea'][
+                            'SubAdministrativeArea']['Locality'][
+                            'Thoroughfare']))
+            else:
+                print('Net Thoroughfare')
+
+        print(str(response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject']['Point']['pos']).split(
+            " "))
+        yandex_address.append(str(
+            response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject']['metaDataProperty'][
+                'GeocoderMetaData']['AddressDetails']['Country']['AddressLine']))
+        if 'Москва' in str(
+                response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject']['metaDataProperty'][
+                    'GeocoderMetaData']['AddressDetails']['Country']['AddressLine']):
+            street.append(str(
+                response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject']['metaDataProperty'][
+                    'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea']['Locality']['Thoroughfare'][
+                    'ThoroughfareName']) + ', ' + str(
+                response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject']['metaDataProperty'][
+                    'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea']['Locality']['Thoroughfare'][
+                    'Premise']['PremiseNumber']))
+        else:
+            if 'Thoroughfare' in str(response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
+                                         'metaDataProperty'][
+                                         'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea'][
+                                         'SubAdministrativeArea']['Locality']):
+                if 'Premise' in str(
+                        response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
+                            'metaDataProperty'][
+                            'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea'][
+                            'SubAdministrativeArea']['Locality']['Thoroughfare']):
+                    street.append(str(response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
+                                          'metaDataProperty'][
+                                          'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea'][
+                                          'SubAdministrativeArea']['Locality'][
+                                          'Thoroughfare']['ThoroughfareName']) + ', ' + str(
+                        response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
+                            'metaDataProperty'][
+                            'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea'][
+                            'SubAdministrativeArea']['Locality'][
+                            'Thoroughfare']['Premise']['PremiseNumber']))
+                else:
+                    street.append(str(response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
+                                          'metaDataProperty'][
+                                          'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea'][
+                                          'SubAdministrativeArea']['Locality'][
+                                          'Thoroughfare']['ThoroughfareName']) + ', ' + str(''))
+            else:
+                street.append('')
+        coordinate.append(
+            str(response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject']['Point']['pos']).split(
+                " "))
+        print(coordinate)
+        print(yandex_address)
+        print(street)
+        print(coordinate)
+    print(coordinate)
+    print(yandex_address)
+    print(street)
+    print(coordinate)
+    for i in range(len(coordinate)):
+        latitude.append(coordinate[i][1])
+        longitude.append(coordinate[i][0])
+    return yandex_address, street, latitude, longitude
+
+
+def get_columns_data(path):
+    # Получим столбцы из эксель файла
+    try:
+        wb = openpyxl.load_workbook(str(path))
+    except FileNotFoundError:
+        message = 'Укажите путь к таблице!'
+        ctypes.windll.user32.MessageBoxW(0, message, 'Работа с API', 0)
+    sheet = wb.worksheets[0]
+    address = []
+    max_row = sheet.max_row
+    for i in range(1, sheet.max_row):
+        if sheet.cell(row=i, column=1).value is None:
+            max_row = i - 1
+            print(max_row)
+            break
+        else:
+            max_row = sheet.max_row
+            print(max_row)
+    for i in range(2, max_row + 1):
+        address.append(sheet.cell(row=i, column=1).value)
+    return address
+
+
+def refill_table(path, yandex_adress, street, latitude, longitude):
+    wb = openpyxl.load_workbook(str(path))
+    sheet = wb.worksheets[0]
+    for i in range(0, len(yandex_adress)):
+        print(yandex_adress[i])
+        sheet.cell(row=i + 2, column=2).value = str(yandex_adress[i])
+        sheet.cell(row=i + 2, column=3).value = str(street[i])
+        sheet.cell(row=i + 2, column=6).value = str(latitude[i])
+        sheet.cell(row=i + 2, column=7).value = str(longitude[i])
+    wb.save(str("/home/") + str("geocode.xlsx"))
+
+    excel_file_name = str("/home/") + str("geocode.xlsx")
+    fp = open(excel_file_name, "rb");
+    response = HttpResponse(fp.read());
+    fp.close();
+    file_type = mimetypes.guess_type(excel_file_name);
+    if file_type is None:
+        file_type = 'application/octet-stream';
+    response['Content-Type'] = file_type
+    response['Content-Length'] = str(os.stat(excel_file_name).st_size);
+    response['Content-Disposition'] = "attachment; filename=%s" % os.path.basename(excel_file_name)
+    return response;
+
+
+
+def get_for_url_name(request):
+    data = ' kek'
+    a = {'Hello world': data}
+    response = JsonResponse(a)
+    response['Access-Control-Allow-Origin'] = '*'
+    print(request.build_absolute_uri())
+    print('lel')
+    path = askopenfilename()
+    address = get_columns_data(path)
+    yandex_adress, street, latitude, longitude = get_adress(address)
+    return refill_table(path, yandex_adress, street, latitude, longitude)
+
 
 
 def youtube(request):
@@ -127,7 +307,6 @@ def youtube(request):
 
             table = pd.DataFrame({'Название видеоролика': video_name, 'Описание': description,
                                   'Количество просмотров': view_count, 'Url видеоролика': url_video})
-
 
             if text!="":
                 table.to_csv("/home/" + str(datetime.datetime.now().strftime('%H-%M-%S_%d-%m-%Y'))+str("_video") + '.csv', sep=';', index=False,encoding='utf-8-sig')
