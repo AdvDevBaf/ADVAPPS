@@ -194,14 +194,136 @@ def get_columns_data(path):
 
 
 def get_vk_file():
-    pass
+    wb = openpyxl.load_workbook(str("/home/") + str("geocode.xlsx"))
+    sheet = wb.worksheets[0]
+    max_row = sheet.max_row
+    for i in range(1, sheet.max_row):
+        if ((sheet.cell(row=i, column=3).value) == None):
+            max_row = i - 1
+            break
+        else:
+            max_row = sheet.max_row
+
+    column1 = []
+    column2 = []
+    column3 = []
+    column4 = []
+
+    for i in range(2, max_row + 1):
+        column1.append(sheet.cell(row=i, column=3).value)
+        column2.append(sheet.cell(row=i, column=4).value)
+        column3.append(sheet.cell(row=i, column=5).value)
+        column4.append(sheet.cell(row=i, column=6).value)
+
+    keys = ('Улица', 'Радиус', 'Широта', 'Долгота')
+    radius = (500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 6000,
+              7000, 8000, 9000, 10000, 11000, 12000, 13000, 14000, 15000,
+              20000, 25000, 30000, 35000, 40000, 45000, 50000, 55000,
+              60000, 65000, 70000, 75000, 80000, 85000, 90000, 95000, 100000)
+
+    for i in range(0, max_row - 1):
+        column1[i] = column1[i].replace("улица", "ул.")
+        column1[i] = column1[i].replace("площадь", "пл.")
+        column1[i] = column1[i].replace("проспект", "пр-т")
+        column1[i] = column1[i].replace("переулок", "пер.")
+        column1[i] = column1[i].replace("проезд", "пр-д")
+
+    ceil_column2 = []
+    for var in column2:
+        if int(var) in radius:
+            ceil_column2.append(var)
+        elif int(var) < 5000:
+            if int(var) % 1000 < 500:
+                ceil_column2.append((int(var) // 1000) * 1000 + 500)
+            else:
+                ceil_column2.append((int(var) // 1000) * 1000 + 1000)
+        elif int(var) < 15000:
+            ceil_column2.append(math.ceil(int(var) / 1000) * 1000)
+        else:
+            if int(var) % 10000 < 5000:
+                ceil_column2.append(math.ceil(int(var) // 10000) * 10000 + 5000)
+            else:
+                ceil_column2.append(math.ceil(int(var) / 10000) * 10000)
+
+    zipped = zip(column1, ceil_column2, column3, column4)
+
+    dicts = [dict(zip(keys, values)) for values in zipped]
+
+    final_list = []
+
+    for i in range(0, max_row - 1):
+        a = str(dicts[i]['Широта']) + ',' + str(dicts[i]['Долгота']) + ',' \
+            + str(dicts[i]['Радиус']) + ',' + str(dicts[i]['Улица'])
+        final_list.append(a)
+
+    f = open(str("/home/") + 'VK' + '.txt', 'w',
+             encoding="utf-8")
+
+    for item in final_list:
+        f.write("%s\n" % item)
+    f.close()
+
+    filename = str("/home/") + 'VK'
+    return filename
 
 
 def get_mytarget_file():
-    pass
+    wb = openpyxl.load_workbook(str("/home/") + str("geocode.xlsx"))
+    sheet = wb.worksheets[0]
+    max_row = sheet.max_row
+    for i in range(1, sheet.max_row):
+        if ((sheet.cell(row=i, column=3).value) == None):
+            max_row = i - 1
+            break
+        else:
+            max_row = sheet.max_row
+
+    column1 = []
+    column2 = []
+    column3 = []
+    column4 = []
+
+    for i in range(2, max_row + 1):
+        column1.append(sheet.cell(row=i, column=3).value)
+        column2.append(sheet.cell(row=i, column=4).value)
+        column3.append(sheet.cell(row=i, column=5).value)
+        column4.append(sheet.cell(row=i, column=6).value)
+
+    keys = ['Улица', 'Радиус', 'Широта', 'Долгота']
+
+    for i in range(0, max_row - 1):
+        column1[i] = column1[i].replace("улица", "ул.")
+        column1[i] = column1[i].replace("площадь", "пл.")
+        column1[i] = column1[i].replace("проспект", "пр-т")
+        column1[i] = column1[i].replace("переулок", "пер.")
+        column1[i] = column1[i].replace("проезд", "пр-д")
+
+    for i in range(0, max_row - 1):
+        column1[i] = column1[i]
+
+    zipped = zip(column1, column2, column3, column4)
+
+    dicts = [dict(zip(keys, values)) for values in zipped]
+
+    final_list = []
+
+    for i in range(0, max_row - 1):
+        a = str(dicts[i]['Улица']) + ':' + str(dicts[i]['Радиус']) + 'm' + ':' + str(dicts[i]['Широта']) + ',' + str(
+            dicts[i]['Долгота'])
+        final_list.append(a)
+
+    f = open(str("/home/") + 'MT' + '.txt', 'w',
+             encoding="utf-8")
+
+    for item in final_list:
+        f.write("%s\n" % item)
+    f.close()
+
+    filename = str("/home/") + 'MT'
+    return filename
 
 
-def refill_table(path, yandex_adress, street, latitude, longitude, current_radius):
+def refill_table(path, yandex_adress, street, latitude, longitude, current_radius, current_service):
     wb = openpyxl.load_workbook(str(path))
     sheet = wb.worksheets[0]
     for i in range(0, len(yandex_adress)):
@@ -211,18 +333,48 @@ def refill_table(path, yandex_adress, street, latitude, longitude, current_radiu
         sheet.cell(row=i + 2, column=4).value = str(current_radius)
         sheet.cell(row=i + 2, column=5).value = str(latitude[i])
         sheet.cell(row=i + 2, column=6).value = str(longitude[i])
-    wb.save(str("C:\\Users\\AMasanov\\") + str("geocode.xlsx"))
+    wb.save(str("/home/") + str("geocode.xlsx"))
+    print(current_service)
 
-    excel_file_name = str("C:\\Users\\AMasanov\\") + str("geocode.xlsx")
-    fp = open(excel_file_name, "rb")
-    response = HttpResponse(fp.read())
-    fp.close()
-    file_type = mimetypes.guess_type(excel_file_name)
-    if file_type is None:
-        file_type = 'application/octet-stream'
-    response['Content-Type'] = file_type
-    response['Content-Length'] = str(os.stat(excel_file_name).st_size)
-    response['Content-Disposition'] = "attachment; filename=%s" % os.path.basename(excel_file_name)
+    if current_service:
+        for curr in current_service:
+            print(curr)
+            if curr == 'VK':
+                filepath = get_vk_file()
+                txt_vk_file_name = str(filepath) + str(".txt")
+                fp = open(txt_vk_file_name, "rb")
+                response = HttpResponse(fp.read())
+                fp.close()
+                file_type = mimetypes.guess_type(txt_vk_file_name)
+                if file_type is None:
+                    file_type = 'application/octet-stream'
+                response['Content-Type'] = file_type
+                response['Content-Length'] = str(os.stat(txt_vk_file_name).st_size)
+                response['Content-Disposition'] = "attachment; filename=%s" % os.path.basename(txt_vk_file_name)
+            elif curr == 'MyTarget':
+                filepath = get_mytarget_file()
+                excel_MT_file_name = str(filepath) + str(".txt")
+                fp = open(excel_MT_file_name, "rb")
+                response = HttpResponse(fp.read())
+                fp.close()
+                file_type = mimetypes.guess_type(excel_MT_file_name)
+                if file_type is None:
+                    file_type = 'application/octet-stream'
+                response['Content-Type'] = file_type
+                response['Content-Length'] = str(os.stat(excel_MT_file_name).st_size)
+                response['Content-Disposition'] = "attachment; filename=%s" % os.path.basename(excel_MT_file_name)
+    else:
+        excel_file_name = str("/home/") + str("geocode.xlsx")
+        fp = open(excel_file_name, "rb")
+        response = HttpResponse(fp.read())
+        fp.close()
+        file_type = mimetypes.guess_type(excel_file_name)
+        if file_type is None:
+            file_type = 'application/octet-stream'
+        response['Content-Type'] = file_type
+        response['Content-Length'] = str(os.stat(excel_file_name).st_size)
+        response['Content-Disposition'] = "attachment; filename=%s" % os.path.basename(excel_file_name)
+
     return response
 
 
@@ -249,20 +401,12 @@ def upload_file(request):
 
 
 def get_for_url_name(request, current_radius, current_service):
-
-    path = str('C:\\Users\\AMasanov\\media\\') + str(request)
+    path = str('media/') + str(request)
     #path = 'C:\\Users\\AMasanov\\media\\data.xlsx'
     address = get_columns_data(path)
     yandex_adress, street, latitude, longitude = get_adress(address)
-    for curr in current_service:
-        print(curr)
-        if curr is 'VK':
-            get_vk_file()
-        elif curr is 'MyTarget':
-            get_mytarget_file()
-        else:
-            print("error!")
-    return refill_table(path, yandex_adress, street, latitude, longitude, current_radius)
+
+    return refill_table(path, yandex_adress, street, latitude, longitude, current_radius, current_service)
 
 
 def youtube(request):
