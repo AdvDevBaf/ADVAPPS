@@ -10,9 +10,11 @@ import datetime
 import time
 from django.views.decorators.csrf import csrf_exempt
 from .getaddress import example
-from django.http import JsonResponse, HttpResponse
+from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
 from tkinter.filedialog import askopenfilename
 import openpyxl
+from .forms import ArticleFileForm
+
 
 # Create your views here.
 
@@ -170,12 +172,11 @@ def get_adress(address):
 
 
 def get_columns_data(path):
-    # Получим столбцы из эксель файла
     try:
         wb = openpyxl.load_workbook(str(path))
     except FileNotFoundError:
         message = 'Укажите путь к таблице!'
-        ctypes.windll.user32.MessageBoxW(0, message, 'Работа с API', 0)
+        wb = openpyxl.load_workbook(str(path))
     sheet = wb.worksheets[0]
     address = []
     max_row = sheet.max_row
@@ -192,43 +193,75 @@ def get_columns_data(path):
     return address
 
 
-def refill_table(path, yandex_adress, street, latitude, longitude):
+def get_vk_file():
+    pass
+
+
+def get_mytarget_file():
+    pass
+
+
+def refill_table(path, yandex_adress, street, latitude, longitude, current_radius):
     wb = openpyxl.load_workbook(str(path))
     sheet = wb.worksheets[0]
     for i in range(0, len(yandex_adress)):
         print(yandex_adress[i])
         sheet.cell(row=i + 2, column=2).value = str(yandex_adress[i])
         sheet.cell(row=i + 2, column=3).value = str(street[i])
-        sheet.cell(row=i + 2, column=6).value = str(latitude[i])
-        sheet.cell(row=i + 2, column=7).value = str(longitude[i])
+        sheet.cell(row=i + 2, column=4).value = str(current_radius)
+        sheet.cell(row=i + 2, column=5).value = str(latitude[i])
+        sheet.cell(row=i + 2, column=6).value = str(longitude[i])
     wb.save(str("/home/") + str("geocode.xlsx"))
 
     excel_file_name = str("/home/") + str("geocode.xlsx")
-    fp = open(excel_file_name, "rb");
-    response = HttpResponse(fp.read());
-    fp.close();
-    file_type = mimetypes.guess_type(excel_file_name);
+    fp = open(excel_file_name, "rb")
+    response = HttpResponse(fp.read())
+    fp.close()
+    file_type = mimetypes.guess_type(excel_file_name)
     if file_type is None:
-        file_type = 'application/octet-stream';
+        file_type = 'application/octet-stream'
     response['Content-Type'] = file_type
-    response['Content-Length'] = str(os.stat(excel_file_name).st_size);
+    response['Content-Length'] = str(os.stat(excel_file_name).st_size)
     response['Content-Disposition'] = "attachment; filename=%s" % os.path.basename(excel_file_name)
-    return response;
+    return response
 
 
+def upload_file(request):
+    print(request.method)
+    print(request.POST)
+    service = request.POST.getlist('checks')
+    radius = request.POST.get('radius')
+    print(service)
+    print(radius)
+    if request.method == 'POST':
+        form = ArticleFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            try:
+                form.save()
+            except:
+                print('test_error')
+            return get_for_url_name(request.FILES['file'].name, radius, service)
+        else:
+            print(form.errors)
+    else:
+        form = ArticleFileForm()
+    return render(request, 'BafosApp/uploaded.html', {'form': form})
 
-def get_for_url_name(request):
-    data = ' kek'
-    a = {'Hello world': data}
-    response = JsonResponse(a)
-    response['Access-Control-Allow-Origin'] = '*'
-    print(request.build_absolute_uri())
-    print('lel')
-    path = askopenfilename()
+
+def get_for_url_name(request, current_radius, current_service):
+
+    path = str('/home/') + str(request)
     address = get_columns_data(path)
     yandex_adress, street, latitude, longitude = get_adress(address)
-    return refill_table(path, yandex_adress, street, latitude, longitude)
-
+    for curr in current_service:
+        print(curr)
+        if curr is 'VK':
+            get_vk_file()
+        elif curr is 'MyTarget':
+            get_mytarget_file()
+        else:
+            print("error!")
+    return refill_table(path, yandex_adress, street, latitude, longitude, current_radius)
 
 
 def youtube(request):

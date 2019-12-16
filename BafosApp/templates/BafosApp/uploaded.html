@@ -1,0 +1,32 @@
+{% extends 'BafosApp/base.html' %}
+{% block BafosApp_title %}ADV APPS{% endblock %}
+{% block BafosApp_content %}
+
+<form class="md-form" action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <p class="texts">Радиус</p>
+    <p class="fields"><label>
+        <input type="text" class="form-control" name="radius" style="width: 480px;" id="input" onkeyup="copytext()">
+    </label>
+        <input type="file" id="file_obj" name="file" />
+
+    <div class="table-responsive">
+<table border="1" class="table table-striped table-sm">
+   <caption>Vk & MyTarget</caption>
+   <tr>
+    <th style="text-align: center;">Vk</th>
+    <th style="text-align: center;">MyTarget</th>
+   </tr>
+   <tr><td style="text-align: center;">
+       <input type="checkbox" style="width: 25px;" name="checks" value="VK" id="parent_city"/>Получить файл для VK<br></td><td style="text-align: center;">
+       <input  style="width: 25px;" type="checkbox" style="width: 25px; padding: auto;" value="MyTarget" name="checks" id="parent_region"/>Получить файл для MyTarget<br></td></tr>
+    </table>
+      </div>
+
+    <div>
+        <input class="btn btn-info alt_but" type="submit" value="submit" />
+</div>
+
+</form>
+
+{% endblock %}

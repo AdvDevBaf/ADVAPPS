@@ -34,5 +34,5 @@ urlpatterns = [
                url(r'^mail_naming/$', views.mail_naming,
                    name='blog_mail_naming'),
 
-               url(r'^execute/$', views.get_for_url_name, name='execute')
+            url(r'^upload/$', views.upload_file, name='upload'),
 ]

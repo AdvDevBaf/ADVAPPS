@@ -10,6 +10,8 @@ from simple_history import register
 from django.db.models import signals
 from django.contrib.auth.models import User
 from datetime import datetime
+from django.core.files.storage import FileSystemStorage
+
 # Create your models here.
 
 
@@ -17,6 +19,12 @@ STATUS_CHOISES = (
     ('d', 'Draft'),
     ('p', 'published'),
 )
+
+fs = FileSystemStorage(location='C:\\Users\\AMasanov\\media\\')
+
+
+class ArticleFile(models.Model):
+    file = models.FileField(storage=fs)
 
 
 class Category(models.Model):
