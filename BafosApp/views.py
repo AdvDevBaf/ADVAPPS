@@ -378,6 +378,20 @@ def refill_table(path, yandex_adress, street, latitude, longitude, current_radiu
     return response
 
 
+def download_template(request):
+    excel_file_name = str("media/") + str(request)
+    fp = open(excel_file_name, "rb")
+    response = HttpResponse(fp.read())
+    fp.close()
+    file_type = mimetypes.guess_type(excel_file_name)
+    if file_type is None:
+        file_type = 'application/octet-stream'
+    response['Content-Type'] = file_type
+    response['Content-Length'] = str(os.stat(excel_file_name).st_size)
+    response['Content-Disposition'] = "attachment; filename=%s" % os.path.basename(excel_file_name)
+    return response
+
+
 def upload_file(request):
     print(request.method)
     print(request.POST)
@@ -387,14 +401,17 @@ def upload_file(request):
     print(radius)
     if request.method == 'POST':
         form = ArticleFileForm(request.POST, request.FILES)
-        if form.is_valid():
-            try:
-                form.save()
-            except:
-                print('test_error')
-            return get_for_url_name(request.FILES['file'].name, radius, service)
+        if len(service) != 0 and service[0] == 'template':
+            return download_template('template.xlsx')
         else:
-            print(form.errors)
+            if form.is_valid():
+                try:
+                    form.save()
+                except:
+                    print('test_error')
+                return get_for_url_name(request.FILES['file'].name, radius, service)
+            else:
+                print(form.errors)
     else:
         form = ArticleFileForm()
     return render(request, 'BafosApp/uploaded.html', {'form': form})
