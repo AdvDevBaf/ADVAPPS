@@ -211,9 +211,9 @@ def refill_table(path, yandex_adress, street, latitude, longitude, current_radiu
         sheet.cell(row=i + 2, column=4).value = str(current_radius)
         sheet.cell(row=i + 2, column=5).value = str(latitude[i])
         sheet.cell(row=i + 2, column=6).value = str(longitude[i])
-    wb.save(str("/home/") + str("geocode.xlsx"))
+    wb.save(str("C:\\Users\\AMasanov\\") + str("geocode.xlsx"))
 
-    excel_file_name = str("/home/") + str("geocode.xlsx")
+    excel_file_name = str("C:\\Users\\AMasanov\\") + str("geocode.xlsx")
     fp = open(excel_file_name, "rb")
     response = HttpResponse(fp.read())
     fp.close()
@@ -250,7 +250,8 @@ def upload_file(request):
 
 def get_for_url_name(request, current_radius, current_service):
 
-    path = str('/home/') + str(request)
+    path = str('C:\\Users\\AMasanov\\media\\') + str(request)
+    #path = 'C:\\Users\\AMasanov\\media\\data.xlsx'
     address = get_columns_data(path)
     yandex_adress, street, latitude, longitude = get_adress(address)
     for curr in current_service:
