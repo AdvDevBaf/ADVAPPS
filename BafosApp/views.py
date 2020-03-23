@@ -66,7 +66,7 @@ def youtube_parser(request):
         channel_trailer = []
         channel_data = []
         request_text = request.GET.get('text', '')
-        request_text = 'https://www.channelcrawler.com/eng/results/10763'
+        print(request_text)
         url = requests.get(str(request_text) + str('/page:') + str(1)).text
         soup = BeautifulSoup(url)
         page = 0
@@ -108,7 +108,9 @@ def youtube_parser(request):
 def save_parser_data(channel_name,channel_data,video_count,view_count,subscriber_count,channel_trailer):
     table = pd.DataFrame({'Название канала': channel_name, 'Ссылка': channel_data, 'Количество видео': video_count,
                           'Общее количество просмотров': view_count, 'Количество подписчиков': subscriber_count,
-                          'Трейлер канала': channel_trailer})
+                          'Трейлер канала': channel_trailer}, columns=['Название канала', 'Ссылка', 'Количество видео',
+                                                                       'Общее количество просмотров',
+                                                                       'Количество подписчиков', 'Трейлер канала'])
 
     table.to_csv("/home/" + str("channel_parser") + '.csv',
                  sep=';', index=False, encoding='utf-8-sig')
