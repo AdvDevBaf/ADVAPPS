@@ -34,5 +34,7 @@ urlpatterns = [
                url(r'^mail_naming/$', views.mail_naming,
                    name='blog_mail_naming'),
 
-            url(r'^upload/$', views.upload_file, name='upload'),
+               url(r'^upload/$', views.upload_file, name='upload'),
+
+               url(r'^youtube_parser', views.youtube_parser, name='youtube_parser'),
 ]

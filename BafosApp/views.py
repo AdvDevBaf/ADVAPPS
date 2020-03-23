@@ -14,13 +14,15 @@ from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
 from tkinter.filedialog import askopenfilename
 import openpyxl
 from .forms import ArticleFileForm
-
+from bs4 import BeautifulSoup
 
 # Create your views here.
+
 
 def index(request):
     entries = BlogPost.objects.published()
     return render_to_response('BafosApp/index.html', {'entries': entries})
+
 
 def category(request, id, slug):
     category = get_object_or_404(Category, id=id, slug=slug)
@@ -53,6 +55,75 @@ def details(request):
     entry = get_object_or_404(BlogPost)
 
     return render_to_response('BafosApp/details.html', {'entry': entry})
+
+
+def youtube_parser(request):
+    if 'text' in request.GET and request.GET['text']:
+        channel_name = []
+        video_count = []
+        subscriber_count = []
+        view_count = []
+        channel_trailer = []
+        channel_data = []
+        request_text = request.GET.get('text', '')
+        request_text = 'https://www.channelcrawler.com/eng/results/10763'
+        url = requests.get(str(request_text) + str('/page:') + str(1)).text
+        soup = BeautifulSoup(url)
+        page = 0
+        while len(soup.findAll('strong')) == 0:
+            time.sleep(3)
+            try:
+                url = requests.get(str(request_text) + str('/page:') + str(page + 1)).text
+                soup = BeautifulSoup(url)
+                for div in soup.findAll('div'):
+                    for a in div.findAll('a', title=True):
+                        if '/channel/' in a['href']:
+                            if a['href'] not in channel_data:
+                                print(str(a['title']) + str(' - ') + str(a['href']))
+                                channel_data.append(a['href'])
+            except TimeoutError:
+                print('error')
+            page += 1
+        for link in channel_data:
+            time.sleep(3)
+            response = requests.get(str('https://www.googleapis.com/youtube/v3/channels?'
+                                        'part=snippet%2CcontentDetails%2Cstatistics%2CbrandingSettings&id=')
+                                    + str(link).replace('http://www.youtube.com/channel/', '')
+                                    + str('&key=AIzaSyACxrnyfBEZgUBNCwzCp7urOlORSzlZsHU'))
+            data = response.json()
+            channel_name.append(str(data['items'][0]['snippet']['title']))
+            video_count.append(str(data['items'][0]['statistics']['videoCount']))
+            view_count.append(str(data['items'][0]['statistics']['viewCount']))
+            subscriber_count.append(str(data['items'][0]['statistics']['subscriberCount']))
+            try:
+                channel_trailer.append(str('https://www.youtube.com/watch?v=') +
+                                       str(data['items'][0]['brandingSettings']['channel']['unsubscribedTrailer']))
+            except KeyError:
+                channel_trailer.append('Трейлер канала отсутствует')
+        return save_parser_data(channel_name,channel_data,video_count,view_count,subscriber_count,channel_trailer)
+
+    return render_to_response('BafosApp/youtube_parser.html')
+
+
+def save_parser_data(channel_name,channel_data,video_count,view_count,subscriber_count,channel_trailer):
+    table = pd.DataFrame({'Название канала': channel_name, 'Ссылка': channel_data, 'Количество видео': video_count,
+                          'Общее количество просмотров': view_count, 'Количество подписчиков': subscriber_count,
+                          'Трейлер канала': channel_trailer})
+
+    table.to_csv("/home/" + str("channel_parser") + '.csv',
+                 sep=';', index=False, encoding='utf-8-sig')
+    excel_file_name = str("/home/") + str("channel_parser.csv")
+    print("This is " + os.path.basename(excel_file_name))
+    fp = open(excel_file_name, "rb");
+    response = HttpResponse(fp.read());
+    fp.close();
+    file_type = mimetypes.guess_type(excel_file_name);
+    if file_type is None:
+        file_type = 'application/octet-stream';
+    response['Content-Type'] = file_type
+    response['Content-Length'] = str(os.stat(excel_file_name).st_size);
+    response['Content-Disposition'] = "attachment; filename=%s" % os.path.basename(excel_file_name)
+    return response
 
 
 def get_adress(address):

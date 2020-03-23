@@ -1,0 +1,22 @@
+{% extends 'BafosApp/base.html' %}
+{% block BafosApp_title %}ADV APPS{% endblock %}
+
+{% block BafosApp_content %}
+<form action="" method="get">
+        <p class="texts">Укажите ссылку</p>
+<p class="fields"><label>
+    <input class="form-control" style="width: 280px;" type="text" name="text">
+</label>
+
+
+    <div>
+        <p><input class="btn btn-info alt_but" type="submit" value="Получить"></p>
+</div>
+</form>
+
+    <form action="{% url 'blog_index' %}">
+        <p><button type="submit" class="btn btn-info alt_but"  value="столбец">Назад на основную страницу</button>
+    </form>
+
+{% endblock %}
+
