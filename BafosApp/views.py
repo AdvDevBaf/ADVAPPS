@@ -68,13 +68,16 @@ def youtube_parser(request):
         creation_data = []
         request_text = request.GET.get('text', '')
         print(request_text)
-        url = requests.get(str(request_text) + str('/page:') + str(1)).text
-        print(re.findall(r"http:\/\/\w{3}\.youtube\.com\/channel\/[a-zA-Z0-9-(_)-]+", url))
+        proxies = {
+            "http": "http://45.250.226.56",
+        }
+        url = requests.get(str(request_text) + str('/page:') + str(1),proxies=proxies).text
+        print(re.findall(r"http:\/\/\w{3}\.youtube\.com\/channel\/[a-zA-Z0-9-_-]+", url))
         page = 0
         while ('<strong>' in str(url)) == False:
             try:
-                url = requests.get(str(request_text) + str('/page:') + str(page + 1)).text
-                soups = re.findall(r"http:\/\/\w{3}\.youtube\.com\/channel\/[a-zA-Z0-9-(_)]+", url)
+                url = requests.get(str(request_text) + str('/page:') + str(page + 1),proxies=proxies).text
+                soups = re.findall(r"http:\/\/\w{3}\.youtube\.com\/channel\/[a-zA-Z0-9-_-]+", url)
                 for soup in soups:
                     if str(soup) not in channel_data:
                         print(soup)
