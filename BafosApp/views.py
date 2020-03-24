@@ -65,13 +65,13 @@ def youtube_parser(request):
         view_count = []
         channel_trailer = []
         channel_data = []
+        creation_data = []
         request_text = request.GET.get('text', '')
         print(request_text)
         url = requests.get(str(request_text) + str('/page:') + str(1)).text
         soup = BeautifulSoup(url)
         page = 0
         while len(soup.findAll('strong')) == 0:
-            time.sleep(3)
             try:
                 url = requests.get(str(request_text) + str('/page:') + str(page + 1)).text
                 soup = BeautifulSoup(url)
@@ -95,22 +95,25 @@ def youtube_parser(request):
             video_count.append(str(data['items'][0]['statistics']['videoCount']))
             view_count.append(str(data['items'][0]['statistics']['viewCount']))
             subscriber_count.append(str(data['items'][0]['statistics']['subscriberCount']))
+            creation_data.append(str(data['items'][0]['snippet']['publishedAt'])[
+                  :str(data['items'][0]['snippet']['publishedAt']).find('T')])
             try:
                 channel_trailer.append(str('https://www.youtube.com/watch?v=') +
                                        str(data['items'][0]['brandingSettings']['channel']['unsubscribedTrailer']))
             except KeyError:
                 channel_trailer.append('Трейлер канала отсутствует')
-        return save_parser_data(channel_name,channel_data,video_count,view_count,subscriber_count,channel_trailer)
+        return save_parser_data(channel_name, channel_data, video_count, view_count, subscriber_count, channel_trailer,
+                                creation_data)
 
     return render_to_response('BafosApp/youtube_parser.html')
 
 
-def save_parser_data(channel_name,channel_data,video_count,view_count,subscriber_count,channel_trailer):
+def save_parser_data(channel_name, channel_data, video_count, view_count, subscriber_count, channel_trailer, creation_data):
     table = pd.DataFrame({'Название канала': channel_name, 'Ссылка': channel_data, 'Количество видео': video_count,
                           'Общее количество просмотров': view_count, 'Количество подписчиков': subscriber_count,
-                          'Трейлер канала': channel_trailer}, columns=['Название канала', 'Ссылка', 'Количество видео',
-                                                                       'Общее количество просмотров',
-                                                                       'Количество подписчиков', 'Трейлер канала'])
+                          'Трейлер канала': channel_trailer, 'Дата создания канала': creation_data},
+                         columns=['Название канала', 'Ссылка', 'Дата создания канала', 'Количество видео',
+                                  'Общее количество просмотров', 'Количество подписчиков', 'Трейлер канала'])
 
     table.to_csv("/home/" + str("channel_parser") + '.csv',
                  sep=';', index=False, encoding='utf-8-sig')
