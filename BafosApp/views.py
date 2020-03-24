@@ -91,12 +91,27 @@ def youtube_parser(request):
                                     + str(link).replace('http://www.youtube.com/channel/', '')
                                     + str('&key=AIzaSyACxrnyfBEZgUBNCwzCp7urOlORSzlZsHU'))
             data = response.json()
-            channel_name.append(str(data['items'][0]['snippet']['title']))
-            video_count.append(str(data['items'][0]['statistics']['videoCount']))
-            view_count.append(str(data['items'][0]['statistics']['viewCount']))
-            subscriber_count.append(str(data['items'][0]['statistics']['subscriberCount']))
-            creation_data.append(str(data['items'][0]['snippet']['publishedAt'])[
-                  :str(data['items'][0]['snippet']['publishedAt']).find('T')])
+            try:
+                channel_name.append(str(data['items'][0]['snippet']['title']))
+            except:
+                channel_name.append('')
+            try:
+                video_count.append(str(data['items'][0]['statistics']['videoCount']))
+            except:
+                video_count.append('')
+            try:
+                view_count.append(str(data['items'][0]['statistics']['viewCount']))
+            except:
+                view_count.append('')
+            try:
+                subscriber_count.append(str(data['items'][0]['statistics']['subscriberCount']))
+            except:
+                subscriber_count.append('')
+            try:
+                creation_data.append(str(data['items'][0]['snippet']['publishedAt'])[
+                                 :str(data['items'][0]['snippet']['publishedAt']).find('T')])
+            except:
+                creation_data.append('')
             try:
                 channel_trailer.append(str('https://www.youtube.com/watch?v=') +
                                        str(data['items'][0]['brandingSettings']['channel']['unsubscribedTrailer']))
