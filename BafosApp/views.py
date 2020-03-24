@@ -14,7 +14,7 @@ from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
 from tkinter.filedialog import askopenfilename
 import openpyxl
 from .forms import ArticleFileForm
-from bs4 import BeautifulSoup
+import re
 
 # Create your views here.
 
@@ -69,18 +69,17 @@ def youtube_parser(request):
         request_text = request.GET.get('text', '')
         print(request_text)
         url = requests.get(str(request_text) + str('/page:') + str(1)).text
-        soup = BeautifulSoup(url)
+        print(re.findall(r"http:\/\/\w{3}\.youtube\.com\/channel\/[a-zA-Z0-9-(_)-]+", url))
         page = 0
-        while len(soup.findAll('strong')) == 0:
+        while ('<strong>' in str(url)) == False:
             try:
                 url = requests.get(str(request_text) + str('/page:') + str(page + 1)).text
-                soup = BeautifulSoup(url)
-                for div in soup.findAll('div'):
-                    for a in div.findAll('a', title=True):
-                        if '/channel/' in a['href']:
-                            if a['href'] not in channel_data:
-                                print(str(a['title']) + str(' - ') + str(a['href']))
-                                channel_data.append(a['href'])
+                soups = re.findall(r"http:\/\/\w{3}\.youtube\.com\/channel\/[a-zA-Z0-9-(_)]+", url)
+                for soup in soups:
+                    if str(soup) not in channel_data:
+                        print(soup)
+                        channel_data.append(str(soup))
+
             except TimeoutError:
                 print('error')
             page += 1
@@ -94,24 +93,24 @@ def youtube_parser(request):
             try:
                 channel_name.append(str(data['items'][0]['snippet']['title']))
             except:
-                channel_name.append('')
+                channel_name.append('Проблема с сетью или с каналом')
             try:
                 video_count.append(str(data['items'][0]['statistics']['videoCount']))
             except:
-                video_count.append('')
+                video_count.append('Проблема с сетью или с каналом')
             try:
                 view_count.append(str(data['items'][0]['statistics']['viewCount']))
             except:
-                view_count.append('')
+                view_count.append('Проблема с сетью или с каналом')
             try:
                 subscriber_count.append(str(data['items'][0]['statistics']['subscriberCount']))
             except:
-                subscriber_count.append('')
+                subscriber_count.append('Проблема с сетью или с каналом')
             try:
                 creation_data.append(str(data['items'][0]['snippet']['publishedAt'])[
                                  :str(data['items'][0]['snippet']['publishedAt']).find('T')])
             except:
-                creation_data.append('')
+                creation_data.append('Проблема с сетью или с каналом')
             try:
                 channel_trailer.append(str('https://www.youtube.com/watch?v=') +
                                        str(data['items'][0]['brandingSettings']['channel']['unsubscribedTrailer']))
