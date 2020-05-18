@@ -155,98 +155,163 @@ def get_adress(address):
     longitude = []
     coordinate = []
     print(address)
+    addr = []
+    # for one_address in address:
+    #   addr.append(str(one_address.split(",")[1])+","+str(one_address.split(",")[0]))
+    #  print(addr)
+    # address = addr
     for i in range(len(address)):
         response = requests.get(
             "https://geocode-maps.yandex.ru/1.x/?apikey=55080292-108d-4b98-b077-fb1c2af3affd&format=json&geocode=" + str(
                 address[i])).json()
+        print('tak')
         print(response)
         print(response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject']['metaDataProperty'][
                   'GeocoderMetaData']['AddressDetails']['Country']['AddressLine'])
-        if 'Москва' in str(
+        try:
+            # if 'Москва' in str(response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject']['metaDataProperty']['GeocoderMetaData']['AddressDetails']['Country']['AddressLine']):
+            print(str(
                 response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject']['metaDataProperty'][
-                    'GeocoderMetaData']['AddressDetails']['Country']['AddressLine']):
-            print(str(response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject']['metaDataProperty'][
-                          'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea']['Locality'][
-                          'Thoroughfare']['ThoroughfareName']) + ', ' + str(
-                response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject']['metaDataProperty'][
-                    'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea']['Locality']['Thoroughfare'][
-                    'Premise']['PremiseNumber']))
-        else:
-            if 'Thoroughfare' in str(
+                    'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea']['Locality']))
+
+            if 'Premise' in str(
                     response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject']['metaDataProperty'][
-                        'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea']['SubAdministrativeArea'][
-                        'Locality']):
-                if 'Premise' in str(response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
-                                        'metaDataProperty'][
-                                        'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea'][
-                                        'SubAdministrativeArea']['Locality']['Thoroughfare']):
-                    print(str(response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
-                                  'metaDataProperty'][
-                                  'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea'][
-                                  'SubAdministrativeArea']['Locality'][
-                                  'Thoroughfare']['ThoroughfareName']) + ', ' + str(
-                        response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
-                            'metaDataProperty'][
-                            'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea'][
-                            'SubAdministrativeArea']['Locality'][
-                            'Thoroughfare']['Premise']['PremiseNumber']))
-                else:
-                    print(str(response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
-                                  'metaDataProperty'][
-                                  'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea'][
-                                  'SubAdministrativeArea']['Locality'][
-                                  'Thoroughfare']['ThoroughfareName']) + ', ' + str(
-                        response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
-                            'metaDataProperty'][
-                            'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea'][
-                            'SubAdministrativeArea']['Locality'][
-                            'Thoroughfare']))
+                        'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea']['Locality'][
+                        'Thoroughfare']):
+                print(str(
+                    response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject']['metaDataProperty'][
+                        'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea']['Locality'][
+                        'Thoroughfare']['ThoroughfareName']) + ', ' + str(
+                    response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject']['metaDataProperty'][
+                        'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea']['Locality'][
+                        'Thoroughfare']['Premise']['PremiseNumber']))
             else:
-                print('Net Thoroughfare')
+                print(str(response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
+                              'metaDataProperty']['GeocoderMetaData']['AddressDetails']['Country'][
+                              'AdministrativeArea']['Locality']['Thoroughfare']))
+
+        except:
+            if 'SubAdministrativeArea' in str(
+                    response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
+                        'metaDataProperty'][
+                        'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea']):
+                if 'Thoroughfare' in str(response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
+                                             'metaDataProperty'][
+                                             'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea'][
+                                             'SubAdministrativeArea']['Locality']):
+                    if 'Premise' in str(response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
+                                            'metaDataProperty'][
+                                            'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea'][
+                                            'SubAdministrativeArea']['Locality']['Thoroughfare']):
+                        print(str(response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
+                                      'metaDataProperty'][
+                                      'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea'][
+                                      'SubAdministrativeArea']['Locality'][
+                                      'Thoroughfare']['ThoroughfareName']) + ', ' + str(
+                            response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
+                                'metaDataProperty'][
+                                'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea'][
+                                'SubAdministrativeArea']['Locality'][
+                                'Thoroughfare']['Premise']['PremiseNumber']))
+                    else:
+                        print(str(response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
+                                      'metaDataProperty'][
+                                      'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea'][
+                                      'SubAdministrativeArea']['Locality'][
+                                      'Thoroughfare']['ThoroughfareName']) + ', ' + str(
+                            response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
+                                'metaDataProperty'][
+                                'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea'][
+                                'SubAdministrativeArea']['Locality'][
+                                'Thoroughfare']))
+                else:
+                    print('Net Thoroughfare')
+            else:
+                print(str(response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
+                              'metaDataProperty']['GeocoderMetaData']['AddressDetails']['Country'][
+                              'AdministrativeArea']['Locality']))
+                print(str(response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
+                              'metaDataProperty']['GeocoderMetaData']['AddressDetails']['Country'][
+                              'AdministrativeArea']['Locality']['DependentLocality']['DependentLocality'][
+                              'DependentLocality']['DependentLocalityName']) + ', ' + str(
+                    response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
+                        'metaDataProperty']['GeocoderMetaData']['AddressDetails']['Country'][
+                        'AdministrativeArea']['Locality']['DependentLocality']['DependentLocality'][
+                        'DependentLocality']['Premise']['PremiseNumber']))
 
         print(str(response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject']['Point']['pos']).split(
             " "))
         yandex_address.append(str(
             response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject']['metaDataProperty'][
                 'GeocoderMetaData']['AddressDetails']['Country']['AddressLine']))
-        if 'Москва' in str(
-                response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject']['metaDataProperty'][
-                    'GeocoderMetaData']['AddressDetails']['Country']['AddressLine']):
-            street.append(str(
-                response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject']['metaDataProperty'][
-                    'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea']['Locality']['Thoroughfare'][
-                    'ThoroughfareName']) + ', ' + str(
-                response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject']['metaDataProperty'][
-                    'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea']['Locality']['Thoroughfare'][
-                    'Premise']['PremiseNumber']))
-        else:
-            if 'Thoroughfare' in str(response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
-                                         'metaDataProperty'][
-                                         'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea'][
-                                         'SubAdministrativeArea']['Locality']):
-                if 'Premise' in str(
-                        response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
-                            'metaDataProperty'][
-                            'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea'][
-                            'SubAdministrativeArea']['Locality']['Thoroughfare']):
-                    street.append(str(response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
-                                          'metaDataProperty'][
-                                          'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea'][
-                                          'SubAdministrativeArea']['Locality'][
-                                          'Thoroughfare']['ThoroughfareName']) + ', ' + str(
-                        response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
-                            'metaDataProperty'][
-                            'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea'][
-                            'SubAdministrativeArea']['Locality'][
-                            'Thoroughfare']['Premise']['PremiseNumber']))
-                else:
-                    street.append(str(response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
-                                          'metaDataProperty'][
-                                          'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea'][
-                                          'SubAdministrativeArea']['Locality'][
-                                          'Thoroughfare']['ThoroughfareName']) + ', ' + str(''))
+
+        try:
+            # if 'Москва' in str(response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject']['metaDataProperty']['GeocoderMetaData']['AddressDetails']['Country']['AddressLine']):
+            if 'Premise' in str(
+                    response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject']['metaDataProperty'][
+                        'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea']['Locality'][
+                        'Thoroughfare']):
+                print(str(
+                    response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject']['metaDataProperty'][
+                        'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea']['Locality'][
+                        'Thoroughfare']))
+                street.append(str(response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
+                                      'metaDataProperty']['GeocoderMetaData']['AddressDetails']['Country'][
+                                      'AdministrativeArea']['Locality']['Thoroughfare'][
+                                      'ThoroughfareName']) + ', ' + str(
+                    response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
+                        'metaDataProperty']['GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea'][
+                        'Locality']['Thoroughfare']['Premise']['PremiseNumber']))
             else:
-                street.append('')
+                print(str(response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
+                              'metaDataProperty']['GeocoderMetaData']['AddressDetails']['Country'][
+                              'AdministrativeArea']['Locality']['Thoroughfare']))
+                street.append(str(response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
+                                      'metaDataProperty']['GeocoderMetaData']['AddressDetails']['Country'][
+                                      'AdministrativeArea']['Locality']['Thoroughfare']['ThoroughfareName']))
+        except:
+            if 'SubAdministrativeArea' in str(
+                    response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
+                        'metaDataProperty'][
+                        'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea']):
+
+                if 'Thoroughfare' in str(response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
+                                             'metaDataProperty'][
+                                             'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea'][
+                                             'SubAdministrativeArea']['Locality']):
+                    if 'Premise' in str(
+                            response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
+                                'metaDataProperty'][
+                                'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea'][
+                                'SubAdministrativeArea']['Locality']['Thoroughfare']):
+                        street.append(str(response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
+                                              'metaDataProperty'][
+                                              'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea'][
+                                              'SubAdministrativeArea']['Locality'][
+                                              'Thoroughfare']['ThoroughfareName']) + ', ' + str(
+                            response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
+                                'metaDataProperty'][
+                                'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea'][
+                                'SubAdministrativeArea']['Locality'][
+                                'Thoroughfare']['Premise']['PremiseNumber']))
+                    else:
+                        street.append(str(response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
+                                              'metaDataProperty'][
+                                              'GeocoderMetaData']['AddressDetails']['Country']['AdministrativeArea'][
+                                              'SubAdministrativeArea']['Locality'][
+                                              'Thoroughfare']['ThoroughfareName']) + ', ' + str(''))
+                else:
+                    street.append('')
+            else:
+                print(street.append(str(response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
+                                            'metaDataProperty']['GeocoderMetaData']['AddressDetails']['Country'][
+                                            'AdministrativeArea']['Locality']['DependentLocality']['DependentLocality'][
+                                            'DependentLocality']['DependentLocalityName']) + ', ' + str(
+                    response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject'][
+                        'metaDataProperty']['GeocoderMetaData']['AddressDetails']['Country'][
+                        'AdministrativeArea']['Locality']['DependentLocality']['DependentLocality'][
+                        'DependentLocality']['Premise']['PremiseNumber'])))
+
         coordinate.append(
             str(response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject']['Point']['pos']).split(
                 " "))

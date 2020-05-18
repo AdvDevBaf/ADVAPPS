@@ -20,7 +20,7 @@ STATUS_CHOISES = (
     ('p', 'published'),
 )
 
-fs = FileSystemStorage(location='C:\\Users\\AMasanov\\media\\')
+fs = FileSystemStorage(location='media/')
 
 
 class ArticleFile(models.Model):
