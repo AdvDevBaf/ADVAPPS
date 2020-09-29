@@ -91,7 +91,7 @@ def youtube_parser(request):
             response = requests.get(str('https://www.googleapis.com/youtube/v3/channels?'
                                         'part=snippet%2CcontentDetails%2Cstatistics%2CbrandingSettings&id=')
                                     + str(link).replace('http://www.youtube.com/channel/', '')
-                                    + str('&key=AIzaSyACxrnyfBEZgUBNCwzCp7urOlORSzlZsHU'))
+                                    + str('&key=AIzaSyDx7DF8Ti7hS25eArrqOYUZJIWxz8fD1jY'))
             data = response.json()
             try:
                 channel_name.append(str(data['items'][0]['snippet']['title']))
@@ -612,7 +612,7 @@ def youtube(request):
         date_of_upload_latest_video = []
         if data == "video":
             response = requests.get('https://www.googleapis.com/youtube/v3/search?type=video'
-                                '&key=AIzaSyACxrnyfBEZgUBNCwzCp7urOlORSzlZsHU&maxResults=50&'
+                                '&key=AIzaSyDx7DF8Ti7hS25eArrqOYUZJIWxz8fD1jY&maxResults=50&'
                                 'part=snippet&q=' + str(request_text))
             search_results = response.json()
 
@@ -628,7 +628,7 @@ def youtube(request):
                             #print('s is ' + str(search_results['pageInfo']['totalResults']))
                             if 'nextPageToken' in search_results:
                                 response = requests.get('https://www.googleapis.com/youtube/v3/search?type=video'
-                                                    '&key=AIzaSyACxrnyfBEZgUBNCwzCp7urOlORSzlZsHU&maxResults=50&'
+                                                    '&key=AIzaSyDx7DF8Ti7hS25eArrqOYUZJIWxz8fD1jY&maxResults=50&'
                                                     '&part=snippet&pageToken=' + str(
                                         search_results['nextPageToken'])
                                                     + '&q=' + str(request_text))
@@ -650,7 +650,7 @@ def youtube(request):
                 for vid in vids:
                     try:
                         video_response = requests.get('https://www.googleapis.com/youtube/v3/videos?part=statistics'
-                                          '&key=AIzaSyACxrnyfBEZgUBNCwzCp7urOlORSzlZsHU&id=' + str(vid))
+                                          '&key=AIzaSyDx7DF8Ti7hS25eArrqOYUZJIWxz8fD1jY&id=' + str(vid))
                         video_search_results = video_response.json()
                         print(video_search_results)
                         print(video_search_results['items'][0]['statistics']['viewCount'])
@@ -696,7 +696,7 @@ def youtube(request):
             print('')
             print(request_text)
             response = requests.get('https://www.googleapis.com/youtube/v3/search?type=channel'
-                                    '&key=AIzaSyACxrnyfBEZgUBNCwzCp7urOlORSzlZsHU&maxResults=50&'
+                                    '&key=AIzaSyDx7DF8Ti7hS25eArrqOYUZJIWxz8fD1jY&maxResults=50&'
                                     'part=snippet&q=' + str(request_text))
             search_results = response.json()
             print(search_results)
@@ -715,7 +715,7 @@ def youtube(request):
                                     print(i)
                                     print('token?')
                                     response = requests.get('https://www.googleapis.com/youtube/v3/search?type=channel'
-                                                            '&key=AIzaSyACxrnyfBEZgUBNCwzCp7urOlORSzlZsHU&maxResults=50&'
+                                                            '&key=AIzaSyDx7DF8Ti7hS25eArrqOYUZJIWxz8fD1jY&maxResults=50&'
                                                             '&part=snippet&pageToken=' + str(search_results['nextPageToken'])
                                                             + '&q=' + str(request_text))
                                     search_results = response.json()
@@ -733,7 +733,7 @@ def youtube(request):
                 print('Канала не существует, или проблемы с сетью')
 
             for name in id_channels_list:
-                content = requests.get('https://www.googleapis.com/youtube/v3/channels?id=' + str(name) + '&key=AIzaSyACxrnyfBEZgUBNCwzCp7urOlORSzlZsHU&part=snippet,statistics,status,brandingSettings')
+                content = requests.get('https://www.googleapis.com/youtube/v3/channels?id=' + str(name) + '&key=AIzaSyDx7DF8Ti7hS25eArrqOYUZJIWxz8fD1jY&part=snippet,statistics,status,brandingSettings')
                 data = content.json()
                 print(" ")
                 print(data["items"][0]["snippet"]["title"])
@@ -769,7 +769,7 @@ def youtube(request):
 
             for name in id_channels_list:
                 try:
-                    response = requests.get('https://www.googleapis.com/youtube/v3/activities?channelId=' + str(name) + '&key=AIzaSyACxrnyfBEZgUBNCwzCp7urOlORSzlZsHU&part=snippet')
+                    response = requests.get('https://www.googleapis.com/youtube/v3/activities?channelId=' + str(name) + '&key=AIzaSyDx7DF8Ti7hS25eArrqOYUZJIWxz8fD1jY&part=snippet')
                     last_upload = response.json()
                     date_of_upload_latest_video.append(last_upload["items"][0]["snippet"]["publishedAt"])
                 except:
